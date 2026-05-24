@@ -1,0 +1,4278 @@
+--- PAGE 1 ---
+台灣 (Taiwan, ROC)
+勞動部統計處
+103年外籍勞工工作及生活關懷調查
+Study Documentation
+September 23, 2016
+
+--- PAGE 2 ---
+Metadata Production
+Metadata Producer(s) 學術調查研究資料庫(Survey Research Data Archive) (SRDA) , 中央研究院人社中心調查研究
+專題中心 , DDI文件製作
+Production Date September 20, 2016
+Version 2.0版，參考IHSN Nesstar Template修改
+Identification AH110001
+
+--- PAGE 3 ---
+Table of Contents
+Overview............................................................................................................................................................. 4
+Scope & Coverage .............................................................................................................................................. 4
+Producers & Sponsors .........................................................................................................................................4
+Sampling..............................................................................................................................................................4
+Data Collection....................................................................................................................................................4
+Data Processing & Appraisal ..............................................................................................................................5
+Accessibility........................................................................................................................................................ 5
+Files Description................................................................................................................................................. 6
+data103_1........................................................................................................................................ 6
+data103_2........................................................................................................................................ 6
+Variables Group(s).............................................................................................................................................. 7
+事業類............................................................................................................................................. 7
+家庭類............................................................................................................................................. 7
+樣本資訊......................................................................................................................................... 7
+權數................................................................................................................................................. 7
+壹、基本資料................................................................................................................................. 7
+貳、仲介公司收取費用及服務概況............................................................................................. 7
+參、工作概況................................................................................................................................. 9
+肆、薪資、工時及相關福利....................................................................................................... 11
+伍、提供法令及申訴管道服務措施........................................................................................... 13
+樣本資訊....................................................................................................................................... 16
+權數............................................................................................................................................... 16
+壹、基本資料............................................................................................................................... 16
+貳、仲介公司收取費用及服務概況........................................................................................... 16
+參、工作概況............................................................................................................................... 18
+肆、薪資、工時及相關福利....................................................................................................... 20
+伍、提供法令及申訴管道服務措施........................................................................................... 22
+Variables Description........................................................................................................................................25
+data103_1...................................................................................................................................... 26
+data103_2...................................................................................................................................... 58
+
+--- PAGE 4 ---
+103年外籍勞工工作及生活關懷調查 - Overview
+- 4 -
+103年外籍勞工工作及生活關懷調查
+Survey on Work and Life of Foreign Workers, 2014
+Overview
+Type 外籍勞工工作及生活關懷調查
+Identification AH110001
+Version Production Date: 2016-09-20
+Abstract
+　　為了解外籍勞工在臺工作與生活概況、負擔仲介費用情形，以及對法令及申訴管道的認知與運用情形，提供政
+府擬訂外籍勞工政策及管理制度之參據，於103年6月以「事業類外籍勞工(製造業、營造業)」及「家庭類外籍看護
+工」為調查對象，辦理「103年度外籍勞工工作及生活關懷調查」。
+　　事業類母體資料來源為經核准僱用之製造業、營造業之外籍勞工資料檔，採分層比例抽樣，以行業別、國籍別
+為分層變數，至少完成4,200份有效樣本，採用通信調查方式，另輔以多元管道催收調查表; 家庭類母體資料來源為
+經核准僱用之外籍家庭看護工資料檔，採分層比例抽樣，以縣市別、國籍別為分層變數，至少完成3,300份有效樣
+本，調查方式以中、外語人員進行電話調查，另輔以通信調查。
+　　調查時期自民國103年6月1日起至7月31日止，計回收有效樣本7,841人(事業類外籍勞工4,451人，家庭看護工
+3,390人)。
+Kind of Data 抽樣調查資料 (Sample survey data)
+Scope & Coverage
+Time Period(s) 2014
+Countries 台灣 (Taiwan, ROC)
+Geographic Coverage
+臺閩地區
+Universe
+經核准之事業類(製造業、營造業)及家庭類之外籍勞工。
+Producers & Sponsors
+Primary
+Investigator(s)
+勞動部統計處
+Other Producer(s) 勞動部統計處
+Sampling
+Sampling Procedure
+母體資料來源及抽樣方法：
+1.事業類：經核准僱用之製造業、營造業之外籍勞工資料檔，採分層比例抽樣，以行業別、國籍別為分層變數，至
+少完成4,200 份有效樣本。
+2.家庭類：經核准僱用之外籍家庭看護工資料檔，採分層比例抽樣，以縣市別、國籍別為分層變數，至少完成3,300
+份有效樣本。
+Data Collection
+Data Collection Dates start 2014-06-01
+end 2014-07-31
+
+--- PAGE 5 ---
+103年外籍勞工工作及生活關懷調查 - Overview
+- 5 -
+Data Collection Mode 其他 (Other)
+Data Processing & Appraisal
+Data Editing
+中央研究院人文社會科學研究中心調查研究專題中心所進行的資料整理方式，為不合理值檢核。
+Other Processing
+事業類採通信調查方式(提供中文及4 國語言調查表)，除於103年5月底寄送調查表外，另輔以多元管道催收調查表
+家庭類調查方式以中、外語人員進行電話調查，另輔以通信調查。
+Accessibility
+Contact(s) 學術調查研究資料庫(Survey Research Data Archive) (中央研究院人社中心調查研究專題中
+心) , https://srda.sinica.edu.tw , srda@gate.sinica.edu.tw
+Distributor(s) 學術調查研究資料庫(Survey Research Data Archive)
+Depositor(s) 勞動部統計處
+Access Conditions
+會員版(一般會員、院內會員)--申請審核通過後下載
+
+--- PAGE 6 ---
+103年外籍勞工工作及生活關懷調查 - Files Description
+- 6 -
+Files Description
+Dataset contains 2 file(s)
+data103_1
+# Cases 4451
+# Variable(s) 148
+data103_2
+# Cases 3390
+# Variable(s) 147
+
+--- PAGE 7 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 7 -
+Variables Group(s)
+Dataset contains 16 group(s)
+Group 事業類
+Subgroup(s) 樣本資訊 , 權數 , 壹、基本資料 , 貳、仲介公司收取費用及服務概況 , 參、工作概況 , 肆、薪
+資、工時及相關福利 , 伍、提供法令及申訴管道服務措施
+Group 家庭類
+Subgroup(s) 樣本資訊 , 權數 , 壹、基本資料 , 貳、仲介公司收取費用及服務概況 , 參、工作概況 , 肆、薪
+資、工時及相關福利 , 伍、提供法令及申訴管道服務措施
+Group 樣本資訊
+# Name Label Type Format Valid Invalid Question
+1 no 流水號 continuous numeric-4.0 4451 0 -
+2 nation 國籍 discrete numeric-1.0 4451 0 -
+3 ind 產業 discrete numeric-1.0 4451 0 -
+4 industry 產業別 continuous numeric-2.0 4451 0 -
+Group 權數
+# Name Label Type Format Valid Invalid Question
+1 w 權數 continuous numeric-3.0 4451 0 -
+Group 壹、基本資料
+# Name Label Type Format Valid Invalid Question
+1 q1 1.性別 discrete numeric-1.0 4451 0 -
+2 q2 2.國籍 discrete numeric-1.0 4451 0 -
+3 q3 3.年齡 discrete numeric-1.0 4451 0 -
+4 q4 4.教育程度 discrete numeric-1.0 4451 0 -
+5 q5_1 5.您這一次是第__次來臺工
+作
+discrete numeric-1.0 4451 0 -
+6 q5_2 5.總共在臺灣累計的工作期
+間多久(含以前來臺工作的
+期間):__年
+discrete numeric-2.0 4451 0 -
+7 q5_3 5.總共在臺灣累計的工作期
+間多久(含以前來臺工作的
+期間):__月
+discrete numeric-2.0 4451 0 -
+Group 貳、仲介公司收取費用及服務概況
+# Name Label Type Format Valid Invalid Question
+1 q6 6.您這一次是透過何種聘僱
+管道來臺工作
+discrete numeric-1.0 4451 0 -
+
+--- PAGE 8 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 8 -
+# Name Label Type Format Valid Invalid Question
+2 q6_o 6.您這一次是透過何種聘僱
+管道來臺工作(3)其他(請說
+明)
+discrete character-14 93 0 -
+3 q6_1 直聘 / 非直聘 (廣義直聘) discrete numeric-1.0 4451 0 -
+4 q7_1$ 7.您這一次為了來臺工作(1)
+在母國共負擔多少錢?(台
+幣)
+continuous numeric-13.2 4451 0 -
+5 q7_2 7.您這一次為了來臺工作(2)
+是否知道母國仲介費用
+discrete numeric-1.0 4451 0 -
+6 q7_21$ 7.您這一次為了來臺工作(2)
+其中繳納母國仲介費用多
+少?(台幣)
+continuous numeric-13.2 1154 3297 -
+7 q7_3 7.您這一次為了來臺工作(3)
+在母國有沒有借貸?
+discrete numeric-1.0 4451 0 -
+8 q7_3_1 7.您這一次為了來臺工作(3)
+在母國有借貸[1]知不知道
+借貸金額
+discrete numeric-1.0 2554 1897 -
+9 q7_31$ 7.您這一次為了來臺工作(3)
+在母國有借貸[1]借多少錢
+(台幣)
+continuous numeric-13.2 1850 2601 -
+10 q7_3_1b 7.您這一次為了來臺工作(3)
+在母國有借貸[1]A.透過何
+種方式還款
+discrete numeric-1.0 2554 1897 -
+11 q7_3_1bo 7.您這一次為了來臺工作
+(3)在母國有借貸[1]A.透過
+何種方式還款(4)其他(請說
+明)
+discrete character-12 4 0 -
+12 q8 8.您臺灣仲介公司每月除收
+取規定的服務費外,有沒有
+扣取其他費用
+discrete numeric-1.0 4451 0 -
+13 q8_11 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[1]代存儲
+蓄金
+discrete numeric-1.0 4451 0 -
+14 q8_12 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[2]代扣保
+證金
+discrete numeric-1.0 4451 0 -
+15 q8_13 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[3]代存返
+國費用
+discrete numeric-1.0 4451 0 -
+16 q8_14 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[4]代扣所
+得稅
+discrete numeric-1.0 4451 0 -
+17 q8_15 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[5]代扣國
+外貸款費用
+discrete numeric-1.0 4451 0 -
+18 q8_16 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[6]其他
+discrete numeric-1.0 4451 0 -
+19 q8_1o 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+discrete character-28 90 0 -
+
+--- PAGE 9 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 9 -
+# Name Label Type Format Valid Invalid Question
+費用項目(複選)[6]其他(請
+說明)
+20 q9_1 9.臺灣仲介公司提供您何種
+服務?(複選)(1)辦理健康檢
+查
+discrete numeric-1.0 4451 0 -
+21 q9_2 9.臺灣仲介公司提供您何種
+服務?(複選)(2)辦理申請轉
+換雇主或轉換工作
+discrete numeric-1.0 4451 0 -
+22 q9_3 9.臺灣仲介公司提供您何種
+服務?(複選)(3)辦理您的生
+活相關服務
+discrete numeric-1.0 4451 0 -
+23 q9_4 9.臺灣仲介公司提供您何
+種服務?(複選)(4)辦理您的
+入、出國手續
+discrete numeric-1.0 4451 0 -
+24 q9_5 9.臺灣仲介公司提供您何種
+服務?(複選)(5)辦理諮詢、
+輔導及翻譯
+discrete numeric-1.0 4451 0 -
+25 q9_6 9.臺灣仲介公司提供您何種
+服務?(複選)(6)其他
+discrete numeric-1.0 4451 0 -
+26 q9_o 9.臺灣仲介公司提供您何種
+服務?(複選)(6)其他(請說
+明)
+discrete character-20 54 0 -
+Group 參、工作概況
+# Name Label Type Format Valid Invalid Question
+1 q10 10.第一次來臺工作前,母國
+政府或母國仲介公司有沒
+有提供您職前訓練
+discrete numeric-1.0 4451 0 -
+2 q10_11 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[1]中文語
+言訓練
+discrete numeric-1.0 3208 1243 -
+3 q10_12 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[2]在臺工
+作法令須知
+discrete numeric-1.0 3208 1243 -
+4 q10_13 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[3]安全衛
+生教育
+discrete numeric-1.0 3208 1243 -
+5 q10_14 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[4]其他
+discrete numeric-1.0 3208 1243 -
+6 q10_1o 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[4]其他(請
+說明)
+discrete character-18 35 0 -
+7 t1 10.第一次來臺前有接受過
+職前訓練(複選)[1]中文語
+言訓練總時數
+continuous numeric-6.2 1850 2601 -
+8 t2 10.第一次來臺前有接受過
+職前訓練(複選)[2]在台工
+作法令須知總時數
+continuous numeric-6.2 2587 1864 -
+
+--- PAGE 10 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 10 -
+# Name Label Type Format Valid Invalid Question
+9 t3 10.第一次來臺前有接受過
+職前訓練(複選)[3]安全衛
+生教育總時數
+continuous numeric-6.2 2144 2307 -
+10 t4 10.第一次來臺前有接受過
+職前訓練(複選)[4]其他訓
+練總時數
+continuous numeric-6.2 35 4416 -
+11 q11 11.您在事業單位工作有那
+些困擾?
+discrete numeric-1.0 4451 0 -
+12 q11_1 11.您在事業單位工作困擾
+原因為何?(複選)[1]語言隔
+閡,溝通不容易
+discrete numeric-1.0 1386 3065 -
+13 q11_2 11.您在事業單位工作困擾
+原因為何?(複選)[2]思鄉情
+緒
+discrete numeric-1.0 1386 3065 -
+14 q11_3 11.您在事業單位工作困擾
+原因為何?(複選)[3]生活環
+境無法適應
+discrete numeric-1.0 1386 3065 -
+15 q11_4 11.您在事業單位工作困擾
+原因為何?(複選)[4]工作環
+境無法適應
+discrete numeric-1.0 1386 3065 -
+16 q11_5 11.您在事業單位工作困擾
+原因為何?(複選)[5]與本國
+勞工相處不融洽
+discrete numeric-1.0 1386 3065 -
+17 q11_6 11.您在事業單位工作困擾
+原因為何?(複選)[6]住宿環
+境衛生太差
+discrete numeric-1.0 1386 3065 -
+18 q11_7 11.您在事業單位工作困擾
+原因為何?(複選)[7]雇主或
+管理者態度不佳
+discrete numeric-1.0 1386 3065 -
+19 q11_8 11.您在事業單位工作困擾
+原因為何?(複選)[8]其他
+discrete numeric-1.0 1386 3065 -
+20 q11_1o 11.您在事業單位工作困擾
+原因為何?(複選)[8]其他
+(請說明)
+discrete character-39 46 0 -
+21 q12 12.您知不知道造成您同鄉
+行蹤不明原因?
+discrete numeric-1.0 4451 0 -
+22 q12_1 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[1]
+聘僱期限即將屆滿
+discrete numeric-1.0 1628 2823 -
+23 q12_2 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[2]
+工作環境無法適應
+discrete numeric-1.0 1628 2823 -
+24 q12_3 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[3]
+與雇主及本國勞工相處不
+融洽
+discrete numeric-1.0 1628 2823 -
+25 q12_4 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[4]
+思鄉情緒
+discrete numeric-1.0 1628 2823 -
+26 q12_5 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[5]
+仲介公司媒介
+discrete numeric-1.0 1628 2823 -
+27 q12_6 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[6]
+生活環境無法適應
+discrete numeric-1.0 1628 2823 -
+
+--- PAGE 11 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 11 -
+# Name Label Type Format Valid Invalid Question
+28 q12_7 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[7]
+希望獲得較高待遇
+discrete numeric-1.0 1628 2823 -
+29 q12_8 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[8]
+受其他外勞慫恿、轉介
+discrete numeric-1.0 1628 2823 -
+30 q12_9 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[9]
+勞資爭議
+discrete numeric-1.0 1628 2823 -
+31 q12_10 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)
+[10]仲介服務費太高
+discrete numeric-2.0 1628 2823 -
+32 q12_11 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)
+[11]外籍配偶媒介
+discrete numeric-2.0 1628 2823 -
+33 q12_12 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)
+[12]其他
+discrete numeric-2.0 1628 2823 -
+34 q12_1o 12.您知不知道造成您同鄉
+行蹤不明原因為?(複選)
+[12]其他(請說明)
+discrete character-24 30 0 -
+Group 肆、薪資、工時及相關福利
+# Name Label Type Format Valid Invalid Question
+1 q13_1 13.103年5月您上班工作天
+數為何?總共__天(小數1
+位)
+continuous numeric-5.1 4451 0 -
+2 q13_2 13.103年5月您上班工作天
+數中,公司規定每天上班時
+數__小時
+discrete numeric-2.0 4451 0 -
+3 q13_3 13.103年5月您上班工作天
+數中,加班時數總共__小時
+continuous numeric-5.1 4451 0 -
+4 q14_1 14.103年5月雇主約定給付
+您的薪資,總共為新臺幣__
+元
+continuous numeric-8.2 4451 0 -
+5 q14_2 14.103年5月雇主約定給付
+您的薪資,其中薪水(固定
+薪水)__元
+continuous numeric-5.0 4451 0 -
+6 q14_3 14.103年5月雇主約定給付
+您的薪資,其中加班費__元
+continuous numeric-8.2 4451 0 -
+7 q14_4 14.103年5月雇主約定給
+付您的薪資,其中其他(獎
+金)__元
+continuous numeric-4.0 4451 0 -
+8 q15 15.雇主每月依規定給付您
+薪資,除代扣勞保費、健保
+費及所得稅外,有沒有代扣
+其他費用?
+discrete numeric-1.0 4451 0 -
+9 q15_1 15.雇主每月依規定給付您
+薪資,除代扣勞保費、健保
+費及所得稅外,有代扣(複
+選)[1]代扣國內仲介服務費
+discrete numeric-1.0 1801 2650 -
+10 q15_2 15.雇主每月依規定給付您
+薪資,除代扣勞保費、健保
+discrete numeric-1.0 1801 2650 -
+
+--- PAGE 12 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 12 -
+# Name Label Type Format Valid Invalid Question
+費及所得稅外,有代扣(複
+選)[2]代存儲蓄金
+11 q15_3 15.雇主每月依規定給付您
+薪資,除代扣勞保費、健保
+費及所得稅外,有代扣(複
+選)[3]代扣保證金
+discrete numeric-1.0 1801 2650 -
+12 q15_4 15.雇主每月依規定給付您
+薪資,除代扣勞保費、健保
+費及所得稅外,有代扣(複
+選)[4]代存返國費用
+discrete numeric-1.0 1801 2650 -
+13 q15_5 15.雇主每月依規定給付您
+薪資,除代扣勞保費、健保
+費及所得稅外,有代扣(複
+選)[5]代扣國外貸款費用
+discrete numeric-1.0 1801 2650 -
+14 q15_6 15.雇主每月依規定給付您
+薪資,除代扣勞保費、健保
+費及所得稅外,有代扣(複
+選)[6]其他
+discrete numeric-1.0 1801 2650 -
+15 q15_1o 15.雇主每月依規定給付您
+薪資,除代扣勞保費、健保
+費及所得稅外,有代扣(複
+選)[6]其他(請說明)
+discrete character-18 31 0 -
+16 q16 16.雇主有沒有保管您的財
+物或重要文件
+discrete numeric-1.0 4451 0 -
+17 q16_1 16.雇主有沒有保管您的財
+物或重要文件(複選)[1]薪
+資存摺
+discrete numeric-1.0 2112 2339 -
+18 q16_2 16.雇主有沒有保管您的財
+物或重要文件(複選)[2]現
+金財物
+discrete numeric-1.0 2112 2339 -
+19 q16_3 16.雇主有沒有保管您的財
+物或重要文件(複選)[3]護
+照
+discrete numeric-1.0 2112 2339 -
+20 q16_4 16.雇主有沒有保管您的財
+物或重要文件(複選)[4]居
+留證
+discrete numeric-1.0 2112 2339 -
+21 q16_5 16.雇主有沒有保管您的財
+物或重要文件(複選)[5]其
+他
+discrete numeric-1.0 2112 2339 -
+22 q16_1o 16.雇主有沒有保管您的財
+物或重要文件(複選)[5]其
+他(請說明)
+discrete character-8 10 0 -
+23 q17 17.雇主有無提供吃、住 discrete numeric-1.0 4451 0 -
+24 q17_1 17-1.雇主提供吃、住,有沒
+有從您薪資中扣除該費用?
+discrete numeric-1.0 4415 36 -
+25 q17_nt 17-1.雇主提供吃、住,每月
+扣除金額折合新臺幣為__
+元/月
+continuous numeric-4.0 3755 696 -
+26 q18 18.您住宿方式為何? discrete numeric-1.0 4451 0 -
+27 q19 19.雇主有沒有提供生活輔
+導措施
+discrete numeric-1.0 4451 0 -
+28 q19_1 19.雇主有沒有提供生活輔
+導措施(複選)[1]設立文康
+中心
+discrete numeric-1.0 3268 1183 -
+
+--- PAGE 13 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 13 -
+# Name Label Type Format Valid Invalid Question
+29 q19_2 19.雇主有沒有提供生活輔
+導措施(複選)[2]安排例假
+日休閒活動
+discrete numeric-1.0 3268 1183 -
+30 q19_3 19.雇主有沒有提供生活輔
+導措施(複選)[3]安排例假
+日宗教活動
+discrete numeric-1.0 3268 1183 -
+31 q19_4 19.雇主有沒有提供生活輔
+導措施(複選)[4]舉辦座談
+會
+discrete numeric-1.0 3268 1183 -
+32 q19_5 19.雇主有沒有提供生活輔
+導措施(複選)[5]建立申訴
+管道
+discrete numeric-1.0 3268 1183 -
+33 q19_6 19.雇主有沒有提供生活輔
+導措施(複選)[6]工作、休
+閒均派專人輔導
+discrete numeric-1.0 3268 1183 -
+34 q19_7 19.雇主有沒有提供生活輔
+導措施(複選)[7]設立生活
+輔導小組
+discrete numeric-1.0 3268 1183 -
+35 q19_8 19.雇主有沒有提供生活輔
+導措施(複選)[8]其他
+discrete numeric-1.0 3268 1183 -
+36 q19_1o 19.雇主有沒有提供生活輔
+導措施(複選)[8]其他(請說
+明)
+discrete character-36 51 0 -
+Group 伍、提供法令及申訴管道服務措施
+# Name Label Type Format Valid Invalid Question
+1 q20 20.您知不知道政府部門有
+提供外籍勞工申訴或法令
+諮詢管道
+discrete numeric-1.0 4451 0 -
+2 q20_1 20.您知道政府部門有提供
+外籍勞工申訴或法令諮詢
+管道(複選)[1]當地外籍勞
+工諮詢服務中心
+discrete numeric-1.0 4061 390 -
+3 q20_2 20.您知道政府部門有提供
+外籍勞工申訴或法令諮詢
+管道(複選)[2]機場外籍勞
+工關懷服務站
+discrete numeric-1.0 4061 390 -
+4 q20_3 20.您知道政府部門有提供
+外籍勞工申訴或法令諮詢
+管道(複選)[3]1955外籍勞
+工24小時諮詢保護專線
+discrete numeric-1.0 4061 390 -
+5 q21 21.您有沒有使用政府部門
+所提供外籍勞工申訴或法
+令諮詢管道
+discrete numeric-1.0 4061 390 -
+6 q21_1 21.您使用政府部門所提供
+外籍勞工申訴或法令諮詢
+管道(複選)[1]當地外籍勞
+工諮詢服務中心
+discrete numeric-1.0 1228 3223 -
+7 q21_2 21.您使用政府部門所提供
+外籍勞工申訴或法令諮詢
+管道(複選)[2]機場外籍勞
+工關懷服務站
+discrete numeric-1.0 1228 3223 -
+8 q21_3 21.您使用政府部門所提供
+外籍勞工申訴或法令諮詢
+discrete numeric-1.0 1228 3223 -
+
+--- PAGE 14 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 14 -
+# Name Label Type Format Valid Invalid Question
+管道(複選)[3]1955外籍勞
+工24小時諮詢保護專線
+9 q23 23.這些管道對您來臺工作
+適應、心理調適及法令諮
+詢有沒有幫助?
+discrete numeric-1.0 1228 3223 -
+10 q22_1 22.(限使用過者填答)您到
+外籍勞工諮詢服務中心,請
+其提供何種服務?(1)諮詢服
+務
+discrete numeric-1.0 299 4152 -
+11 q22_2 22.(限使用過者填答)您到
+外籍勞工諮詢服務中心,請
+其提供何種服務?(2)勞資爭
+議服務
+discrete numeric-1.0 299 4152 -
+12 q22_1_a 22.(限使用過者填答)您到
+外籍勞工諮詢服務中心(1)
+諮詢服務A.服務態度
+discrete numeric-1.0 283 4168 -
+13 q22_2_a 22.(限使用過者填答)您到
+外籍勞工諮詢服務中心(2)
+勞資爭議服務A.服務態度
+滿意度
+discrete numeric-1.0 244 4207 -
+14 q22_2_b 22.(限使用過者填答)您到
+外籍勞工諮詢服務中心(2)
+勞資爭議服務B.調解方式滿
+意度
+discrete numeric-1.0 244 4207 -
+15 q22_2_c 22.(限使用過者填答)您到
+外籍勞工諮詢服務中心(2)
+勞資爭議服務C.處理進度滿
+意度
+discrete numeric-1.0 244 4207 -
+16 q24 24.您和雇主是否曾經產生
+爭議
+discrete numeric-1.0 4451 0 -
+17 q24_1 24.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[1]仲介公司
+discrete numeric-1.0 368 4083 -
+18 q24_2 24.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[2]1955外籍勞工24
+小時諮詢保護專線
+discrete numeric-1.0 368 4083 -
+19 q24_3 24.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[3]當地外籍勞工諮
+詢服務中心
+discrete numeric-1.0 368 4083 -
+20 q24_4 24.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[4]機場外籍勞工關
+懷服務站
+discrete numeric-1.0 368 4083 -
+21 q24_5 24.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[5]母國駐臺機構
+discrete numeric-1.0 368 4083 -
+22 q24_6 24.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[6]宗教團體
+discrete numeric-1.0 368 4083 -
+23 q24_7 24.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[7]朋友
+discrete numeric-1.0 368 4083 -
+24 q24_8 24.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[8]其他
+discrete numeric-1.0 368 4083 -
+
+--- PAGE 15 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 15 -
+# Name Label Type Format Valid Invalid Question
+25 q24_1o 24.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[8]其他(請說明)
+discrete character-14 18 0 -
+26 q25_1 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[1]直接聘僱聯合
+服務中心
+discrete numeric-1.0 4451 0 -
+27 q25_2 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[2]當地外籍勞工
+諮詢服務中心
+discrete numeric-1.0 4451 0 -
+28 q25_3 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[3]1955外籍勞工
+24小時諮詢保護專線
+discrete numeric-1.0 4451 0 -
+29 q25_4 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[4]機場外籍勞工
+關懷服務站
+discrete numeric-1.0 4451 0 -
+30 q25_5 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[5]外籍勞工廣播
+節目
+discrete numeric-1.0 4451 0 -
+31 q25_6 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[6]政府出版宣導
+手冊
+discrete numeric-1.0 4451 0 -
+32 q25_7 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[7]電視
+discrete numeric-1.0 4451 0 -
+33 q25_8 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[8]網際網路
+discrete numeric-1.0 4451 0 -
+34 q25_9 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[9]仲介公司
+discrete numeric-1.0 4451 0 -
+35 q25_10 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[10]地方政府辦理
+法令宣導、休閒及節慶文
+化等相關活動
+discrete numeric-2.0 4451 0 -
+36 q25_11 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[11]雜誌、書報
+discrete numeric-2.0 4451 0 -
+37 q25_12 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[12]雇主
+discrete numeric-2.0 4451 0 -
+38 q25_13 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[13]朋友
+discrete numeric-2.0 4451 0 -
+39 q25_14 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[14]其他
+discrete numeric-2.0 4451 0 -
+40 q25o 25.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[14]其他(請說明)
+discrete character-4 10 0 -
+
+--- PAGE 16 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 16 -
+Group 樣本資訊
+# Name Label Type Format Valid Invalid Question
+1 no 流水號 continuous numeric-11.0 3390 0 -
+2 city 縣市別 discrete numeric-11.0 3390 0 -
+3 s1 國籍別 discrete numeric-11.0 3390 0 -
+Group 權數
+# Name Label Type Format Valid Invalid Question
+1 w 權數 continuous numeric-11.0 3390 0 -
+Group 壹、基本資料
+# Name Label Type Format Valid Invalid Question
+1 v1 1.性別 discrete numeric-11.0 3390 0 -
+2 v2 2.國籍 discrete numeric-11.0 3390 0 -
+3 v3 3.年齡 discrete numeric-11.0 3390 0 -
+4 v4 4.教育程度 discrete numeric-11.0 3390 0 -
+5 v5_1 5.您這一次是第__次來臺工
+作
+discrete numeric-11.0 3390 0 -
+6 v5_2 5.總共在臺灣累計的工作期
+間多久(含以前來臺工作的
+期間):__年
+discrete numeric-11.0 3390 0 -
+7 v5_3 5.總共在臺灣累計的工作期
+間多久(含以前來臺工作的
+期間):__月
+continuous numeric-4.1 3389 1 -
+Group 貳、仲介公司收取費用及服務概況
+# Name Label Type Format Valid Invalid Question
+1 s1.1 直聘 / 非直聘 (廣義直聘) discrete numeric-11.0 3390 0 -
+2 v6 6.您這一次是透過何種聘僱
+管道來臺工作
+discrete numeric-11.0 3390 0 -
+3 v6_o 6.您這一次是透過何種聘僱
+管道來臺工作(3)其他(請說
+明)
+discrete character-14 7 0 -
+4 v7_1 7.您這一次為了來臺工作(1)
+在母國共負擔多少錢?(台
+幣)
+continuous numeric-10.1 3390 0 -
+5 v7_2 7.您這一次為了來臺工作(2)
+是否知道母國仲介費用
+discrete numeric-11.0 3390 0 -
+6 v7_2_1 7.您這一次為了來臺工作(2)
+其中繳納母國仲介費用多
+少?(台幣)
+continuous numeric-8.1 1000 2390 -
+7 v7_3 7.您這一次為了來臺工作(3)
+在母國有沒有借貸?
+discrete numeric-11.0 3390 0 -
+8 v7_3_1 7.您這一次為了來臺工作(3)
+在母國有借貸[1]知不知道
+借貸金額
+discrete numeric-11.0 2244 1146 -
+
+--- PAGE 17 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 17 -
+# Name Label Type Format Valid Invalid Question
+9 v7_3_1a 7.您這一次為了來臺工作(3)
+在母國有借貸[1]借多少錢
+(台幣)
+continuous numeric-8.1 2027 1363 -
+10 v7_3_1b 7.您這一次為了來臺工作(3)
+在母國有借貸[1]A.透過何
+種方式還款
+discrete numeric-11.0 2235 1155 -
+11 v7_3_1bo 7.您這一次為了來臺工作
+(3)在母國有借貸[1]A.透過
+何種方式還款(4)其他(請說
+明)
+discrete character-10 0 0 -
+12 v8 8.您臺灣仲介公司每月除收
+取規定的服務費外,有沒有
+扣取其他費用
+discrete numeric-11.0 3390 0 -
+13 v8_1 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[1]代存儲
+蓄金
+discrete numeric-11.0 3390 0 -
+14 v8_2 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[2]代扣保
+證金
+discrete numeric-11.0 3390 0 -
+15 v8_3 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[3]代存返
+國費用
+discrete numeric-11.0 3390 0 -
+16 v8_4 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[4]代扣國
+外貸款費用
+discrete numeric-11.0 3390 0 -
+17 v8_5 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[5]代扣稅
+金
+discrete numeric-11.0 3390 0 -
+18 v8_6 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[6]代扣健
+康檢查費用
+discrete numeric-11.0 3390 0 -
+19 v8_7 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[7]其他
+discrete numeric-11.0 3390 0 -
+20 v8_o 8.您臺灣仲介公司每月除收
+取規定的服務費外,有扣取
+費用項目(複選)[7]其他(請
+說明)
+discrete character-46 28 0 -
+21 v9_1 9.臺灣仲介公司提供您何種
+服務?(複選)(1)辦理健康檢
+查
+discrete numeric-11.0 3390 0 -
+22 v9_2 9.臺灣仲介公司提供您何種
+服務?(複選)(2)辦理申請轉
+換雇主或轉換工作
+discrete numeric-11.0 3390 0 -
+23 v9_3 9.臺灣仲介公司提供您何種
+服務?(複選)(3)辦理您的生
+活相關服務
+discrete numeric-11.0 3390 0 -
+24 v9_4 9.臺灣仲介公司提供您何
+種服務?(複選)(4)辦理您的
+入、出國手續
+discrete numeric-11.0 3390 0 -
+
+--- PAGE 18 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 18 -
+# Name Label Type Format Valid Invalid Question
+25 v9_5 9.臺灣仲介公司提供您何種
+服務?(複選)(5)辦理諮詢、
+輔導及翻譯
+discrete numeric-11.0 3390 0 -
+26 v9_6 9.臺灣仲介公司提供您何種
+服務?(複選)(6)其他
+discrete numeric-11.0 3390 0 -
+27 v9_o 9.臺灣仲介公司提供您何種
+服務?(複選)(6)其他(請說
+明)
+discrete character-8 10 0 -
+Group 參、工作概況
+# Name Label Type Format Valid Invalid Question
+1 v10 10.第一次來臺工作前,母國
+政府或母國仲介公司有沒
+有提供您職前訓練
+discrete numeric-11.0 3390 0 -
+2 v10_1 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[1]中文語
+言訓練
+discrete numeric-11.0 3390 0 -
+3 v10_2 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[2]在臺工
+作法令須知
+discrete numeric-11.0 3390 0 -
+4 v10_3 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[3]安全衛
+生教育
+discrete numeric-11.0 3390 0 -
+5 v10_4 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[4]烹飪、
+家務
+discrete numeric-11.0 3390 0 -
+6 v10_5 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[5]其他
+discrete numeric-11.0 3390 0 -
+7 v10_o 10.第一次來臺工作前,母國
+政府或母國仲介公司提供
+訓練課程(複選)[5]其他(請
+說明)
+discrete character-10 30 0 -
+8 v10_1_1 10.第一次來臺前有接受過
+職前訓練(複選)[1]中文語
+言訓練總時數
+continuous numeric-8.2 3334 56 -
+9 v10_2_1 10.第一次來臺前有接受過
+職前訓練(複選)[2]在台工
+作法令須知總時數
+continuous numeric-8.2 2409 981 -
+10 v10_3_1 10.第一次來臺前有接受過
+職前訓練(複選)[3]安全衛
+生教育總時數
+continuous numeric-8.2 3038 352 -
+11 v10_4_1 10.第一次來臺前有接受過
+職前訓練(複選)[4]烹飪、
+家務總時數
+continuous numeric-8.2 360 3030 -
+12 v10_5_1 10.第一次來臺前有接受過
+職前訓練(複選)[5]其他訓
+練總時數
+continuous numeric-8.2 30 3360 -
+13 v11 11.您來臺前有沒有通過檢
+定測驗?
+discrete numeric-11.0 3390 0 -
+
+--- PAGE 19 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 19 -
+# Name Label Type Format Valid Invalid Question
+14 v11_1 11.您來臺前有通過檢定測
+驗內容為何(複選)[1]中文
+語言
+discrete numeric-11.0 3390 0 -
+15 v11_2 11.您來臺前有通過檢定測
+驗內容為何(複選)[2]照顧
+服務專長
+discrete numeric-11.0 3390 0 -
+16 v11_3 11.您來臺前有通過檢定
+測驗內容為何(複選)[3]烹
+飪、家務
+discrete numeric-11.0 3390 0 -
+17 v11_4 11.您來臺前有通過檢定測
+驗內容為何(複選)[4]其他
+discrete numeric-11.0 3390 0 -
+18 v11_o 11.您來臺前有通過檢定測
+驗內容為何(複選)[4]其他
+(請說明)
+discrete character-4 3 0 -
+19 v12 12.您在雇主家擔任看護病
+人(或照顧小孩)工作有沒
+有困擾?
+discrete numeric-11.0 3390 0 -
+20 v12_1 12.您在雇主家擔任看護病
+人(或照顧小孩)工作困擾
+原因(複選)[1]語言隔閡,溝
+通不易
+discrete numeric-11.0 3390 0 -
+21 v12_2 12.您在雇主家擔任看護病
+人(或照顧小孩)工作困擾
+原因(複選)[2]思鄉情緒
+discrete numeric-11.0 3390 0 -
+22 v12_3 12.您在雇主家擔任看護病
+人(或照顧小孩)工作困擾
+原因(複選)[3]工作環境無
+法適應
+discrete numeric-11.0 3390 0 -
+23 v12_4 12.您在雇主家擔任看護病
+人(或照顧小孩)工作困擾
+原因(複選)[4]生活環境無
+法適應
+discrete numeric-11.0 3390 0 -
+24 v12_5 12.您在雇主家擔任看護病
+人(或照顧小孩)工作困擾
+原因(複選)[5]工作時間太
+長
+discrete numeric-11.0 3390 0 -
+25 v12_6 12.您在雇主家擔任看護病
+人(或照顧小孩)工作困擾
+原因(複選)[6]與雇主或其
+他家人相處不融洽
+discrete numeric-11.0 3390 0 -
+26 v12_7 12.您在雇主家擔任看護病
+人(或照顧小孩)工作困擾
+原因(複選)[7]照顧技術不
+熟練,無法達到雇主或被看
+護者的要求
+discrete numeric-11.0 3390 0 -
+27 v12_8 12.您在雇主家擔任看護病
+人(或照顧小孩)工作困擾
+原因(複選)[8]其他
+discrete numeric-11.0 3390 0 -
+28 v12_o 12.您在雇主家擔任看護病
+人(或照顧小孩)工作困擾
+原因(複選)[8]其他(請說
+明)
+discrete character-54 20 0 -
+29 v13 13.您知不知道造成您同鄉
+行蹤不明原因?
+discrete numeric-11.0 3390 0 -
+30 v13_1 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[1]
+聘僱期限即將屆滿
+discrete numeric-11.0 3390 0 -
+
+--- PAGE 20 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 20 -
+# Name Label Type Format Valid Invalid Question
+31 v13_2 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[2]
+工作環境無法適應
+discrete numeric-11.0 3390 0 -
+32 v13_3 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[3]
+與雇主或其他家人相處不
+融洽
+discrete numeric-11.0 3390 0 -
+33 v13_4 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[4]
+思鄉情緒
+discrete numeric-11.0 3390 0 -
+34 v13_5 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[5]
+仲介公司媒介
+discrete numeric-11.0 3390 0 -
+35 v13_6 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[6]
+生活環境無法適應
+discrete numeric-11.0 3390 0 -
+36 v13_7 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[7]
+希望獲得較高待遇
+discrete numeric-11.0 3390 0 -
+37 v13_8 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[8]
+受其他外勞的慫恿、轉介
+discrete numeric-11.0 3390 0 -
+38 v13_9 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)[9]
+勞資爭議
+discrete numeric-11.0 3390 0 -
+39 v13_10 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)
+[10]仲介服務費太高
+discrete numeric-11.0 3390 0 -
+40 v13_11 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)
+[11]外籍配偶媒介
+discrete numeric-11.0 3390 0 -
+41 v13_12 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)
+[12]其他
+discrete numeric-11.0 3390 0 -
+42 v13_o 13.您知不知道造成您同鄉
+行蹤不明原因為?(複選)
+[12]其他(請說明)
+discrete character-50 25 0 -
+Group 肆、薪資、工時及相關福利
+# Name Label Type Format Valid Invalid Question
+1 v14 14.您每日連續休息時間有
+沒有超過8小時?
+discrete numeric-11.0 3390 0 -
+2 v15 15.您雇主或其他家人有沒
+有輪流照顧被看護者?
+discrete numeric-11.0 3390 0 -
+3 v15_1 15.您雇主或其他家人每日
+輪流照顧時間__小時
+continuous numeric-5.2 3390 0 -
+4 v16 16.您在例假日(與雇主共同
+約定之休假日)的時候有沒
+有放假?
+discrete numeric-11.0 3390 0 -
+5 v16_1 16.您在例假日(與雇主共同
+約定之休假日)的時候有放
+假,103年5月放假天數__天
+continuous numeric-5.2 3390 0 -
+
+--- PAGE 21 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 21 -
+# Name Label Type Format Valid Invalid Question
+6 v17 17.您雇主在例假日(與雇主
+共同約定之休假日)要求您
+工作有沒有發給加班費?
+discrete numeric-11.0 3390 0 -
+7 v18_1 18.103年5月雇主約定給付
+您的薪資,總共為新臺幣__
+元
+continuous numeric-5.0 3390 0 -
+8 v18_2 18.103年5月雇主約定給付
+您的薪資,其中薪水(固定
+薪水)__元
+continuous numeric-11.0 3390 0 -
+9 v18_3 18.103年5月雇主約定給付
+您的薪資,其中加班費__元
+continuous numeric-4.0 3390 0 -
+10 v18_4 18.103年5月雇主約定給
+付您的薪資,其中其他(獎
+金)__元
+continuous numeric-11.0 3390 0 -
+11 v19 19.雇主每月除依規定給付
+您薪資及代扣健保費外,是
+否還有代扣其他費用?
+discrete numeric-11.0 3390 0 -
+12 v19_1 19.雇主每月除依規定給付
+您薪資及代扣健保費外,有
+(複選)[1]代扣國內仲介服
+務費
+discrete numeric-11.0 3390 0 -
+13 v19_2 19.雇主每月除依規定給付
+您薪資及代扣健保費外,有
+(複選)[2]代存儲蓄金
+discrete numeric-11.0 3390 0 -
+14 v19_3 19.雇主每月除依規定給付
+您薪資及代扣健保費外,有
+(複選)[3]代扣保證金
+discrete numeric-11.0 3390 0 -
+15 v19_4 19.雇主每月除依規定給付
+您薪資及代扣健保費外,有
+(複選)[4]代存返國費用
+discrete numeric-11.0 3390 0 -
+16 v19_5 19.雇主每月除依規定給付
+您薪資及代扣健保費外,有
+(複選)[5]代扣國外貸款費
+用
+discrete numeric-11.0 3390 0 -
+17 v19_6 19.雇主每月除依規定給付
+您薪資及代扣健保費外,有
+(複選)[6]其他
+discrete numeric-11.0 3390 0 -
+18 v19_o 19.雇主每月除依規定給付
+您薪資及代扣健保費外,有
+(複選)[6]其他(請說明)
+discrete character-18 11 0 -
+19 v20 20.雇主有沒有保管您的財
+物或重要文件
+discrete numeric-11.0 3390 0 -
+20 v20_1 20.雇主有保管您的財物或
+重要文件(複選)[1]薪資存
+摺
+discrete numeric-11.0 3390 0 -
+21 v20_2 20.雇主有保管您的財物或
+重要文件(複選)[2]現金財
+物
+discrete numeric-11.0 3390 0 -
+22 v20_3 20.雇主有保管您的財物或
+重要文件(複選)[3]護照
+discrete numeric-11.0 3390 0 -
+23 v20_4 20.雇主有保管您的財物或
+重要文件(複選)[4]居留證
+discrete numeric-11.0 3390 0 -
+24 v20_5 20.雇主有保管您的財物或
+重要文件(複選)[5]健保卡
+discrete numeric-11.0 3390 0 -
+
+--- PAGE 22 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 22 -
+# Name Label Type Format Valid Invalid Question
+25 v20_6 20.雇主有保管您的財物或
+重要文件(複選)[6]其他
+discrete numeric-11.0 3390 0 -
+26 v20_o 20.雇主有保管您的財物或
+重要文件(複選)[6]其他(請
+說明)
+discrete character-14 20 0 -
+Group 伍、提供法令及申訴管道服務措施
+# Name Label Type Format Valid Invalid Question
+1 v21 21.您知不知道政府部門有
+提供外籍勞工申訴或法令
+諮詢管道
+discrete numeric-11.0 3390 0 -
+2 v21_1 21.您知道政府部門有提供
+外籍勞工申訴或法令諮詢
+管道(複選)[1]當地外籍勞
+工關懷服務中心
+discrete numeric-11.0 3390 0 -
+3 v21_2 21.您知道政府部門有提供
+外籍勞工申訴或法令諮詢
+管道(複選)[2]機場外籍勞
+工諮詢服務站
+discrete numeric-11.0 3390 0 -
+4 v21_3 21.您知道政府部門有提供
+外籍勞工申訴或法令諮詢
+管道(複選)[3]1955外籍勞
+工24小時諮詢保護專線
+discrete numeric-11.0 3390 0 -
+5 v22 22.您有沒有使用政府部門
+所提供外籍勞工申訴或法
+令諮詢管道
+discrete numeric-11.0 3390 0 -
+6 v22_1 22.您使用政府部門所提供
+外籍勞工申訴或法令諮詢
+管道(複選)[1]當地外籍勞
+工關懷服務中心
+discrete numeric-11.0 3390 0 -
+7 v22_2 22.您使用政府部門所提供
+外籍勞工申訴或法令諮詢
+管道(複選)[2]機場外籍勞
+工諮詢服務站
+discrete numeric-11.0 3390 0 -
+8 v22_3 22.您使用政府部門所提供
+外籍勞工申訴或法令諮詢
+管道(複選)[3]1955外籍勞
+工24小時諮詢保護專線
+discrete numeric-11.0 3390 0 -
+9 v23_1 23.(限使用過者填答)您到
+外籍勞工諮詢服務中心,請
+其提供何種服務?(1)諮詢服
+務
+discrete numeric-11.0 3390 0 -
+10 v23_2 23.(限使用過者填答)您到
+外籍勞工諮詢服務中心,請
+其提供何種服務?(2)勞資爭
+議服務
+discrete numeric-11.0 3390 0 -
+11 v23_1_a 23.(限使用過者填答)您到
+外籍勞工諮詢服務中心(1)
+諮詢服務A.服務態度
+discrete numeric-11.0 3390 0 -
+12 v23_2_a 23.(限使用過者填答)您到
+外籍勞工諮詢服務中心(2)
+勞資爭議服務A.服務態度
+滿意度
+discrete numeric-11.0 3390 0 -
+13 v23_2_b 23.(限使用過者填答)您到
+外籍勞工諮詢服務中心(2)
+discrete numeric-11.0 3390 0 -
+
+--- PAGE 23 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 23 -
+# Name Label Type Format Valid Invalid Question
+勞資爭議服務B.調解方式滿
+意度
+14 v23_2_c 23.(限使用過者填答)您到
+外籍勞工諮詢服務中心(2)
+勞資爭議服務C.處理進度滿
+意度
+discrete numeric-11.0 3390 0 -
+15 v24 24.這些管道對您來臺工作
+適應、心理調適及法令諮
+詢有沒有幫助?
+discrete numeric-11.0 3390 0 -
+16 v25 25.您和雇主是否曾經產生
+爭議
+discrete numeric-11.0 3390 0 -
+17 v25_1 25.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[1]仲介公司
+discrete numeric-11.0 3390 0 -
+18 v25_2 25.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[2]1955外籍勞工24
+小時諮詢保護專線
+discrete numeric-11.0 3390 0 -
+19 v25_3 25.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[3]當地外籍勞工諮
+詢服務中心
+discrete numeric-11.0 3390 0 -
+20 v25_4 25.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[4]機場外籍勞工關
+懷服務站
+discrete numeric-11.0 3390 0 -
+21 v25_5 25.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[5]貴國駐臺機構
+discrete numeric-11.0 3390 0 -
+22 v25_6 25.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[6]宗教團體
+discrete numeric-11.0 3390 0 -
+23 v25_7 25.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[7]朋友
+discrete numeric-11.0 3390 0 -
+24 v25_8 25.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[8]其他
+discrete numeric-11.0 3390 0 -
+25 v25_o 25.您和雇主曾經產生爭議,
+有採取那些管道尋求申訴
+(複選)[8]其他(請說明)
+discrete character-24 24 0 -
+26 v26_1 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[1]直接聘僱聯合
+服務中心
+discrete numeric-11.0 3390 0 -
+27 v26_2 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[2]當地外籍勞工
+諮詢服務中心
+discrete numeric-11.0 3390 0 -
+28 v26_3 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[3]1955外籍勞工
+24小時諮詢保護專線
+discrete numeric-11.0 3390 0 -
+29 v26_4 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[4]機場外籍勞工
+關懷服務站
+discrete numeric-11.0 3390 0 -
+
+--- PAGE 24 ---
+103年外籍勞工工作及生活關懷調查 - Variables Group(s)
+- 24 -
+# Name Label Type Format Valid Invalid Question
+30 v26_5 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[5]外籍勞工廣播
+節目
+discrete numeric-11.0 3390 0 -
+31 v26_6 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[6]政府出版宣導
+手冊
+discrete numeric-11.0 3390 0 -
+32 v26_7 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[7]電視
+discrete numeric-11.0 3390 0 -
+33 v26_8 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[8]網際網路
+discrete numeric-11.0 3390 0 -
+34 v26_9 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[9]仲介公司
+discrete numeric-11.0 3390 0 -
+35 v26_10 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[10]地方政府辦理
+法令宣導、休閒及節慶文
+化等相關活動
+discrete numeric-11.0 3390 0 -
+36 v26_11 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[11]雜誌、書報
+discrete numeric-11.0 3390 0 -
+37 v26_12 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[12]雇主
+discrete numeric-11.0 3390 0 -
+38 v26_13 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[13]朋友
+discrete numeric-11.0 3390 0 -
+39 v26_14 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[14]其他
+discrete numeric-11.0 3390 0 -
+40 v26_15 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[15]沒有任何管道
+discrete numeric-11.0 3390 0 -
+41 v26_o 26.您在臺工作如何取得相
+關法令諮詢及生活所需訊
+息(複選)[14]其他(請說明)
+discrete character-22 14 0 -
+
+--- PAGE 25 ---
+103年外籍勞工工作及生活關懷調查 - Variables Description
+- 25 -
+Variables Description
+Dataset contains 295 variable(s)
+
+--- PAGE 26 ---
+- 26 -
+File : data103_1
+# no: 流水號
+Information [Type= continuous] [Format=numeric] [Range= 1-4451] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-] [Mean=2226 /-] [StdDev=1285.037 /-]
+# w: 權數
+Information [Type= continuous] [Format=numeric] [Range= 1-302] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-] [Mean=64.669 /-] [StdDev=55.667 /-]
+# nation: 國籍
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 印尼 738 16.6%
+2 菲律賓 726 16.3%
+3 泰國 1682 37.8%
+4 越南 1305 29.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# ind: 產業
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 製造業 2648 59.5%
+2 營造業 1803 40.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# industry: 產業別
+Information [Type= continuous] [Format=numeric] [Range= 1-26] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 食品製造業 112 2.5%
+2 飲料製造業 34 0.8%
+3 紡織業 193 4.3%
+4 成衣及服飾品製造業 35 0.8%
+5 皮革、毛皮及其製品製造業 34 0.8%
+6 木竹製品製造業 36 0.8%
+7 紙漿、紙及紙製品製造業 41 0.9%
+8 印刷及資料儲存媒體複製業 33 0.7%
+9 石油及煤製品製造業 16 0.4%
+10 化學材料製造業 30 0.7%
+11 化學製品製造業 31 0.7%
+12 藥品及醫用化學製品製造業 31 0.7%
+13 橡膠製品製造業 66 1.5%
+14 塑膠製品製造業 179 4.0%
+15 非金屬礦物製品製造業 79 1.8%
+16 基本金屬製造業 137 3.1%
+
+--- PAGE 27 ---
+- 27 -
+File : data103_1
+# industry: 產業別
+Value Label Cases Percentage
+17 金屬製品製造業 511 11.5%
+18 電子零組件製造業 447 10.0%
+19 電腦、電子產品及光學製品製造業 103 2.3%
+20 電力設備製造業 50 1.1%
+21 機械設備製造業 222 5.0%
+22 汽車及其零件製造業 65 1.5%
+23 其他運輸工具及其零件製造業 81 1.8%
+24 家具製造業 31 0.7%
+25 其他製造業 51 1.1%
+26 營造業 1803 40.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q1: 1.性別
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 男 3646 81.9%
+2 女 805 18.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q2: 2.國籍
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 印尼 738 16.6%
+2 泰國 1682 37.8%
+3 菲律賓 726 16.3%
+4 越南 1305 29.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q3: 3.年齡
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 未滿25歲 874 19.6%
+2 25歲-34歲 1767 39.7%
+3 35歲-44歲 972 21.8%
+4 45歲及以上 838 18.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q4: 4.教育程度
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 國中及以下 1839 41.3%
+
+--- PAGE 28 ---
+- 28 -
+File : data103_1
+# q4: 4.教育程度
+Value Label Cases Percentage
+2 高中(職) 1969 44.2%
+3 大專(學) 608 13.7%
+4 研究所及以上 35 0.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q5_1: 5.您這一次是第__次來臺工作
+Information [Type= discrete] [Format=numeric] [Range= 1-6] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 2919 65.6%
+2 973 21.9%
+3 469 10.5%
+4 85 1.9%
+5 3 0.1%
+6 2 0.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q5_2: 5.總共在臺灣累計的工作期間多久(含以前來臺工作的期間):__年
+Information [Type= discrete] [Format=numeric] [Range= 0-14] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 14 0.3%
+1 94 2.1%
+2 289 6.5%
+3 3258 73.2%
+4 84 1.9%
+5 184 4.1%
+6 392 8.8%
+7 24 0.5%
+8 34 0.8%
+9 47 1.1%
+10 12 0.3%
+11 8 0.2%
+12 9 0.2%
+13 1 0.0%
+14 1 0.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q5_3: 5.總共在臺灣累計的工作期間多久(含以前來臺工作的期間):__月
+Information [Type= discrete] [Format=numeric] [Range= 0-11] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 3698 83.1%
+1 47 1.1%
+
+--- PAGE 29 ---
+- 29 -
+File : data103_1
+# q5_3: 5.總共在臺灣累計的工作期間多久(含以前來臺工作的期間):__月
+Value Label Cases Percentage
+2 50 1.1%
+3 53 1.2%
+4 46 1.0%
+5 70 1.6%
+6 122 2.7%
+7 57 1.3%
+8 54 1.2%
+9 57 1.3%
+10 70 1.6%
+11 127 2.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q6: 6.您這一次是透過何種聘僱管道來臺工作
+Information [Type= discrete] [Format=numeric] [Range= 1-3] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 透過人力仲介公司 4358 97.9%
+2 透過直接聘僱聯合服務中心 0
+3 其他 93 2.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q6_o: 6.您這一次是透過何種聘僱管道來臺工作(3)其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=93 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+指定工 13 14.0%
+當地選工 53 57.0%
+透過泰國勞動
+部
+20 21.5%
+透過親人 7 7.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q6_1: 直聘 / 非直聘 (廣義直聘)
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 直聘 93 2.1%
+2 非直聘 4358 97.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q7_1$: 7.您這一次為了來臺工作(1)在母國共負擔多少錢?(台幣)
+Information [Type= continuous] [Format=numeric] [Range= 0-9999998] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無負擔費用 1 0.2%
+
+--- PAGE 30 ---
+- 30 -
+File : data103_1
+# q7_1$: 7.您這一次為了來臺工作(1)在母國共負擔多少錢?(台幣)
+Value Label Cases Percentage
+9999998 不知道/拒答 472 99.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q7_2: 7.您這一次為了來臺工作(2)是否知道母國仲介費用
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 不知道 3297 74.1%
+2 知道 1154 25.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q7_21$: 7.您這一次為了來臺工作(2)其中繳納母國仲介費用多少?(台幣)
+Information [Type= continuous] [Format=numeric] [Range= 0-198588] [Missing=*]
+Statistics [NW/ W] [Valid=1154 /-] [Invalid=3297 /-]
+Value Label Cases Percentage
+0 無負擔母國仲介費 99 100.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q7_3: 7.您這一次為了來臺工作(3)在母國有沒有借貸?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 有 2554 57.4%
+2 沒有 1897 42.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q7_3_1: 7.您這一次為了來臺工作(3)在母國有借貸[1]知不知道借貸金額
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=2554 /-] [Invalid=1897 /-]
+Value Label Cases Percentage
+1 不知道 704 27.6%
+2 知道 1850 72.4%
+Sysmiss 1897
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q7_31$: 7.您這一次為了來臺工作(3)在母國有借貸[1]借多少錢(台幣)
+Information [Type= continuous] [Format=numeric] [Range= 1684-210444] [Missing=*]
+Statistics [NW/ W] [Valid=1850 /-] [Invalid=2601 /-] [Mean=70470.306 /-] [StdDev=42327.641 /-]
+# q7_3_1b: 7.您這一次為了來臺工作(3)在母國有借貸[1]A.透過何種方式還款
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=2554 /-] [Invalid=1897 /-]
+Value Label Cases Percentage
+1 自行辦理 1837 71.9%
+2 雇主協助辦理 310 12.1%
+
+--- PAGE 31 ---
+- 31 -
+File : data103_1
+# q7_3_1b: 7.您這一次為了來臺工作(3)在母國有借貸[1]A.透過何種方式還款
+Value Label Cases Percentage
+3 臺灣仲介公司由您的薪資中扣除 403 15.8%
+4 其他 4 0.2%
+Sysmiss 1897
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q7_3_1bo: 7.您這一次為了來臺工作(3)在母國有借貸[1]A.透過何種方式還款(4)其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=4 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+家人幫忙付款 1 25.0%
+拒答 2 50.0%
+跟家人借錢 1 25.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q8: 8.您臺灣仲介公司每月除收取規定的服務費外,有沒有扣取其他費用
+Information [Type= discrete] [Format=numeric] [Range= 1-3] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有扣取其他費用 2666 59.9%
+2 有 1785 40.1%
+3 沒有委任臺灣仲介公司(請續填第10題) 0
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q8_11: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[1]代存儲蓄金
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3672 82.5%
+1 代存儲蓄金 779 17.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q8_12: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[2]代扣保證金
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 4329 97.3%
+2 代扣保證金 122 2.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q8_13: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[3]代存返國費用
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 4295 96.5%
+3 代存返國費用 156 3.5%
+
+--- PAGE 32 ---
+- 32 -
+File : data103_1
+# q8_13: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[3]代存返國費用
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q8_14: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[4]代扣所得稅
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3159 71.0%
+4 代扣所得稅 1292 29.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q8_15: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[5]代扣國外貸款費用
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 4048 90.9%
+5 代扣國外貸款費用 403 9.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q8_16: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[6]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 4361 98.0%
+6 其他 90 2.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q8_1o: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[6]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=90 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+交通費 1 1.1%
+代辦流程、證
+件費用
+1 1.1%
+住宿費 11 12.2%
+住宿費及清潔
+費
+1 1.1%
+宿舍 1 1.1%
+宿舍費 1 1.1%
+宿食費 2 2.2%
+居留證、醫藥
+費
+1 1.1%
+扣制服、睡床
+等等
+1 1.1%
+扣制服費、床 1 1.1%
+扣宿舍伙食費 12 13.3%
+扣宿舍伙食費
+2500
+1 1.1%
+
+--- PAGE 33 ---
+- 33 -
+File : data103_1
+# q8_1o: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[6]其他(請說明)
+Value Label Cases Percentage
+扣宿舍伙食
+費、體檢費、
+服務費
+1 1.1%
+扣宿食費 23 25.6%
+扣宿食費冷氣
+費
+1 1.1%
+扣翻譯費 1 1.1%
+扣翻譯費,扣宿
+食費
+1 1.1%
+扣食宿費用 1 1.1%
+水電費 3 3.3%
+空調 3 3.3%
+空調費 1 1.1%
+翻譯費 1 1.1%
+翻譯費用、食
+宿費用
+1 1.1%
+醫療費 12 13.3%
+醫藥費 1 1.1%
+電費 5 5.6%
+餐費 1 1.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q9_1: 9.臺灣仲介公司提供您何種服務?(複選)(1)辦理健康檢查
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 640 14.4%
+1 辦理健康檢查 3811 85.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q9_2: 9.臺灣仲介公司提供您何種服務?(複選)(2)辦理申請轉換雇主或轉換工作
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3367 75.6%
+2 辦理申請轉換雇主或轉換工作 1084 24.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q9_3: 9.臺灣仲介公司提供您何種服務?(複選)(3)辦理您的生活相關服務
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 1667 37.5%
+3 辦理您的生活相關服務 2784 62.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 34 ---
+- 34 -
+File : data103_1
+# q9_4: 9.臺灣仲介公司提供您何種服務?(複選)(4)辦理您的入、出國手續
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 1444 32.4%
+4 辦理您的入、出國手續 3007 67.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q9_5: 9.臺灣仲介公司提供您何種服務?(複選)(5)辦理諮詢、輔導及翻譯
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 1169 26.3%
+5 辦理諮詢、輔導及翻譯 3282 73.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q9_6: 9.臺灣仲介公司提供您何種服務?(複選)(6)其他
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 4397 98.8%
+6 其他 54 1.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q9_o: 9.臺灣仲介公司提供您何種服務?(複選)(6)其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=54 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+中文學習 1 1.9%
+協助就醫 1 1.9%
+協助處理銀行
+事務
+3 5.6%
+就醫 30 55.6%
+就醫協助 3 5.6%
+機場接送 2 3.7%
+沒有提供協助 12 22.2%
+看醫生、寄錢
+回家服務
+2 3.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q10: 10.第一次來臺工作前,母國政府或母國仲介公司有沒有提供您職前訓練
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有 1243 27.9%
+2 有 3208 72.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 35 ---
+- 35 -
+File : data103_1
+# q10_11: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[1]中文語言訓練
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3208 /-] [Invalid=1243 /-]
+Value Label Cases Percentage
+0 無 1358 42.3%
+1 中文語言訓練 1850 57.7%
+Sysmiss 1243
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q10_12: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[2]在臺工作法令須知
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3208 /-] [Invalid=1243 /-]
+Value Label Cases Percentage
+0 無 621 19.4%
+2 在臺工作法令須知 2587 80.6%
+Sysmiss 1243
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q10_13: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[3]安全衛生教育
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3208 /-] [Invalid=1243 /-]
+Value Label Cases Percentage
+0 無 1064 33.2%
+3 安全衛生教育 2144 66.8%
+Sysmiss 1243
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q10_14: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[4]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3208 /-] [Invalid=1243 /-]
+Value Label Cases Percentage
+0 無 3173 98.9%
+4 其他 35 1.1%
+Sysmiss 1243
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q10_1o: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[4]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=35 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+台灣文化 5 14.3%
+台灣的文化 8 22.9%
+安全措施 1 2.9%
+工作專業訓練 1 2.9%
+工作技術 11 31.4%
+
+--- PAGE 36 ---
+- 36 -
+File : data103_1
+# q10_1o: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[4]其他(請說明)
+Value Label Cases Percentage
+工作技術教育
+訓練
+2 5.7%
+烹飪課程、工
+作技術
+1 2.9%
+職前說明 4 11.4%
+船的工作技術 1 2.9%
+電子產品 1 2.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# t1: 10.第一次來臺前有接受過職前訓練(複選)[1]中文語言訓練總時數
+Information [Type= continuous] [Format=numeric] [Range= 0.99-540.54] [Missing=*]
+Statistics [NW/ W] [Valid=1850 /-] [Invalid=2601 /-] [Mean=165.92 /-] [StdDev=111.586 /-]
+# t2: 10.第一次來臺前有接受過職前訓練(複選)[2]在台工作法令須知總時數
+Information [Type= continuous] [Format=numeric] [Range= 0.43-68.64] [Missing=*]
+Statistics [NW/ W] [Valid=2587 /-] [Invalid=1864 /-] [Mean=13.049 /-] [StdDev=8.809 /-]
+# t3: 10.第一次來臺前有接受過職前訓練(複選)[3]安全衛生教育總時數
+Information [Type= continuous] [Format=numeric] [Range= 0.39-51.48] [Missing=*]
+Statistics [NW/ W] [Valid=2144 /-] [Invalid=2307 /-] [Mean=11.522 /-] [StdDev=8.445 /-]
+# t4: 10.第一次來臺前有接受過職前訓練(複選)[4]其他訓練總時數
+Information [Type= continuous] [Format=numeric] [Range= 1.07-411.8] [Missing=*]
+Statistics [NW/ W] [Valid=35 /-] [Invalid=4416 /-] [Mean=38.367 /-] [StdDev=99.321 /-]
+# q11: 11.您在事業單位工作有那些困擾?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有 3065 68.9%
+2 有 1386 31.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q11_1: 11.您在事業單位工作困擾原因為何?(複選)[1]語言隔閡,溝通不容易
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=1386 /-] [Invalid=3065 /-]
+Value Label Cases Percentage
+0 無 351 25.3%
+1 語言隔閡,溝通不易 1035 74.7%
+Sysmiss 3065
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 37 ---
+- 37 -
+# q11_2: 11.您在事業單位工作困擾原因為何?(複選)[2]思鄉情緒
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=1386 /-] [Invalid=3065 /-]
+Value Label Cases Percentage
+0 無 843 60.8%
+2 思鄉情緒 543 39.2%
+Sysmiss 3065
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q11_3: 11.您在事業單位工作困擾原因為何?(複選)[3]生活環境無法適應
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=1386 /-] [Invalid=3065 /-]
+Value Label Cases Percentage
+0 無 1326 95.7%
+3 生活環境無法適應 60 4.3%
+Sysmiss 3065
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q11_4: 11.您在事業單位工作困擾原因為何?(複選)[4]工作環境無法適應
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=1386 /-] [Invalid=3065 /-]
+Value Label Cases Percentage
+0 無 1338 96.5%
+4 工作環境無法適應 48 3.5%
+Sysmiss 3065
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q11_5: 11.您在事業單位工作困擾原因為何?(複選)[5]與本國勞工相處不融洽
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=1386 /-] [Invalid=3065 /-]
+Value Label Cases Percentage
+0 無 1353 97.6%
+5 與本國勞工相處不融洽 33 2.4%
+Sysmiss 3065
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q11_6: 11.您在事業單位工作困擾原因為何?(複選)[6]住宿環境衛生太差
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=1386 /-] [Invalid=3065 /-]
+Value Label Cases Percentage
+0 無 1208 87.2%
+6 住宿環境衛生太差 178 12.8%
+Sysmiss 3065
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q11_7: 11.您在事業單位工作困擾原因為何?(複選)[7]雇主或管理者態度不佳
+Information [Type= discrete] [Format=numeric] [Range= 0-7] [Missing=*]
+Statistics [NW/ W] [Valid=1386 /-] [Invalid=3065 /-]
+
+--- PAGE 38 ---
+- 38 -
+# q11_7: 11.您在事業單位工作困擾原因為何?(複選)[7]雇主或管理者態度不佳
+Value Label Cases Percentage
+0 無 1297 93.6%
+7 雇主或管理者態度不佳 89 6.4%
+Sysmiss 3065
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q11_8: 11.您在事業單位工作困擾原因為何?(複選)[8]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-8] [Missing=*]
+Statistics [NW/ W] [Valid=1386 /-] [Invalid=3065 /-]
+Value Label Cases Percentage
+0 無 1340 96.7%
+8 其他 46 3.3%
+Sysmiss 3065
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q11_1o: 11.您在事業單位工作困擾原因為何?(複選)[8]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=46 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+上夜班,沒有補
+助
+1 2.2%
+不好吃 2 4.3%
+不懂中文 1 2.2%
+住宿不是很有
+自己的空間
+1 2.2%
+加班少 6 13.0%
+加班費計算不
+詳細
+1 2.2%
+吃的不好 11 23.9%
+吃的喝的 1 2.2%
+同鄉同事相處
+不好不好
+3 6.5%
+告知工作內容
+不符，工作苦
+1 2.2%
+因來自不同國
+家,因此跟室友
+相處不夠融洽
+1 2.2%
+工作太多 1 2.2%
+工作很多 1 2.2%
+很多事 1 2.2%
+很熱，沒冷氣 1 2.2%
+扣了很多錢 1 2.2%
+沒有加班 8 17.4%
+沒有輪替上夜
+班(每天上夜
+班)
+1 2.2%
+熱 1 2.2%
+薪資明細不夠
+詳細
+1 2.2%
+
+--- PAGE 39 ---
+- 39 -
+# q11_1o: 11.您在事業單位工作困擾原因為何?(複選)[8]其他(請說明)
+Value Label Cases Percentage
+這個月沒有加
+班
+1 2.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12: 12.您知不知道造成您同鄉行蹤不明原因?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 知道 1628 36.6%
+2 不知道 2823 63.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_1: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[1]聘僱期限即將屆滿
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 1168 71.7%
+1 聘僱期限即將屆滿 460 28.3%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_2: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[2]工作環境無法適應
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 1241 76.2%
+2 工作環境無法適應 387 23.8%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_3: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[3]與雇主及本國勞工相處不融洽
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 1416 87.0%
+3 與雇主或其他家人相處不融洽 212 13.0%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_4: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[4]思鄉情緒
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 1456 89.4%
+4 思鄉情緒 172 10.6%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 40 ---
+- 40 -
+# q12_5: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[5]仲介公司媒介
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 1548 95.1%
+5 仲介公司媒介 80 4.9%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_6: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[6]生活環境無法適應
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 1471 90.4%
+6 生活環境無法適應 157 9.6%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_7: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[7]希望獲得較高待遇
+Information [Type= discrete] [Format=numeric] [Range= 0-7] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 717 44.0%
+7 希望獲得較高待遇 911 56.0%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_8: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[8]受其他外勞慫恿、轉介
+Information [Type= discrete] [Format=numeric] [Range= 0-8] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 1160 71.3%
+8 受其他外勞的慫恿、轉介 468 28.7%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_9: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[9]勞資爭議
+Information [Type= discrete] [Format=numeric] [Range= 0-9] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 1410 86.6%
+9 勞資爭議 218 13.4%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_10: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[10]仲介服務費太高
+Information [Type= discrete] [Format=numeric] [Range= 0-10] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+
+--- PAGE 41 ---
+- 41 -
+# q12_10: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[10]仲介服務費太高
+Value Label Cases Percentage
+0 無 1343 82.5%
+10 仲介服務費太高 285 17.5%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_11: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[11]外籍配偶媒介
+Information [Type= discrete] [Format=numeric] [Range= 0-11] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 1490 91.5%
+11 外籍配偶媒介 138 8.5%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_12: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[12]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-12] [Missing=*]
+Statistics [NW/ W] [Valid=1628 /-] [Invalid=2823 /-]
+Value Label Cases Percentage
+0 無 1598 98.2%
+12 其他 30 1.8%
+Sysmiss 2823
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q12_1o: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[12]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=30 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+不喜歡 1 3.3%
+來台工作的費
+用沒辦法還完
+1 3.3%
+公司扣款太多 1 3.3%
+加班費計算制
+度不清楚
+1 3.3%
+吃的不好 1 3.3%
+家裡問題 1 3.3%
+工作不適合 1 3.3%
+工作內容不
+符，工作苦
+1 3.3%
+希望自由 2 6.7%
+待遇與實際工
+作不符
+1 3.3%
+怕自己不能回
+來工作
+1 3.3%
+應徵內容不符
+合
+1 3.3%
+應徵工作內容
+不符合
+1 3.3%
+扣太多錢 1 3.3%
+
+--- PAGE 42 ---
+- 42 -
+# q12_1o: 12.您知不知道造成您同鄉行蹤不明原因為?(複選)[12]其他(請說明)
+Value Label Cases Percentage
+扣很多費用 1 3.3%
+扣薪水 1 3.3%
+沒工作 2 6.7%
+沒有人權 1 3.3%
+生活費高 1 3.3%
+自己有自己的
+想法
+1 3.3%
+落地簽還沒付
+錢
+1 3.3%
+薪資少,借貸高 1 3.3%
+薪資與工作不
+符合
+1 3.3%
+被公司欺負 1 3.3%
+雇主不好 1 3.3%
+雇主不關心外
+勞
+1 3.3%
+雇主和工作都
+不好
+1 3.3%
+雇主苛刻 1 3.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q13_1: 13.103年5月您上班工作天數為何?總共__天(小數1位)
+Information [Type= continuous] [Format=numeric] [Range= 20-31] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-] [Mean=24.383 /-] [StdDev=2.247 /-]
+# q13_2: 13.103年5月您上班工作天數中,公司規定每天上班時數__小時
+Information [Type= discrete] [Format=numeric] [Range= 8-12] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+8 4079 91.6%
+9 61 1.4%
+10 98 2.2%
+11 28 0.6%
+12 185 4.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q13_3: 13.103年5月您上班工作天數中,加班時數總共__小時
+Information [Type= continuous] [Format=numeric] [Range= 0-240] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-] [Mean=39.503 /-] [StdDev=24.625 /-]
+# q14_1: 14.103年5月雇主約定給付您的薪資,總共為新臺幣__元
+Information [Type= continuous] [Format=numeric] [Range= 18421-49930] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-] [Mean=25147.39 /-] [StdDev=3606.032 /-]
+# q14_2: 14.103年5月雇主約定給付您的薪資,其中薪水(固定薪水)__元
+Information [Type= continuous] [Format=numeric] [Range= 17000-36000] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-] [Mean=19403.895 /-] [StdDev=1520.791 /-]
+
+--- PAGE 43 ---
+- 43 -
+# q14_3: 14.103年5月雇主約定給付您的薪資,其中加班費__元
+Information [Type= continuous] [Format=numeric] [Range= 0-28600] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-] [Mean=4760.664 /-] [StdDev=3026.9 /-]
+# q14_4: 14.103年5月雇主約定給付您的薪資,其中其他(獎金)__元
+Information [Type= continuous] [Format=numeric] [Range= 0-5000] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-] [Mean=982.832 /-] [StdDev=816.139 /-]
+# q15: 15.雇主每月依規定給付您薪資,除代扣勞保費、健保費及所得稅外,有沒有代扣其他費用?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有 2650 59.5%
+2 有 1801 40.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q15_1: 15.雇主每月依規定給付您薪資,除代扣勞保費、健保費及所得稅外,有代扣(複選)[1]代扣國內仲介服務費
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=1801 /-] [Invalid=2650 /-]
+Value Label Cases Percentage
+0 無 648 36.0%
+1 代扣國內仲介服務費 1153 64.0%
+Sysmiss 2650
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q15_2: 15.雇主每月依規定給付您薪資,除代扣勞保費、健保費及所得稅外,有代扣(複選)[2]代存儲蓄金
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=1801 /-] [Invalid=2650 /-]
+Value Label Cases Percentage
+0 無 870 48.3%
+2 代存儲蓄金 931 51.7%
+Sysmiss 2650
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q15_3: 15.雇主每月依規定給付您薪資,除代扣勞保費、健保費及所得稅外,有代扣(複選)[3]代扣保證金
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=1801 /-] [Invalid=2650 /-]
+Value Label Cases Percentage
+0 無 1646 91.4%
+3 代扣保證金 155 8.6%
+Sysmiss 2650
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q15_4: 15.雇主每月依規定給付您薪資,除代扣勞保費、健保費及所得稅外,有代扣(複選)[4]代存返國費用
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=1801 /-] [Invalid=2650 /-]
+Value Label Cases Percentage
+0 無 1680 93.3%
+4 代存返國費用 121 6.7%
+
+--- PAGE 44 ---
+- 44 -
+# q15_4: 15.雇主每月依規定給付您薪資,除代扣勞保費、健保費及所得稅外,有代扣(複選)[4]代存返國費用
+Value Label Cases Percentage
+Sysmiss 2650
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q15_5: 15.雇主每月依規定給付您薪資,除代扣勞保費、健保費及所得稅外,有代扣(複選)[5]代扣國外貸款費用
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=1801 /-] [Invalid=2650 /-]
+Value Label Cases Percentage
+0 無 1756 97.5%
+5 代扣國外貸款費用 45 2.5%
+Sysmiss 2650
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q15_6: 15.雇主每月依規定給付您薪資,除代扣勞保費、健保費及所得稅外,有代扣(複選)[6]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=1801 /-] [Invalid=2650 /-]
+Value Label Cases Percentage
+0 無 1770 98.3%
+6 其他 31 1.7%
+Sysmiss 2650
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q15_1o: 15.雇主每月依規定給付您薪資,除代扣勞保費、健保費及所得稅外,有代扣(複選)[6]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=31 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+制服費 3 9.7%
+帳單 1 3.2%
+床、蚊帳 1 3.2%
+生活物品 1 3.2%
+生活用品 5 16.1%
+生活用品、電
+話帳單
+1 3.2%
+生活費 5 16.1%
+福利金 8 25.8%
+超額帳單 1 3.2%
+醫療 4 12.9%
+醫療費 1 3.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q16: 16.雇主有沒有保管您的財物或重要文件
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有 2339 52.5%
+2 有 2112 47.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 45 ---
+- 45 -
+# q16_1: 16.雇主有沒有保管您的財物或重要文件(複選)[1]薪資存摺
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=2112 /-] [Invalid=2339 /-]
+Value Label Cases Percentage
+0 無 1486 70.4%
+1 薪資存摺 626 29.6%
+Sysmiss 2339
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q16_2: 16.雇主有沒有保管您的財物或重要文件(複選)[2]現金財物
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=2112 /-] [Invalid=2339 /-]
+Value Label Cases Percentage
+0 無 2076 98.3%
+2 現金財物 36 1.7%
+Sysmiss 2339
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q16_3: 16.雇主有沒有保管您的財物或重要文件(複選)[3]護照
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=2112 /-] [Invalid=2339 /-]
+Value Label Cases Percentage
+0 無 164 7.8%
+3 護照 1948 92.2%
+Sysmiss 2339
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q16_4: 16.雇主有沒有保管您的財物或重要文件(複選)[4]居留證
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=2112 /-] [Invalid=2339 /-]
+Value Label Cases Percentage
+0 無 1527 72.3%
+4 居留證 585 27.7%
+Sysmiss 2339
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q16_5: 16.雇主有沒有保管您的財物或重要文件(複選)[5]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=2112 /-] [Invalid=2339 /-]
+Value Label Cases Percentage
+0 無 2102 99.5%
+5 其他 10 0.5%
+Sysmiss 2339
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q16_1o: 16.雇主有沒有保管您的財物或重要文件(複選)[5]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=10 /-] [Invalid=0 /-]
+
+--- PAGE 46 ---
+- 46 -
+# q16_1o: 16.雇主有沒有保管您的財物或重要文件(複選)[5]其他(請說明)
+Value Label Cases Percentage
+健保卡 4 40.0%
+勞動契約 1 10.0%
+合約 2 20.0%
+提款卡 3 30.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q17: 17.雇主有無提供吃、住
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 有提供吃及住 3980 89.4%
+2 僅提供住 362 8.1%
+3 僅提供吃 73 1.6%
+4 均沒有提供 36 0.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q17_1: 17-1.雇主提供吃、住,有沒有從您薪資中扣除該費用?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4415 /-] [Invalid=36 /-]
+Value Label Cases Percentage
+1 沒有 660 14.9%
+2 有 3755 85.1%
+Sysmiss 36
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q17_nt: 17-1.雇主提供吃、住,每月扣除金額折合新臺幣為__元/月
+Information [Type= continuous] [Format=numeric] [Range= 100-5000] [Missing=*]
+Statistics [NW/ W] [Valid=3755 /-] [Invalid=696 /-] [Mean=2515.294 /-] [StdDev=597.58 /-]
+# q18: 18.您住宿方式為何?
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 雇主提供宿舍 3746 84.2%
+2 自行處理 26 0.6%
+3 委由仲介公司辦理 679 15.3%
+4 其他 0
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q19: 19.雇主有沒有提供生活輔導措施
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 有 3268 73.4%
+2 沒有 1183 26.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 47 ---
+- 47 -
+# q19_1: 19.雇主有沒有提供生活輔導措施(複選)[1]設立文康中心
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3268 /-] [Invalid=1183 /-]
+Value Label Cases Percentage
+0 無 2067 63.2%
+1 設立文康中心 1201 36.8%
+Sysmiss 1183
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 48 ---
+- 48 -
+# q19_2: 19.雇主有沒有提供生活輔導措施(複選)[2]安排例假日休閒活動
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3268 /-] [Invalid=1183 /-]
+Value Label Cases Percentage
+0 無 2036 62.3%
+2 安排例假日休閒活動 1232 37.7%
+Sysmiss 1183
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q19_3: 19.雇主有沒有提供生活輔導措施(複選)[3]安排例假日宗教活動
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3268 /-] [Invalid=1183 /-]
+Value Label Cases Percentage
+0 無 2790 85.4%
+3 安排例假日宗教活動 478 14.6%
+Sysmiss 1183
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q19_4: 19.雇主有沒有提供生活輔導措施(複選)[4]舉辦座談會
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3268 /-] [Invalid=1183 /-]
+Value Label Cases Percentage
+0 無 1805 55.2%
+4 舉辦座談會 1463 44.8%
+Sysmiss 1183
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q19_5: 19.雇主有沒有提供生活輔導措施(複選)[5]建立申訴管道
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3268 /-] [Invalid=1183 /-]
+Value Label Cases Percentage
+0 無 1593 48.7%
+5 建立申訴管道 1675 51.3%
+Sysmiss 1183
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q19_6: 19.雇主有沒有提供生活輔導措施(複選)[6]工作、休閒均派專人輔導
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=3268 /-] [Invalid=1183 /-]
+Value Label Cases Percentage
+0 無 2343 71.7%
+6 工作、休閒均派專人輔導 925 28.3%
+Sysmiss 1183
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q19_7: 19.雇主有沒有提供生活輔導措施(複選)[7]設立生活輔導小組
+Information [Type= discrete] [Format=numeric] [Range= 0-7] [Missing=*]
+Statistics [NW/ W] [Valid=3268 /-] [Invalid=1183 /-]
+
+--- PAGE 49 ---
+- 49 -
+# q19_7: 19.雇主有沒有提供生活輔導措施(複選)[7]設立生活輔導小組
+Value Label Cases Percentage
+0 無 2233 68.3%
+7 設立生活輔導小組 1035 31.7%
+Sysmiss 1183
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q19_8: 19.雇主有沒有提供生活輔導措施(複選)[8]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-8] [Missing=*]
+Statistics [NW/ W] [Valid=3268 /-] [Invalid=1183 /-]
+Value Label Cases Percentage
+0 無 3217 98.4%
+8 其他 51 1.6%
+Sysmiss 1183
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q19_1o: 19.雇主有沒有提供生活輔導措施(複選)[8]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=51 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+不定期聚餐 12 23.5%
+員工旅遊 1 2.0%
+安排會議 8 15.7%
+安排週會 5 9.8%
+定期健康檢
+查、雇主常鼓
+勵與協助
+1 2.0%
+工作及衛生手
+冊
+2 3.9%
+帶出去玩 8 15.7%
+慶祝生日 2 3.9%
+旅遊 6 11.8%
+晚上去上課 1 2.0%
+每月都有開會 1 2.0%
+開會有關如何
+處理自己的工
+作及衛生問題
+4 7.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q20: 20.您知不知道政府部門有提供外籍勞工申訴或法令諮詢管道
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 知道 4061 91.2%
+2 不知道(請續填24題) 390 8.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q20_1: 20.您知道政府部門有提供外籍勞工申訴或法令諮詢管道(複選)[1]當地外籍勞工諮詢服務中心
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=4061 /-] [Invalid=390 /-]
+
+--- PAGE 50 ---
+- 50 -
+# q20_1: 20.您知道政府部門有提供外籍勞工申訴或法令諮詢管道(複選)[1]當地外籍勞工諮詢服務中心
+Value Label Cases Percentage
+0 無 1941 47.8%
+1 當地外籍勞工諮詢服務中心 2120 52.2%
+Sysmiss 390
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q20_2: 20.您知道政府部門有提供外籍勞工申訴或法令諮詢管道(複選)[2]機場外籍勞工關懷服務站
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=4061 /-] [Invalid=390 /-]
+Value Label Cases Percentage
+0 無 2232 55.0%
+2 機場外籍勞工關懷服務站 1829 45.0%
+Sysmiss 390
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q20_3: 20.您知道政府部門有提供外籍勞工申訴或法令諮詢管道(複選)[3]1955外籍勞工24小時諮詢保護專線
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=4061 /-] [Invalid=390 /-]
+Value Label Cases Percentage
+0 無 456 11.2%
+3 1955外籍勞工24小時諮詢保護專線 3605 88.8%
+Sysmiss 390
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q21: 21.您有沒有使用政府部門所提供外籍勞工申訴或法令諮詢管道
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=4061 /-] [Invalid=390 /-]
+Value Label Cases Percentage
+1 有 1228 30.2%
+2 沒有(請續填24題) 2833 69.8%
+Sysmiss 390
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q21_1: 21.您使用政府部門所提供外籍勞工申訴或法令諮詢管道(複選)[1]當地外籍勞工諮詢服務中心
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=1228 /-] [Invalid=3223 /-]
+Value Label Cases Percentage
+0 無 929 75.7%
+1 當地外籍勞工諮詢服務中心 299 24.3%
+Sysmiss 3223
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q21_2: 21.您使用政府部門所提供外籍勞工申訴或法令諮詢管道(複選)[2]機場外籍勞工關懷服務站
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=1228 /-] [Invalid=3223 /-]
+Value Label Cases Percentage
+0 無 980 79.8%
+
+--- PAGE 51 ---
+- 51 -
+# q21_2: 21.您使用政府部門所提供外籍勞工申訴或法令諮詢管道(複選)[2]機場外籍勞工關懷服務站
+Value Label Cases Percentage
+2 機場外籍勞工關懷服務站 248 20.2%
+Sysmiss 3223
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q21_3: 21.您使用政府部門所提供外籍勞工申訴或法令諮詢管道(複選)[3]1955外籍勞工24小時諮詢保護專線
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=1228 /-] [Invalid=3223 /-]
+Value Label Cases Percentage
+0 無 314 25.6%
+3 1955外籍勞工24小時諮詢保護專線 914 74.4%
+Sysmiss 3223
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q23: 23.這些管道對您來臺工作適應、心理調適及法令諮詢有沒有幫助?
+Information [Type= discrete] [Format=numeric] [Range= 1-5] [Missing=*]
+Statistics [NW/ W] [Valid=1228 /-] [Invalid=3223 /-]
+Value Label Cases Percentage
+1 非常有幫助 282 23.0%
+2 有幫助 627 51.1%
+3 普通 264 21.5%
+4 不太有幫助 39 3.2%
+5 完全沒有幫助 16 1.3%
+Sysmiss 3223
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q22_1: 22.(限使用過者填答)您到外籍勞工諮詢服務中心,請其提供何種服務?(1)諮詢服務
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=299 /-] [Invalid=4152 /-]
+Value Label Cases Percentage
+0 無使用 16 5.4%
+1 有使用 283 94.6%
+Sysmiss 4152
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q22_2: 22.(限使用過者填答)您到外籍勞工諮詢服務中心,請其提供何種服務?(2)勞資爭議服務
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=299 /-] [Invalid=4152 /-]
+Value Label Cases Percentage
+0 無使用 55 18.4%
+1 有使用 244 81.6%
+Sysmiss 4152
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q22_1_a: 22.(限使用過者填答)您到外籍勞工諮詢服務中心(1)諮詢服務A.服務態度
+Information [Type= discrete] [Format=numeric] [Range= 1-5] [Missing=*]
+Statistics [NW/ W] [Valid=283 /-] [Invalid=4168 /-]
+
+--- PAGE 52 ---
+- 52 -
+# q22_1_a: 22.(限使用過者填答)您到外籍勞工諮詢服務中心(1)諮詢服務A.服務態度
+Value Label Cases Percentage
+1 很滿意 104 36.7%
+2 滿意 138 48.8%
+3 普通 32 11.3%
+4 不滿意 8 2.8%
+5 很不滿意 1 0.4%
+Sysmiss 4168
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q22_2_a: 22.(限使用過者填答)您到外籍勞工諮詢服務中心(2)勞資爭議服務A.服務態度滿意度
+Information [Type= discrete] [Format=numeric] [Range= 1-5] [Missing=*]
+Statistics [NW/ W] [Valid=244 /-] [Invalid=4207 /-]
+Value Label Cases Percentage
+1 很滿意 75 30.7%
+2 滿意 84 34.4%
+3 普通 81 33.2%
+4 不滿意 2 0.8%
+5 很不滿意 2 0.8%
+Sysmiss 4207
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q22_2_b: 22.(限使用過者填答)您到外籍勞工諮詢服務中心(2)勞資爭議服務B.調解方式滿意度
+Information [Type= discrete] [Format=numeric] [Range= 1-5] [Missing=*]
+Statistics [NW/ W] [Valid=244 /-] [Invalid=4207 /-]
+Value Label Cases Percentage
+1 很滿意 71 29.1%
+2 滿意 88 36.1%
+3 普通 77 31.6%
+4 不滿意 7 2.9%
+5 很不滿意 1 0.4%
+Sysmiss 4207
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q22_2_c: 22.(限使用過者填答)您到外籍勞工諮詢服務中心(2)勞資爭議服務C.處理進度滿意度
+Information [Type= discrete] [Format=numeric] [Range= 1-5] [Missing=*]
+Statistics [NW/ W] [Valid=244 /-] [Invalid=4207 /-]
+Value Label Cases Percentage
+1 很滿意 54 22.1%
+2 滿意 121 49.6%
+3 普通 60 24.6%
+4 不滿意 7 2.9%
+5 很不滿意 2 0.8%
+Sysmiss 4207
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q24: 24.您和雇主是否曾經產生爭議
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+
+--- PAGE 53 ---
+- 53 -
+# q24: 24.您和雇主是否曾經產生爭議
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有 4083 91.7%
+2 有 368 8.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q24_1: 24.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[1]仲介公司
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=368 /-] [Invalid=4083 /-]
+Value Label Cases Percentage
+0 無 205 55.7%
+1 仲介公司 163 44.3%
+Sysmiss 4083
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q24_2: 24.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[2]1955外籍勞工24小時諮詢保護專線
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=368 /-] [Invalid=4083 /-]
+Value Label Cases Percentage
+0 無 204 55.4%
+2 1955外籍勞工24小時諮詢保護專線 164 44.6%
+Sysmiss 4083
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q24_3: 24.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[3]當地外籍勞工諮詢服務中心
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=368 /-] [Invalid=4083 /-]
+Value Label Cases Percentage
+0 無 315 85.6%
+3 當地外籍勞工諮詢服務中心 53 14.4%
+Sysmiss 4083
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q24_4: 24.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[4]機場外籍勞工關懷服務站
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=368 /-] [Invalid=4083 /-]
+Value Label Cases Percentage
+0 無 333 90.5%
+4 機場外籍勞工關懷服務站 35 9.5%
+Sysmiss 4083
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q24_5: 24.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[5]母國駐臺機構
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=368 /-] [Invalid=4083 /-]
+Value Label Cases Percentage
+0 無 275 74.7%
+
+--- PAGE 54 ---
+- 54 -
+# q24_5: 24.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[5]母國駐臺機構
+Value Label Cases Percentage
+5 母國駐臺機構 93 25.3%
+Sysmiss 4083
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q24_6: 24.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[6]宗教團體
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=368 /-] [Invalid=4083 /-]
+Value Label Cases Percentage
+0 無 359 97.6%
+6 宗教團體 9 2.4%
+Sysmiss 4083
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q24_7: 24.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[7]朋友
+Information [Type= discrete] [Format=numeric] [Range= 0-7] [Missing=*]
+Statistics [NW/ W] [Valid=368 /-] [Invalid=4083 /-]
+Value Label Cases Percentage
+0 無 342 92.9%
+7 朋友 26 7.1%
+Sysmiss 4083
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q24_8: 24.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[8]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-8] [Missing=*]
+Statistics [NW/ W] [Valid=368 /-] [Invalid=4083 /-]
+Value Label Cases Percentage
+0 無 350 95.1%
+8 其他 18 4.9%
+Sysmiss 4083
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q24_1o: 24.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[8]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=18 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+上級主管 1 5.6%
+不敢申訴 12 66.7%
+沒有申訴管道 4 22.2%
+跟公司翻譯諮
+詢
+1 5.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_1: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[1]直接聘僱聯合服務中心
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 4152 93.3%
+
+--- PAGE 55 ---
+- 55 -
+# q25_1: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[1]直接聘僱聯合服務中心
+Value Label Cases Percentage
+1 直接聘僱聯合服務中心 299 6.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_2: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[2]當地外籍勞工諮詢服務中心
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3718 83.5%
+2 當地外籍勞工諮詢服務中心 733 16.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_3: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[3]1955外籍勞工24小時諮詢保護專線
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2623 58.9%
+3 1955外籍勞工24小時諮詢保護專線 1828 41.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_4: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[4]機場外籍勞工關懷服務站
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3525 79.2%
+4 機場外籍勞工關懷服務站 926 20.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_5: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[5]外籍勞工廣播節目
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3478 78.1%
+5 外籍勞工廣播節目 973 21.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_6: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[6]政府出版宣導手冊
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3107 69.8%
+6 政府出版宣導手冊 1344 30.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_7: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[7]電視
+Information [Type= discrete] [Format=numeric] [Range= 0-7] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+
+--- PAGE 56 ---
+- 56 -
+# q25_7: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[7]電視
+Value Label Cases Percentage
+0 無 3708 83.3%
+7 電視 743 16.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_8: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[8]網際網路
+Information [Type= discrete] [Format=numeric] [Range= 0-8] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3181 71.5%
+8 網際網路 1270 28.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_9: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[9]仲介公司
+Information [Type= discrete] [Format=numeric] [Range= 0-9] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 1821 40.9%
+9 仲介公司 2630 59.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_10: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[10]地方政府辦理法令宣導、休閒及節慶文化
+等相關活動
+Information [Type= discrete] [Format=numeric] [Range= 0-10] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 4120 92.6%
+10 地方政府辦理法令宣導、休閒及節慶文化等相關活動 331 7.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_11: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[11]雜誌、書報
+Information [Type= discrete] [Format=numeric] [Range= 0-11] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3589 80.6%
+11 雜誌、書報 862 19.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_12: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[12]雇主
+Information [Type= discrete] [Format=numeric] [Range= 0-12] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2953 66.3%
+12 雇主 1498 33.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_13: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[13]朋友
+Information [Type= discrete] [Format=numeric] [Range= 0-13] [Missing=*]
+
+--- PAGE 57 ---
+- 57 -
+# q25_13: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[13]朋友
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2901 65.2%
+13 朋友 1550 34.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25_14: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[14]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-14] [Missing=*]
+Statistics [NW/ W] [Valid=4451 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 4441 99.8%
+14 其他 10 0.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# q25o: 25.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[14]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=10 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+商店 5 50.0%
+教會 5 50.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 58 ---
+- 58 -
+File : data103_2
+# no: 流水號
+Information [Type= continuous] [Format=numeric] [Range= 1-3390] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-] [Mean=1695.5 /-] [StdDev=978.753 /-]
+# w: 權數
+Information [Type= continuous] [Format=numeric] [Range= 1-203] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-] [Mean=58.628 /-] [StdDev=10.634 /-]
+# city: 縣市別
+Information [Type= discrete] [Format=numeric] [Range= 1-21] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 新北市 532 15.7%
+2 臺北市 638 18.8%
+3 臺中市 365 10.8%
+4 臺南市 218 6.4%
+5 高雄市 281 8.3%
+6 宜蘭縣 83 2.4%
+7 桃園縣 281 8.3%
+8 新竹縣 100 2.9%
+9 苗栗縣 97 2.9%
+10 彰化縣 147 4.3%
+11 南投縣 72 2.1%
+12 雲林縣 101 3.0%
+13 嘉義縣 81 2.4%
+14 屏東縣 99 2.9%
+15 臺東縣 28 0.8%
+16 花蓮縣 65 1.9%
+17 澎湖縣 17 0.5%
+18 基隆市 53 1.6%
+19 新竹市 73 2.2%
+20 嘉義市 38 1.1%
+21 金門縣、連江縣 21 0.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# s1: 國籍別
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 印尼 2912 85.9%
+2 菲律賓 339 10.0%
+3 泰國 30 0.9%
+4 越南 109 3.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# s1.1: 直聘 / 非直聘 (廣義直聘)
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+
+--- PAGE 59 ---
+- 59 -
+File : data103_2
+# s1.1: 直聘 / 非直聘 (廣義直聘)
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 直聘 687 20.3%
+2 非直聘 2703 79.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v1: 1.性別
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 男 25 0.7%
+2 女 3365 99.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v2: 2.國籍
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 印尼 2912 85.9%
+2 泰國 30 0.9%
+3 菲律賓 339 10.0%
+4 越南 109 3.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v3: 3.年齡
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 24歲以下 299 8.8%
+2 25歲-34歲 1731 51.1%
+3 35歲-44歲 1196 35.3%
+4 45歲以上 164 4.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v4: 4.教育程度
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 國中及以下 2283 67.3%
+2 高中(職) 978 28.8%
+3 大專(學) 126 3.7%
+4 研究所及以上 3 0.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v5_1: 5.您這一次是第__次來臺工作
+Information [Type= discrete] [Format=numeric] [Range= 1-5] [Missing=*]
+
+--- PAGE 60 ---
+- 60 -
+File : data103_2
+# v5_1: 5.您這一次是第__次來臺工作
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 1118 33.0%
+2 1479 43.6%
+3 678 20.0%
+4 114 3.4%
+5 1 0.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v5_2: 5.總共在臺灣累計的工作期間多久(含以前來臺工作的期間):__年
+Information [Type= discrete] [Format=numeric] [Range= 0-12] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 28 0.8%
+1 39 1.2%
+2 242 7.1%
+3 1949 57.5%
+4 34 1.0%
+5 164 4.8%
+6 755 22.3%
+7 21 0.6%
+8 42 1.2%
+9 55 1.6%
+10 33 1.0%
+11 23 0.7%
+12 5 0.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v5_3: 5.總共在臺灣累計的工作期間多久(含以前來臺工作的期間):__月
+Information [Type= continuous] [Format=numeric] [Range= 0-11] [Missing=*]
+Statistics [NW/ W] [Valid=3389 /-] [Invalid=1 /-] [Mean=1.6 /-] [StdDev=3.253 /-]
+# v6: 6.您這一次是透過何種聘僱管道來臺工作
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 透過人力仲介公司 2703 79.7%
+2 透過直接聘雇聯合服務中心 317 9.4%
+3 透過直聘聯合服務中心，但有國內/國外人力仲介公司協助處理 363 10.7%
+4 其他 7 0.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v6_o: 6.您這一次是透過何種聘僱管道來臺工作(3)其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=7 /-] [Invalid=0 /-]
+
+--- PAGE 61 ---
+- 61 -
+File : data103_2
+# v6_o: 6.您這一次是透過何種聘僱管道來臺工作(3)其他(請說明)
+Value Label Cases Percentage
+direct hiring 2 28.6%
+透過泰國勞動
+部
+5 71.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v7_1: 7.您這一次為了來臺工作(1)在母國共負擔多少錢?(台幣)
+Information [Type= continuous] [Format=numeric] [Range= 0-99999998] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 沒有負擔費用 166 34.8%
+99999998 不知道/拒答 311 65.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v7_2: 7.您這一次為了來臺工作(2)是否知道母國仲介費用
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 不知道 2390 70.5%
+2 知道 1000 29.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v7_2_1: 7.您這一次為了來臺工作(2)其中繳納母國仲介費用多少?(台幣)
+Information [Type= continuous] [Format=numeric] [Range= 0-81574.4] [Missing=*]
+Statistics [NW/ W] [Valid=1000 /-] [Invalid=2390 /-]
+Value Label Cases Percentage
+0 沒有繳納費用 687 100.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v7_3: 7.您這一次為了來臺工作(3)在母國有沒有借貸?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 有 2244 66.2%
+2 沒有 1146 33.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v7_3_1: 7.您這一次為了來臺工作(3)在母國有借貸[1]知不知道借貸金額
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=2244 /-] [Invalid=1146 /-]
+Value Label Cases Percentage
+1 不知道 217 9.7%
+2 知道 2027 90.3%
+Sysmiss 1146
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 62 ---
+- 62 -
+File : data103_2
+# v7_3_1a: 7.您這一次為了來臺工作(3)在母國有借貸[1]借多少錢(台幣)
+Information [Type= continuous] [Format=numeric] [Range= 4426.0485-148200] [Missing=*]
+Statistics [NW/ W] [Valid=2027 /-] [Invalid=1363 /-] [Mean=80117.051 /-] [StdDev=13803.888 /-]
+# v7_3_1b: 7.您這一次為了來臺工作(3)在母國有借貸[1]A.透過何種方式還款
+Information [Type= discrete] [Format=numeric] [Range= 1-4] [Missing=*]
+Statistics [NW/ W] [Valid=2235 /-] [Invalid=1155 /-]
+Value Label Cases Percentage
+1 自行辦理 273 12.2%
+2 雇主協助辦理 1232 55.1%
+3 臺灣仲介公司由您的薪資中扣除 730 32.7%
+4 其他 0
+Sysmiss 1155
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v7_3_1bo: 7.您這一次為了來臺工作(3)在母國有借貸[1]A.透過何種方式還款(4)其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=0 /-] [Invalid=0 /-]
+# v8: 8.您臺灣仲介公司每月除收取規定的服務費外,有沒有扣取其他費用
+Information [Type= discrete] [Format=numeric] [Range= 1-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有扣取其他費用 2189 64.6%
+2 有扣取其他費用 884 26.1%
+3 沒有委任臺灣仲介公司(請續填第10題) 317 9.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v8_1: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[1]代存儲蓄金
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3287 97.0%
+1 代存儲蓄金 103 3.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v8_2: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[2]代扣保證金
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3289 97.0%
+2 代扣保證金 101 3.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v8_3: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[3]代存返國費用
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+
+--- PAGE 63 ---
+- 63 -
+File : data103_2
+# v8_3: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[3]代存返國費用
+Value Label Cases Percentage
+0 無 3371 99.4%
+3 代存返國費用 19 0.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v8_4: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[4]代扣國外貸款費用
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2660 78.5%
+4 代扣國外貸款費用 730 21.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v8_5: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[5]代扣稅金
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3375 99.6%
+5 代扣稅金 15 0.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v8_6: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[6]代扣健康檢查費用
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3366 99.3%
+6 代扣健康檢查費用 24 0.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v8_7: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[7]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-7] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3362 99.2%
+7 其他 28 0.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v8_o: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[7]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=28 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+35000NT，不知
+道是什麼費用
+1 3.6%
+3個月5000，不
+知道得是什麼
+費用
+1 3.6%
+
+--- PAGE 64 ---
+- 64 -
+File : data103_2
+# v8_o: 8.您臺灣仲介公司每月除收取規定的服務費外,有扣取費用項目(複選)[7]其他(請說明)
+Value Label Cases Percentage
+4735NT，3年，
+不知是什麼項
+目，也不知道
+能否領取)
+1 3.6%
+52000NT 1 3.6%
+5700，不知道
+是什麼項目
+1 3.6%
+60000NT辦理來
+台的費用
+1 3.6%
+一年一次收取
+一次440元
+1 3.6%
+不知道項目，
+被扣費用NT
+$100
+1 3.6%
+交通 1 3.6%
+保險 1 3.6%
+健保費 1 3.6%
+健保費NT281 1 3.6%
+勞保 2 7.1%
+匯款到印尼 1 3.6%
+居留證 1 3.6%
+延長證件 1 3.6%
+第十個月仲介
+扣NT11000
+1 3.6%
+轉換雇主 1 3.6%
+轉換雇主5000
+元
+1 3.6%
+轉換雇主的費
+用4000元
+1 3.6%
+轉換雇主的費
+用5000元
+1 3.6%
+轉換雇主費用 1 3.6%
+辦理VISA和機
+票
+1 3.6%
+辦理來台的費
+用
+1 3.6%
+辦理文件 2 7.1%
+辦理證件 1 3.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v9_1: 9.臺灣仲介公司提供您何種服務?(複選)(1)辦理健康檢查
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 444 13.1%
+1 辦理健康檢查 2946 86.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 65 ---
+- 65 -
+File : data103_2
+# v9_2: 9.臺灣仲介公司提供您何種服務?(複選)(2)辦理申請轉換雇主或轉換工作
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2083 61.4%
+2 辦理申請轉換雇主或轉換工作 1307 38.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v9_3: 9.臺灣仲介公司提供您何種服務?(複選)(3)辦理您的生活相關服務
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 1893 55.8%
+3 辦理您的生活相關服務 1497 44.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v9_4: 9.臺灣仲介公司提供您何種服務?(複選)(4)辦理您的入、出國手續
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 1462 43.1%
+4 辦理您的入、出國手續 1928 56.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v9_5: 9.臺灣仲介公司提供您何種服務?(複選)(5)辦理諮詢、輔導及翻譯
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 1404 41.4%
+5 辦理諮詢、輔導及翻譯 1986 58.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v9_6: 9.臺灣仲介公司提供您何種服務?(複選)(6)其他
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3380 99.7%
+6 其他 10 0.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v9_o: 9.臺灣仲介公司提供您何種服務?(複選)(6)其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=10 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+沒有服務 8 80.0%
+辦直聘 2 20.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 66 ---
+- 66 -
+File : data103_2
+# v10: 10.第一次來臺工作前,母國政府或母國仲介公司有沒有提供您職前訓練
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 有 3345 98.7%
+2 沒有 45 1.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v10_1: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[1]中文語言訓練
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 56 1.7%
+1 中文語言訓練 3334 98.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v10_2: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[2]在臺工作法令須知
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 981 28.9%
+2 在臺工作法令須知 2409 71.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v10_3: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[3]安全衛生教育
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 352 10.4%
+3 安全衛生教育 3038 89.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v10_4: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[4]烹飪、家務
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3030 89.4%
+4 烹飪、家務 360 10.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v10_5: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[5]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3360 99.1%
+5 其他 30 0.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 67 ---
+- 67 -
+File : data103_2
+# v10_o: 10.第一次來臺工作前,母國政府或母國仲介公司提供訓練課程(複選)[5]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=30 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+台語 27 90.0%
+早操 1 3.3%
+運動 1 3.3%
+運動、早操 1 3.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v10_1_1: 10.第一次來臺前有接受過職前訓練(複選)[1]中文語言訓練總時數
+Information [Type= continuous] [Format=numeric] [Range= 4.29-1179.75] [Missing=*]
+Statistics [NW/ W] [Valid=3334 /-] [Invalid=56 /-] [Mean=352.881 /-] [StdDev=222.211 /-]
+# v10_2_1: 10.第一次來臺前有接受過職前訓練(複選)[2]在台工作法令須知總時數
+Information [Type= continuous] [Format=numeric] [Range= 0.99999999099-353.925] [Missing=*]
+Statistics [NW/ W] [Valid=2409 /-] [Invalid=981 /-] [Mean=71.299 /-] [StdDev=52.056 /-]
+# v10_3_1: 10.第一次來臺前有接受過職前訓練(複選)[3]安全衛生教育總時數
+Information [Type= continuous] [Format=numeric] [Range= 7.99999992792-1029.6] [Missing=*]
+Statistics [NW/ W] [Valid=3038 /-] [Invalid=352 /-] [Mean=154.04 /-] [StdDev=129.707 /-]
+# v10_4_1: 10.第一次來臺前有接受過職前訓練(複選)[4]烹飪、家務總時數
+Information [Type= continuous] [Format=numeric] [Range= 4.29-858] [Missing=*]
+Statistics [NW/ W] [Valid=360 /-] [Invalid=3030 /-] [Mean=86.665 /-] [StdDev=90.883 /-]
+# v10_5_1: 10.第一次來臺前有接受過職前訓練(複選)[5]其他訓練總時數
+Information [Type= continuous] [Format=numeric] [Range= 17.16-257.4] [Missing=*]
+Statistics [NW/ W] [Valid=30 /-] [Invalid=3360 /-] [Mean=118.404 /-] [StdDev=68.238 /-]
+
+--- PAGE 68 ---
+- 68 -
+# v11: 11.您來臺前有沒有通過檢定測驗?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 有 3217 94.9%
+2 沒有 173 5.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v11_1: 11.您來臺前有通過檢定測驗內容為何(複選)[1]中文語言
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 274 8.1%
+1 中文語言 3116 91.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v11_2: 11.您來臺前有通過檢定測驗內容為何(複選)[2]照顧服務專長
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 376 11.1%
+2 照顧服務專長 3014 88.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v11_3: 11.您來臺前有通過檢定測驗內容為何(複選)[3]烹飪、家務
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3018 89.0%
+3 烹飪、家務 372 11.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v11_4: 11.您來臺前有通過檢定測驗內容為何(複選)[4]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3387 99.9%
+4 其他 3 0.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v11_o: 11.您來臺前有通過檢定測驗內容為何(複選)[4]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=3 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+台語 2 66.7%
+英文 1 33.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 69 ---
+- 69 -
+# v12: 12.您在雇主家擔任看護病人(或照顧小孩)工作有沒有困擾?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有困擾 2605 76.8%
+2 有困擾 785 23.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v12_1: 12.您在雇主家擔任看護病人(或照顧小孩)工作困擾原因(複選)[1]語言隔閡,溝通不易
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2779 82.0%
+1 語言隔閡,溝通不易 611 18.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v12_2: 12.您在雇主家擔任看護病人(或照顧小孩)工作困擾原因(複選)[2]思鄉情緒
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3312 97.7%
+2 思鄉情緒 78 2.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v12_3: 12.您在雇主家擔任看護病人(或照顧小孩)工作困擾原因(複選)[3]工作環境無法適應
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3330 98.2%
+3 工作環境無法適應 60 1.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v12_4: 12.您在雇主家擔任看護病人(或照顧小孩)工作困擾原因(複選)[4]生活環境無法適應
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3362 99.2%
+4 生活環境無法適應 28 0.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v12_5: 12.您在雇主家擔任看護病人(或照顧小孩)工作困擾原因(複選)[5]工作時間太長
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3343 98.6%
+5 工作時間太長 47 1.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 70 ---
+- 70 -
+# v12_6: 12.您在雇主家擔任看護病人(或照顧小孩)工作困擾原因(複選)[6]與雇主或其他家人相處不融洽
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3328 98.2%
+6 與雇主或其他家人相處不融洽 62 1.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v12_7: 12.您在雇主家擔任看護病人(或照顧小孩)工作困擾原因(複選)[7]照顧技術不熟練,無法達到雇主或被看護
+者的要求
+Information [Type= discrete] [Format=numeric] [Range= 0-7] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3306 97.5%
+7 照顧技術不熟練,無法達到雇主或被看護者的要求 84 2.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v12_8: 12.您在雇主家擔任看護病人(或照顧小孩)工作困擾原因(複選)[8]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-8] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3370 99.4%
+8 其他 20 0.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v12_o: 12.您在雇主家擔任看護病人(或照顧小孩)工作困擾原因(複選)[8]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=20 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+不能拿手機 1 5.0%
+前雇主非禮，
+工作不符聘工
+表，女傭必須
+到釣蝦場幫忙
+1 5.0%
+女傭需自備早
+餐，工作不符
+內容(採果)，
+雇主過於計較
+和小氣
+1 5.0%
+工作不符內容
+(顧狗)
+1 5.0%
+工作不符內
+容，在工廠幫
+忙
+1 5.0%
+工作不符聘工
+表女傭需幫忙
+種田
+1 5.0%
+工作超過工作
+範圍，去田裡
+幫忙
+1 5.0%
+病人會動手 1 5.0%
+
+--- PAGE 71 ---
+- 71 -
+# v12_o: 12.您在雇主家擔任看護病人(或照顧小孩)工作困擾原因(複選)[8]其他(請說明)
+Value Label Cases Percentage
+病人會碰他，
+對她非禮
+1 5.0%
+病人無禮會碰
+女傭
+1 5.0%
+病人無禮，會
+碰她
+1 5.0%
+病人的情緒不
+穩
+1 5.0%
+病人非禮 1 5.0%
+老人家不睡覺 1 5.0%
+與合約不一樣
+的工作
+1 5.0%
+薪水不好拿 1 5.0%
+被顧人很固執 1 5.0%
+要寄錢、買東
+西雇主不陪，
+必須等待仲介
+來才能寄錢
+1 5.0%
+阿嬤會捏女傭 1 5.0%
+雇主常忘記 1 5.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13: 13.您知不知道造成您同鄉行蹤不明原因?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 知道 1958 57.8%
+2 不知道 1432 42.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_1: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[1]聘僱期限即將屆滿
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3256 96.0%
+1 聘僱期限即將屆滿 134 4.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_2: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[2]工作環境無法適應
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2538 74.9%
+2 工作環境無法適應 852 25.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_3: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[3]與雇主或其他家人相處不融洽
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+
+--- PAGE 72 ---
+- 72 -
+# v13_3: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[3]與雇主或其他家人相處不融洽
+Value Label Cases Percentage
+0 無 1933 57.0%
+3 與雇主或其他家人相處不融洽 1457 43.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_4: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[4]思鄉情緒
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3344 98.6%
+4 思鄉情緒 46 1.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_5: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[5]仲介公司媒介
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3189 94.1%
+5 仲介公司媒介 201 5.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_6: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[6]生活環境無法適應
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2943 86.8%
+6 生活環境無法適應 447 13.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_7: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[7]希望獲得較高待遇
+Information [Type= discrete] [Format=numeric] [Range= 0-7] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2847 84.0%
+7 希望獲得較高待遇 543 16.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_8: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[8]受其他外勞的慫恿、轉介
+Information [Type= discrete] [Format=numeric] [Range= 0-8] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3062 90.3%
+8 受其他外勞的慫恿、轉介 328 9.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_9: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[9]勞資爭議
+Information [Type= discrete] [Format=numeric] [Range= 0-9] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+
+--- PAGE 73 ---
+- 73 -
+# v13_9: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[9]勞資爭議
+Value Label Cases Percentage
+0 無 2793 82.4%
+9 勞資爭議 597 17.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_10: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[10]仲介服務費太高
+Information [Type= discrete] [Format=numeric] [Range= 0-10] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3292 97.1%
+10 仲介服務費太高 98 2.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_11: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[11]外籍配偶媒介
+Information [Type= discrete] [Format=numeric] [Range= 0-11] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3372 99.5%
+11 外籍配偶媒介 18 0.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_12: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[12]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-12] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3365 99.3%
+12 其他 25 0.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v13_o: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[12]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=25 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+仲介不好 1 4.0%
+仲介壓迫外
+勞，什麼都不
+可以，雇主不
+給薪，薪資給
+仲介
+1 4.0%
+因為換工作時
+沒有照已講好
+的工作
+1 4.0%
+國外銀行貸款
+太高
+1 4.0%
+在台有男朋友 4 16.0%
+在台有男朋
+友，要自由
+1 4.0%
+在台灣有男朋
+友
+1 4.0%
+
+--- PAGE 74 ---
+- 74 -
+# v13_o: 13.您知不知道造成您同鄉行蹤不明原因為?(複選)[12]其他(請說明)
+Value Label Cases Percentage
+在台灣有男朋
+友要自由
+1 4.0%
+工作不符合聘
+工表
+1 4.0%
+有男朋友 2 8.0%
+男朋友 1 4.0%
+與合約的不一
+樣
+1 4.0%
+與合約的工作
+不同
+1 4.0%
+與契約不同的
+工作
+1 4.0%
+被許可出外工
+作
+4 16.0%
+被雇主指派許
+可以外之工作
+1 4.0%
+阿公不規矩 1 4.0%
+雇主不禮貌，
+對病人動手
+1 4.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v14: 14.您每日連續休息時間有沒有超過8小時?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 有 3044 89.8%
+2 沒有 346 10.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v15: 15.您雇主或其他家人有沒有輪流照顧被看護者?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 有 1586 46.8%
+2 沒有 1804 53.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v15_1: 15.您雇主或其他家人每日輪流照顧時間__小時
+Information [Type= continuous] [Format=numeric] [Range= 0-12] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-] [Mean=0.898 /-] [StdDev=1.414 /-]
+# v16: 16.您在例假日(與雇主共同約定之休假日)的時候有沒有放假?
+Information [Type= discrete] [Format=numeric] [Range= 1-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 都有放假 68 2.0%
+2 有時放假 987 29.1%
+3 都不放假 2335 68.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 75 ---
+- 75 -
+# v16_1: 16.您在例假日(與雇主共同約定之休假日)的時候有放假,103年5月放假天數__天
+Information [Type= continuous] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-] [Mean=0.333 /-] [StdDev=0.737 /-]
+# v17: 17.您雇主在例假日(與雇主共同約定之休假日)要求您工作有沒有發給加班費?
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 跳答 68 2.0%
+1 有 3281 96.8%
+2 沒有 41 1.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v18_1: 18.103年5月雇主約定給付您的薪資,總共為新臺幣__元
+Information [Type= continuous] [Format=numeric] [Range= 15000-25671] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-] [Mean=18133.366 /-] [StdDev=893.79 /-]
+# v18_2: 18.103年5月雇主約定給付您的薪資,其中薪水(固定薪水)__元
+Information [Type= continuous] [Format=numeric] [Range= 15000-23000] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-] [Mean=15953.354 /-] [StdDev=625.502 /-]
+# v18_3: 18.103年5月雇主約定給付您的薪資,其中加班費__元
+Information [Type= continuous] [Format=numeric] [Range= 0-6160] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-] [Mean=2043.024 /-] [StdDev=469.339 /-]
+# v18_4: 18.103年5月雇主約定給付您的薪資,其中其他(獎金)__元
+Information [Type= continuous] [Format=numeric] [Range= 0-5000] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-] [Mean=136.987 /-] [StdDev=486.867 /-]
+# v19: 19.雇主每月除依規定給付您薪資及代扣健保費外,是否還有代扣其他費用?
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有 2172 64.1%
+2 有 1218 35.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v19_1: 19.雇主每月除依規定給付您薪資及代扣健保費外,有(複選)[1]代扣國內仲介服務費
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2271 67.0%
+1 代扣國內仲介服務費 1119 33.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v19_2: 19.雇主每月除依規定給付您薪資及代扣健保費外,有(複選)[2]代存儲蓄金
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+
+--- PAGE 76 ---
+- 76 -
+# v19_2: 19.雇主每月除依規定給付您薪資及代扣健保費外,有(複選)[2]代存儲蓄金
+Value Label Cases Percentage
+0 無 3194 94.2%
+2 代存儲蓄金 196 5.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v19_3: 19.雇主每月除依規定給付您薪資及代扣健保費外,有(複選)[3]代扣保證金
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3362 99.2%
+3 代扣保證金 28 0.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v19_4: 19.雇主每月除依規定給付您薪資及代扣健保費外,有(複選)[4]代存返國費用
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3385 99.9%
+4 代存返國費用 5 0.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v19_5: 19.雇主每月除依規定給付您薪資及代扣健保費外,有(複選)[5]代扣國外貸款費用
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2711 80.0%
+5 代扣國外貸款費用 679 20.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v19_6: 19.雇主每月除依規定給付您薪資及代扣健保費外,有(複選)[6]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3379 99.7%
+6 其他 11 0.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v19_o: 19.雇主每月除依規定給付您薪資及代扣健保費外,有(複選)[6]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=11 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+付體檢費 1 9.1%
+代機體檢 1 9.1%
+健康檢查 1 9.1%
+健康檢查、辦
+理證件
+1 9.1%
+健康檢查，辦
+理證件
+1 9.1%
+
+--- PAGE 77 ---
+- 77 -
+# v19_o: 19.雇主每月除依規定給付您薪資及代扣健保費外,有(複選)[6]其他(請說明)
+Value Label Cases Percentage
+稅950元 1 9.1%
+稅NT950 1 9.1%
+稅務每月950 1 9.1%
+稅金 1 9.1%
+辦展延居留證 1 9.1%
+體檢費 1 9.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v20: 20.雇主有沒有保管您的財物或重要文件
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有 1379 40.7%
+2 有 2011 59.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v20_1: 20.雇主有保管您的財物或重要文件(複選)[1]薪資存摺
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3185 94.0%
+1 薪資存摺 205 6.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 78 ---
+- 78 -
+# v20_2: 20.雇主有保管您的財物或重要文件(複選)[2]現金財物
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3363 99.2%
+2 現金財物 27 0.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v20_3: 20.雇主有保管您的財物或重要文件(複選)[3]護照
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 1452 42.8%
+3 護照 1938 57.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v20_4: 20.雇主有保管您的財物或重要文件(複選)[4]居留證
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2577 76.0%
+4 居留證 813 24.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v20_5: 20.雇主有保管您的財物或重要文件(複選)[5]健保卡
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3343 98.6%
+5 健保卡 47 1.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v20_6: 20.雇主有保管您的財物或重要文件(複選)[6]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3370 99.4%
+6 其他 20 0.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v20_o: 20.雇主有保管您的財物或重要文件(複選)[6]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=20 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+個人資料 1 5.0%
+印章 3 15.0%
+國外工作證明
+書
+1 5.0%
+
+--- PAGE 79 ---
+- 79 -
+# v20_o: 20.雇主有保管您的財物或重要文件(複選)[6]其他(請說明)
+Value Label Cases Percentage
+契約 1 5.0%
+工作契約書 2 10.0%
+提款卡 10 50.0%
+薪資表 1 5.0%
+證件 1 5.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v21: 21.您知不知道政府部門有提供外籍勞工申訴或法令諮詢管道
+Information [Type= discrete] [Format=numeric] [Range= 1-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 知道 2901 85.6%
+2 不知道(請續填第25題) 489 14.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v21_1: 21.您知道政府部門有提供外籍勞工申訴或法令諮詢管道(複選)[1]當地外籍勞工關懷服務中心
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2509 74.0%
+1 當地外籍勞工諮詢服務中心 881 26.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v21_2: 21.您知道政府部門有提供外籍勞工申訴或法令諮詢管道(複選)[2]機場外籍勞工諮詢服務站
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2287 67.5%
+2 機場外籍勞工關懷服務站 1103 32.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v21_3: 21.您知道政府部門有提供外籍勞工申訴或法令諮詢管道(複選)[3]1955外籍勞工24小時諮詢保護專線
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 714 21.1%
+3 1955外籍勞工24小時諮詢保護專線 2676 78.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v22: 22.您有沒有使用政府部門所提供外籍勞工申訴或法令諮詢管道
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 跳答 489 14.4%
+1 有 383 11.3%
+2 沒有(請續填第25題) 2518 74.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 80 ---
+- 80 -
+# v22_1: 22.您使用政府部門所提供外籍勞工申訴或法令諮詢管道(複選)[1]當地外籍勞工關懷服務中心
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3363 99.2%
+1 當地外籍勞工諮詢服務中心 27 0.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v22_2: 22.您使用政府部門所提供外籍勞工申訴或法令諮詢管道(複選)[2]機場外籍勞工諮詢服務站
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3328 98.2%
+2 機場外籍勞工關懷服務站 62 1.8%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v22_3: 22.您使用政府部門所提供外籍勞工申訴或法令諮詢管道(複選)[3]1955外籍勞工24小時諮詢保護專線
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3045 89.8%
+3 1955外籍勞工24小時諮詢保護專線 345 10.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v23_1: 23.(限使用過者填答)您到外籍勞工諮詢服務中心,請其提供何種服務?(1)諮詢服務
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3365 99.3%
+1 諮詢服務 25 0.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v23_2: 23.(限使用過者填答)您到外籍勞工諮詢服務中心,請其提供何種服務?(2)勞資爭議服務
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3375 99.6%
+2 勞資爭議服務 15 0.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v23_1_a: 23.(限使用過者填答)您到外籍勞工諮詢服務中心(1)諮詢服務A.服務態度
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 跳答 3365 99.3%
+1 很滿意 16 0.5%
+2 滿意 5 0.1%
+3 普通 4 0.1%
+
+--- PAGE 81 ---
+- 81 -
+# v23_1_a: 23.(限使用過者填答)您到外籍勞工諮詢服務中心(1)諮詢服務A.服務態度
+Value Label Cases Percentage
+4 不滿意 0
+5 很不滿意 0
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v23_2_a: 23.(限使用過者填答)您到外籍勞工諮詢服務中心(2)勞資爭議服務A.服務態度滿意度
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 跳答 3375 99.6%
+1 很滿意 6 0.2%
+2 滿意 6 0.2%
+3 普通 2 0.1%
+4 不滿意 1 0.0%
+5 很不滿意 0
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v23_2_b: 23.(限使用過者填答)您到外籍勞工諮詢服務中心(2)勞資爭議服務B.調解方式滿意度
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 跳答 3375 99.6%
+1 很滿意 4 0.1%
+2 滿意 9 0.3%
+3 普通 1 0.0%
+4 不滿意 1 0.0%
+5 很不滿意 0
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v23_2_c: 23.(限使用過者填答)您到外籍勞工諮詢服務中心(2)勞資爭議服務C.處理進度滿意度
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 跳答 3375 99.6%
+1 很滿意 4 0.1%
+2 滿意 7 0.2%
+3 普通 3 0.1%
+4 不滿意 1 0.0%
+5 很不滿意 0
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v24: 24.這些管道對您來臺工作適應、心理調適及法令諮詢有沒有幫助?
+Information [Type= discrete] [Format=numeric] [Range= 0-99] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 跳答 3007 88.7%
+1 非常有幫助 173 5.1%
+
+--- PAGE 82 ---
+- 82 -
+# v24: 24.這些管道對您來臺工作適應、心理調適及法令諮詢有沒有幫助?
+Value Label Cases Percentage
+2 有幫助 166 4.9%
+3 普通 24 0.7%
+4 不太有幫助 14 0.4%
+5 完全沒有幫助 6 0.2%
+99 不知道/拒答 0
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v25: 25.您和雇主是否曾經產生爭議
+Information [Type= discrete] [Format=numeric] [Range= 1-99] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+1 沒有 3177 93.7%
+2 有 213 6.3%
+99 不知道/拒答 0
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v25_1: 25.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[1]仲介公司
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3272 96.5%
+1 仲介公司 118 3.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v25_2: 25.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[2]1955外籍勞工24小時諮詢保護專線
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3298 97.3%
+2 1955外籍勞工24小時諮詢保護專線 92 2.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v25_3: 25.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[3]當地外籍勞工諮詢服務中心
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3379 99.7%
+3 當地外籍勞工諮詢服務中心 11 0.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v25_4: 25.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[4]機場外籍勞工關懷服務站
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3390 100.0%
+4 機場外籍勞工關懷服務站 0
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+
+--- PAGE 83 ---
+- 83 -
+# v25_5: 25.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[5]貴國駐臺機構
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3388 99.9%
+5 貴國駐台機構 2 0.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v25_6: 25.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[6]宗教團體
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3389 100.0%
+6 宗教團體 1 0.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v25_7: 25.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[7]朋友
+Information [Type= discrete] [Format=numeric] [Range= 0-7] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3381 99.7%
+7 朋友 9 0.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v25_8: 25.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[8]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-8] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3366 99.3%
+8 其他 24 0.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v25_o: 25.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[8]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=24 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+不能申訴 1 4.2%
+女在台的親
+戚，僱主的家
+屬
+1 4.2%
+直接跟雇主商
+量
+1 4.2%
+等跟老闆溝通 1 4.2%
+自己忍 1 4.2%
+自己跟雇主溝
+通
+3 12.5%
+自已跟雇主協
+調
+1 4.2%
+與雇主協調 1 4.2%
+
+--- PAGE 84 ---
+- 84 -
+# v25_o: 25.您和雇主曾經產生爭議,有採取那些管道尋求申訴(複選)[8]其他(請說明)
+Value Label Cases Percentage
+跟僱主溝通 1 4.2%
+跟雇主溝通 2 8.3%
+跟雇主溝通解
+決
+5 20.8%
+跟雇主講通 4 16.7%
+雇主的家屬 1 4.2%
+雇主自已協調 1 4.2%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_1: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[1]直接聘僱聯合服務中心
+Information [Type= discrete] [Format=numeric] [Range= 0-1] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3332 98.3%
+1 直接聘僱聯合服務中心 58 1.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_2: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[2]當地外籍勞工諮詢服務中心
+Information [Type= discrete] [Format=numeric] [Range= 0-2] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2861 84.4%
+2 當地外籍勞工諮詢服務中心 529 15.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_3: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[3]1955外籍勞工24小時諮詢保護專線
+Information [Type= discrete] [Format=numeric] [Range= 0-3] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2697 79.6%
+3 1955外籍勞工24小時諮詢保護專線 693 20.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_4: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[4]機場外籍勞工關懷服務站
+Information [Type= discrete] [Format=numeric] [Range= 0-4] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2555 75.4%
+4 機場外籍勞工關懷服務站 835 24.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_5: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[5]外籍勞工廣播節目
+Information [Type= discrete] [Format=numeric] [Range= 0-5] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2938 86.7%
+5 外籍勞工廣播節目 452 13.3%
+
+--- PAGE 85 ---
+- 85 -
+# v26_5: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[5]外籍勞工廣播節目
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_6: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[6]政府出版宣導手冊
+Information [Type= discrete] [Format=numeric] [Range= 0-6] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2457 72.5%
+6 政府出版宣導手冊 933 27.5%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_7: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[7]電視
+Information [Type= discrete] [Format=numeric] [Range= 0-7] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2597 76.6%
+7 電視 793 23.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_8: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[8]網際網路
+Information [Type= discrete] [Format=numeric] [Range= 0-8] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2024 59.7%
+8 網際網路 1366 40.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_9: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[9]仲介公司
+Information [Type= discrete] [Format=numeric] [Range= 0-9] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 2980 87.9%
+9 仲介公司 410 12.1%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_10: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[10]地方政府辦理法令宣導、休閒及節慶文化
+等相關活動
+Information [Type= discrete] [Format=numeric] [Range= 0-10] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3366 99.3%
+10 地方政府辦理法令宣導、休閒及節慶文化等相關活動 24 0.7%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_11: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[11]雜誌、書報
+Information [Type= discrete] [Format=numeric] [Range= 0-11] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 1665 49.1%
+
+--- PAGE 86 ---
+- 86 -
+# v26_11: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[11]雜誌、書報
+Value Label Cases Percentage
+11 雜誌、書報 1725 50.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_12: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[12]雇主
+Information [Type= discrete] [Format=numeric] [Range= 0-12] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3186 94.0%
+12 雇主 204 6.0%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_13: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[13]朋友
+Information [Type= discrete] [Format=numeric] [Range= 0-13] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 1675 49.4%
+13 朋友 1715 50.6%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_14: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[14]其他
+Information [Type= discrete] [Format=numeric] [Range= 0-14] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3376 99.6%
+14 其他 14 0.4%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_15: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[15]沒有任何管道
+Information [Type= discrete] [Format=numeric] [Range= 0-15] [Missing=*]
+Statistics [NW/ W] [Valid=3390 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+0 無 3293 97.1%
+15 沒有任何管道 97 2.9%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+# v26_o: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[14]其他(請說明)
+Information [Type= discrete] [Format=character] [Missing=*]
+Statistics [NW/ W] [Valid=14 /-] [Invalid=0 /-]
+Value Label Cases Percentage
+印尼政府提供
+之宣導手冊
+1 7.1%
+印尼政府給的
+手冊
+1 7.1%
+印尼辦事處 4 28.6%
+印辦的連絡專
+線
+1 7.1%
+在印訓練時有
+告知
+1 7.1%
+
+--- PAGE 87 ---
+- 87 -
+# v26_o: 26.您在臺工作如何取得相關法令諮詢及生活所需訊息(複選)[14]其他(請說明)
+Value Label Cases Percentage
+宗教機構 1 7.1%
+從印尼受訓練
+時
+1 7.1%
+教會 2 14.3%
+簡訊 2 14.3%
+Warning: these figures indicate the number of cases found in the data file. They cannot be interpreted as summary statistics of the population of interest.
+

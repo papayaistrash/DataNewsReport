@@ -1,0 +1,325 @@
+---
+title: "移工仲介費負擔與失聯現象之結構性分析（103年問卷 × 失聯統計）"
+author: ""
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.width = 11, fig.height = 6, dpi = 150)
+```
+
+## 分析目的
+
+本分析透過兩組資料的交叉呈現，檢驗「**高仲介費負擔是否與高失聯率同時出現在相同的移工群體**」：
+
+1. **仲介費**：103 年勞動部移工關懷調查（事業類 + 家庭類）原始微觀資料
+2. **失聯人數**：移民署失聯移工統計（`失聯率總資料2.csv`，109 年 6 月底，產業 vs 社福移工首次有分類）
+
+若家庭看護工（社福移工）同時具有「仲介費較高」且「失聯人數佔比較大」兩項特徵，則失聯的主因應指向**制度性的費用壓力**，而非勞動部所稱的「移工品質下降」。
+
+> **資料時間說明**：仲介費資料為 103 年（2014），失聯分類資料為 109 年（2020）。兩者年份不同，惟家庭看護工 vs 產業移工的費用差距與失聯差距均為長期結構問題，跨年比較仍具說明力。
+
+---
+
+## 資料說明
+
+| 資料集 | 問卷類型 | 樣本數 | 主要分析欄位 |
+|--------|---------|--------|------------|
+| `data103_1.csv` | 事業類（產業移工） | 4,451（取 ind=1，共 2,648 筆） | `q7_1$`（母國總負擔）、`w` |
+| `data103_2.csv` | 家庭類（看護移工） | 3,390 | `v18_1`（仲介費總額）、`w` |
+| `失聯率總資料2.csv` | 移民署統計 | — | 109年6月底 產業移工 vs 社福移工失聯人數 |
+
+---
+
+```{r libraries}
+library(tidyverse)
+library(scales)
+library(showtext)
+library(Hmisc)
+
+font_add_google("Noto Sans TC", "NotoSans")
+showtext_auto()
+```
+
+```{r load-fee-data}
+base_dir  <- if (basename(getwd()) == "reports") ".." else "."
+data_dir  <- file.path(base_dir, "data")
+d103_dir  <- file.path(data_dir, "103年針對移工問卷")
+
+# ── 事業類（產業移工，ind = 1）────────────────────────────
+d1 <- read_csv(file.path(d103_dir, "data103_1.csv"),
+               locale = locale(encoding = "big5"),
+               show_col_types = FALSE) %>%
+  filter(ind == 1) %>%                          # 排除 ind=2 的混入群體
+  transmute(
+    group    = "產業移工\n（製造業／營造業）",
+    w        = as.numeric(w),
+    fee_home = as.numeric(`q7_1$`),             # 母國總負擔（新台幣換算）
+    fee_tw   = suppressWarnings(as.numeric(`q7_31$`)),
+    fee_total = case_when(
+      !is.na(fee_home) & !is.na(fee_tw) ~ fee_home + fee_tw,
+      !is.na(fee_home)                  ~ fee_home,
+      TRUE                              ~ NA_real_
+    )
+  ) %>%
+  filter(!is.na(fee_total), fee_total > 0, w > 0)
+
+# ── 家庭類（看護移工）────────────────────────────────────
+d2 <- read_csv(file.path(d103_dir, "data103_2.csv"),
+               locale = locale(encoding = "big5"),
+               show_col_types = FALSE) %>%
+  transmute(
+    group    = "家庭看護工",
+    w        = as.numeric(w),
+    fee_total = as.numeric(v18_1)               # 仲介費總額（已合計）
+  ) %>%
+  filter(!is.na(fee_total), fee_total > 0, w > 0)
+
+d_fee <- bind_rows(d1, d2) %>%
+  mutate(group = factor(group, levels = c("家庭看護工",
+                                          "產業移工\n（製造業／營造業）")))
+```
+
+```{r fee-summary}
+# 加權中位數與平均數
+fee_summary <- d_fee %>%
+  group_by(group) %>%
+  summarise(
+    n           = n(),
+    wtd_median  = wtd.quantile(fee_total, weights = w, probs = 0.5, na.rm = TRUE),
+    wtd_mean    = weighted.mean(fee_total, w, na.rm = TRUE),
+    .groups     = "drop"
+  )
+```
+
+```{r load-missing-data}
+# ── 失聯率資料（109年6月底，首次有產業/社福分類）─────────
+missing_raw <- read_csv(
+  file.path(data_dir, "失聯率總資料2.csv"),
+  show_col_types = FALSE,
+  locale = locale(encoding = "UTF-8")
+)
+
+total_col   <- names(missing_raw)[3]
+industry_col <- names(missing_raw)[9]   # <b>產業移工</b>
+social_col   <- names(missing_raw)[14]  # <b>社福移工</b>
+
+row_109 <- missing_raw %>%
+  filter(str_detect(.data[["統計期"]], "^109年 6月底"), 性別 == "合計")
+
+missing_109 <- tibble(
+  group     = factor(
+    c("家庭看護工", "產業移工\n（製造業／營造業）"),
+    levels = c("家庭看護工", "產業移工\n（製造業／營造業）")
+  ),
+  missing_n = c(
+    as.numeric(str_remove_all(row_109[[social_col]][1],   "[^0-9]")),
+    as.numeric(str_remove_all(row_109[[industry_col]][1], "[^0-9]"))
+  )
+)
+```
+
+---
+
+## 核心圖表：仲介費 × 失聯人數並排比較
+
+```{r combined-plot, fig.width=12, fig.height=5.5}
+# ── 顏色設定 ──────────────────────────────────────────────
+col_caregiver <- "#DE4429"
+col_industry  <- "#1F3145"
+group_colors  <- c("家庭看護工" = col_caregiver,
+                   "產業移工\n（製造業／營造業）" = col_industry)
+
+# ── 左圖：加權中位數仲介費 ────────────────────────────────
+p_fee <- ggplot(fee_summary,
+                aes(x = wtd_median, y = group, fill = group)) +
+  geom_col(width = 0.55, show.legend = FALSE) +
+  geom_text(
+    aes(label = paste0(comma(round(wtd_median / 10000, 1)), " 萬元"),
+        color = group),
+    hjust = -0.15, size = 6, fontface = "bold", family = "NotoSans",
+    show.legend = FALSE
+  ) +
+  scale_fill_manual(values  = group_colors) +
+  scale_color_manual(values = group_colors) +
+  scale_x_continuous(
+    labels = function(x) paste0(x / 10000, " 萬"),
+    limits = c(0, max(fee_summary$wtd_median) * 1.35),
+    expand = expansion(mult = c(0, 0))
+  ) +
+  labs(
+    title    = "①  母國仲介費負擔中位數",
+    subtitle = "加權中位數（新台幣），103 年 5 月",
+    x        = "仲介費（元）",
+    y        = NULL
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 18) +
+  theme(
+    plot.title       = element_text(face = "bold", size = 20),
+    plot.subtitle    = element_text(size = 13, color = "#555555"),
+    axis.title.x     = element_text(angle = 0, size = 14),
+    axis.title.y     = element_text(angle = 0, vjust = 0.5, hjust = 1),
+    axis.line        = element_blank(),
+    axis.ticks       = element_blank(),
+    panel.grid.major.x = element_line(color = "#eeeeee", linewidth = 0.5)
+  )
+
+# ── 右圖：失聯人數（109年6月底）──────────────────────────
+p_miss <- ggplot(missing_109,
+                 aes(x = missing_n, y = group, fill = group)) +
+  geom_col(width = 0.55, show.legend = FALSE) +
+  geom_text(
+    aes(label = paste0(comma(missing_n), " 人"),
+        color = group),
+    hjust = -0.12, size = 6, fontface = "bold", family = "NotoSans",
+    show.legend = FALSE
+  ) +
+  scale_fill_manual(values  = group_colors) +
+  scale_color_manual(values = group_colors) +
+  scale_x_continuous(
+    labels = comma,
+    limits = c(0, max(missing_109$missing_n) * 1.4),
+    expand = expansion(mult = c(0, 0))
+  ) +
+  labs(
+    title    = "②  失聯移工累計人數",
+    subtitle = "移民署統計，109 年 6 月底",
+    x        = "失聯人數（人）",
+    y        = NULL
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 18) +
+  theme(
+    plot.title       = element_text(face = "bold", size = 20),
+    plot.subtitle    = element_text(size = 13, color = "#555555"),
+    axis.title.x     = element_text(angle = 0, size = 14),
+    axis.title.y     = element_text(angle = 0, vjust = 0.5, hjust = 1),
+    axis.line        = element_blank(),
+    axis.ticks       = element_blank(),
+    panel.grid.major.x = element_line(color = "#eeeeee", linewidth = 0.5)
+  )
+
+# ── 合併 ──────────────────────────────────────────────────
+library(patchwork)
+p_combined <- p_fee + p_miss +
+  plot_annotation(
+    title   = "家庭看護工：仲介費最高，失聯人數也最多",
+    subtitle = "仲介費資料：103 年（2014）事業類 + 家庭類問卷；失聯資料：109 年（2020）移民署統計（最早有職類分類之年份）",
+    caption  = "資料來源：勞動部移工關懷調查（103年）；內政部移民署失聯移工統計；以抽樣權重 w 計算加權中位數",
+    theme = theme(
+      plot.title    = element_text(family = "NotoSans", face = "bold", size = 25),
+      plot.subtitle = element_text(family = "NotoSans", size = 13, color = "#555555",
+                                   margin = margin(b = 10)),
+      plot.caption  = element_text(family = "NotoSans", color = "#aaaaaa", size = 12)
+    )
+  )
+
+p_combined
+```
+
+```{r save}
+plots_dir <- file.path(base_dir, "plots")
+dir.create(plots_dir, showWarnings = FALSE)
+ggsave(file.path(plots_dir, "103_fee_by_occupation.png"),
+       plot = p_combined, width = 12, height = 5.5, dpi = 150)
+```
+
+---
+
+## 輔助：仲介費分布（費用區間結構）
+
+```{r fee-distribution, fig.width=10, fig.height=5}
+# 依費用區間統計加權比例（與 README 堆疊長條圖規範一致）
+breaks <- c(0, 30000, 50000, 70000, 90000, Inf)
+labels <- c("未滿 3 萬", "3–5 萬", "5–7 萬", "7–9 萬", "9 萬以上")
+
+d_dist <- d_fee %>%
+  mutate(fee_band = cut(fee_total, breaks = breaks, labels = labels,
+                        right = FALSE, include.lowest = TRUE)) %>%
+  filter(!is.na(fee_band)) %>%
+  group_by(group, fee_band) %>%
+  summarise(wt = sum(w, na.rm = TRUE), .groups = "drop") %>%
+  group_by(group) %>%
+  mutate(pct = wt / sum(wt),
+         label_text = if_else(pct < 0.06, "", percent(pct, 0.1)),
+         text_color = if_else(fee_band %in% c("未滿 3 萬", "3–5 萬"), "black", "white"))
+
+p_dist <- ggplot(d_dist, aes(x = group, y = pct, fill = fee_band)) +
+  geom_col(position = "fill", width = 0.55) +
+  geom_text(aes(label = label_text, color = text_color),
+            position = position_stack(vjust = 0.5),
+            size = 5.5, fontface = "bold", family = "NotoSans") +
+  scale_color_identity() +
+  scale_fill_brewer(palette = "YlOrRd") +
+  scale_y_continuous(labels = percent_format()) +
+  labs(
+    title   = "家庭看護工的高費用區間比例明顯較高",
+    subtitle = "母國仲介費負擔區間結構；加權比例",
+    x       = NULL,
+    y       = "結構占比",
+    fill    = "費用區間",
+    caption = "資料來源：勞動部移工關懷調查，103 年 5 月"
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 20) +
+  theme(
+    plot.title       = element_text(face = "bold", size = 25),
+    plot.subtitle    = element_text(size = 14, color = "#555555", margin = margin(b = 10)),
+    plot.caption     = element_text(color = "#aaaaaa"),
+    legend.position  = "right",
+    axis.title.y     = element_text(angle = 0, vjust = 0.5, hjust = 1),
+    axis.line        = element_blank(),
+    axis.ticks       = element_blank()
+  )
+
+p_dist
+```
+
+---
+
+## 數字摘要
+
+```{r summary-table}
+left_join(
+  fee_summary %>% select(group, wtd_median, wtd_mean),
+  missing_109,
+  by = "group"
+) %>%
+  mutate(
+    wtd_median = comma(round(wtd_median)),
+    wtd_mean   = comma(round(wtd_mean)),
+    missing_n  = comma(missing_n)
+  ) %>%
+  rename(職業類別 = group,
+         仲介費加權中位數 = wtd_median,
+         仲介費加權平均數 = wtd_mean,
+         失聯人數_109年6月 = missing_n) %>%
+  knitr::kable(caption = "各職業類別仲介費 × 失聯人數摘要")
+```
+
+---
+
+## 結論
+
+```{r conclusion, results="asis"}
+fee_care <- fee_summary %>% filter(str_detect(group, "看護")) %>% pull(wtd_median)
+fee_ind  <- fee_summary %>% filter(str_detect(group, "產業")) %>% pull(wtd_median)
+miss_care <- missing_109 %>% filter(str_detect(group, "看護")) %>% pull(missing_n)
+miss_ind  <- missing_109 %>% filter(str_detect(group, "產業")) %>% pull(missing_n)
+
+cat(glue::glue(
+  "- **仲介費**：家庭看護工加權中位數為 **{comma(round(fee_care))} 元**，",
+  "產業移工為 **{comma(round(fee_ind))} 元**，",
+  "前者為後者的 **{round(fee_care/fee_ind, 1)} 倍**。\n",
+  "- **失聯人數**（109年6月底）：社福移工（含看護工）累計 **{comma(miss_care)} 人**，",
+  "產業移工 **{comma(miss_ind)} 人**；",
+  "社福移工失聯人數為產業移工的 **{round(miss_care/miss_ind, 1)} 倍**。\n",
+  "- **結論**：仲介費負擔最重的群體（家庭看護工），正是失聯人數最多的群體。",
+  "此一結構性共存關係，**不支持**勞動部「移工品質下降導致失聯」的說法。\n"
+))
+```

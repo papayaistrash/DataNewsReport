@@ -1,0 +1,262 @@
+﻿---
+title: "?啗??豢?閬死??憭梯蝘餃極?航狐嚗?
+subtitle: "??餅?啗情嚗?閬?瑽扳??
+author: "撠??勗???"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: journal
+    highlight: tango
+    code_folding: hide
+    fig_width: 10
+    fig_height: 6
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.width = 10, fig.height = 6, dpi = 150,
+                      fig.path = "plots/")
+```
+
+## ??嚗??曉仃?舐宏撌亦??祕?Ｚ?
+
+瘥隢??憭???蝷暹?憭抒?行絲銝剔蜇?筑?曇迂憭?踹鞊～??????刻?蝘餅?蝵脩??祕?豢?嚗???曉仃?舐鞊∪撖行????啁??憚撱???撠?撠??雁摨衣??豢?閬死??閫???仃?舐宏撌亦弦蝡隤堆?隞隞暻潸?頝???????
+```{r load-packages}
+library(tidyverse)
+library(scales)
+library(patchwork)
+library(ggplot2)
+library(showtext)
+
+# 閮剖?銝剜?摮?
+font_add("TC", "msjh.ttc") # 雿輻敺株?甇??擃?Mac雿輻??寧 "STHeiti Light.ttc"
+showtext_auto()
+
+# ?勗??◢?潸蟡?reporter_orange <- "#DE4429"
+reporter_dark <- "#1F3145"
+reporter_blue <- "#385E78"
+reporter_yellow <- "#E8A343"
+reporter_grey <- "#8998A1"
+
+# 摰儔???ggplot ?啗?銝駁?憸冽
+theme_news <- function() {
+  theme_minimal(base_family = "TC") +
+    theme(
+      text = element_text(family = "TC"),
+      plot.title = element_text(size = 20, face = "bold"),
+      plot.subtitle = element_text(size = 12),
+      axis.title.x = element_blank(),
+      axis.title.y = element_text(size = 12),
+      axis.text.x = element_text(size = 10, face = "bold", angle = 25, hjust = 1),
+      axis.text.y = element_text(size = 11),
+      legend.title = element_blank(),
+      legend.position = "bottom",
+      legend.text = element_text(size = 11),
+      panel.grid.minor = element_blank(),
+      plot.margin = margin(20, 20, 20, 20)
+    )
+}
+```
+
+---
+
+## 1. ?湧?嚗??曇情??撖西?璅?
+憭批振?質牧蝘餃極??敺??雿弦蝡?銝剖?芾ㄐ嚗?＊蝷綽?2022撟渡敺?靘?銝瘜Ｘ憓???*摰嗅滬?風撌仿??嗥?撠犖?貉?撠?雿?仃?舐????擃鋆賡平**??
+```{r chart1-trend}
+# 蝘餅?蝵脫風撟游仃?舐宏撌亦絞閮?(2019-2025)
+runaway_rate <- tibble(
+  撟游? = rep(2019:2025, each = 2),
+  ?Ｘ平??= rep(c("鋆賡平", "摰嗅滬?風撌?), 7),
+  憭梯?pct = c(
+    5.8, 6.2,   # 2019
+    6.3, 6.8,   # 2020
+    6.5, 7.2,   # 2021
+    9.5, 10.2,  # 2022
+    10.5, 11.5, # 2023
+    10.8, 11.8, # 2024
+    10.5, 12.2  # 2025
+  )
+)
+
+ggplot(runaway_rate, aes(x = 撟游?, y = 憭梯?pct, color = ?Ｘ平??) +
+  geom_line(linewidth = 1.5) +
+  geom_point(size = 3.5) +
+  geom_text(data = runaway_rate %>% filter(撟游? == 2025),
+            aes(label = paste0(憭梯?pct, "%")),
+            hjust = -0.3, fontface = "bold", size = 4.5, show.legend = FALSE) +
+  scale_color_manual(values = c("鋆賡平" = reporter_dark, "摰嗅滬?風撌? = reporter_orange)) +
+  scale_x_continuous(breaks = 2019:2025) +
+  scale_y_continuous(labels = function(x) paste0(x, "%"), limits = c(4, 14)) +
+  labs(title = "??銝?????箸?靽???霅瑕極嚗仃?舐???擃鋆賡平",
+       subtitle = "2019??025 撟渡敞閮仃?舐?頞典瘥?",
+       x = "撟港遢 (撟游?)", y = "蝝航?憭梯??,
+       caption = "鞈?靘?嚗???宏瘞蔡蝯梯?嚗仃?舐? = 蝝航?憭梯鈭箸 繩嚗?????+ 蝝航?憭梯嚗?) +
+  coord_cartesian(xlim = c(2019, 2025.5)) +
+  theme_news()
+```
+
+> **閮?撖?** ??憪?擃鋆賡平??蝺??內鈭振摨剔?霅瑕極銝????箸??極??隡?靽??摨行批憓?
+---
+
+## 2. ?詨?頛芸?嚗狐?摰寞?憭梯嚗?
+憒????⊿??嚗????璆剖?圾 2025 撟渡??豢?嚗??潛憭梯???扔蝡舐???撌桃??
+```{r chart2-nationality}
+# 2025撟游? ??蝐仃?臭犖?貉??刻鈭箸?其摯
+nat_runaway <- tibble(
+  ?? = c("頞?", "頞?", "?啣側", "?啣側", "?脣?鞈?, "?脣?鞈?, "瘜啣?", "瘜啣?"),
+  ?Ｘ平??= rep(c("鋆賡平", "摰嗅滬?風撌?), 4),
+  憭梯??= c(
+    22.3, 12.7, # 頞?
+    10.0, 10.8, # ?啣側
+     1.5,  2.2, # ?脣?鞈?     2.6,  3.8  # 瘜啣?
+  )
+) %>%
+  mutate(?? = factor(??, levels = c("頞?", "?啣側", "?脣?鞈?, "瘜啣?")))
+
+ggplot(nat_runaway, aes(x = ??, y = 憭梯?? fill = ?Ｘ平??) +
+  geom_col(position = "dodge", width = 0.65) +
+  geom_text(aes(label = paste0(憭梯?? "%")),
+            position = position_dodge(0.65), vjust = -0.5,
+            fontface = "bold", size = 4) +
+  scale_fill_manual(values = c("鋆賡平" = reporter_dark, "摰嗅滬?風撌? = reporter_orange)) +
+  scale_y_continuous(labels = function(x) paste0(x, "%"), expand = expansion(mult = c(0, 0.15))) +
+  labs(title = "??鈭???蝘餃極?仃?舐?憯批?擐?,
+       subtitle = "2025 撟游???蝐?? ?Ｘ平?亙仃?舐?撠?",
+       x = "??", y = "蝝航?憭梯??,
+       caption = "鞈?靘?嚗宏瘞蔡 2025 撟游?蝯梯?嚗??其摯??) +
+  theme_news()
+```
+
+> **閮?撖?** ?∟??航ˊ?平??風撌伐?頞?蝐宏撌亦?憭梯??啣虜撽犖??撖隤踵嚗?靘???圈??撟?15-20 ?砍???憿輔隞祥???舐??
+---
+
+## 3. 敺株?鈭文???嚗振摨剔?霅瑕極?仃?航憚撱?
+?脖?甇乩蝙?典?? 113 撟湧?撠?銝餌??宏撌亦恣???隤踵??????*摰嗅滬??*嚗??暻潭見鈭箏?孵噩?宏撌交??航憭梯嚗?
+```{r chart3-micro-profile}
+# 霈??113撟游振摨剝隤踵鞈?
+data113 <- read.csv("113撟渡宏撌?摰嗅滬??data113.csv")
+
+df_micro <- data113 %>%
+  mutate(
+    ?? = factor(q8d, levels = 1:4, labels = c("?啣側", "?脣?鞈?, "瘜啣?", "頞?")),
+    撟湧翩蝯?= factor(q8b, levels = 1:4, labels = c("?芣遛25甇?, "25-34甇?, "35-44甇?, "45甇脖誑銝?)),
+    ?暸? = factor(q5, levels = 1:2, labels = c("??, "??)),
+    甈? = as.numeric(w)
+  ) %>%
+  filter(!is.na(??), !is.na(撟湧翩蝯?, !is.na(?暸?))
+
+runaway_micro <- df_micro %>%
+  count(??, 撟湧翩蝯? ?暸?, wt = 甈?) %>%
+  group_by(??, 撟湧翩蝯? %>%
+  mutate(pct = n / sum(n)) %>%
+  filter(?暸? == "??)
+
+ggplot(runaway_micro, aes(x = 撟湧翩蝯? y = pct, color = ??, group = ??)) +
+  geom_line(linewidth = 1.5) +
+  geom_point(size = 4) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            vjust = -1.2, size = 4, show.legend = FALSE, fontface = "bold") +
+  scale_color_manual(values = c("?啣側" = reporter_yellow, "?脣?鞈? = reporter_blue, 
+                                "瘜啣?" = reporter_grey, "頞?" = reporter_orange)) +
+  scale_y_continuous(labels = percent) +
+  labs(title = "??銝?撟渲??????撠潛?蝘餃極嚗?憸券頞?",
+       subtitle = "113撟游振摨剝隤踵嚗?蝐?? 撟湧翩蝯?????(?曄??頩支???",
+       x = "撟湧翩??", y = "???潛?瘥?",
+       caption = "鞈?靘?嚗??113撟渡宏撌亦恣???隤踵 (摰嗅滬?Ｗ???Q5)") +
+  theme_news()
+```
+
+> **閮?撖?** 鈭文????剝鈭銝???瑞??曉祕嚗?撟渲?嚗陘?嗆皛?25 甇莎??????啣側?風撌伐?????擃?賢??箏僑頛黎擃?閮?皞誨??????撣???嚗????潔???敺????漲頛???
+---
+
+## 4. ?????蜓?潔葉????vs. 畾?撖?
+?園?銝餉◤???宏撌亦隞暻澆仃?胯?嚗???獐????
+
+```{r chart4-reasons}
+# ?? Q5a嚗?銝餉??箇?憭?摰嗅滬?風撌亥?頩支??仃?臬???(銴)
+q5a_vars   <- paste0("q5a_", 1:9)
+q5a_labels <- c("??鈭箸?踴?隞?, "撣??脣?頛?敺?", "????喳?撅遛", 
+                "鞈剖?甈?瘜?, "?貉?銝?瘣?, "撌乩???瘣餌憓瘜??,
+                "隞脖???鞎餃云擃?, "???剛降", "?嗡?")
+
+df_q5 <- data113 %>% filter(q5 == 2) %>% mutate(甈? = as.numeric(w))
+total_w <- sum(df_q5$甈?, na.rm = TRUE)
+
+q5a_df <- df_q5 %>%
+  select(all_of(q5a_vars), 甈?) %>%
+  pivot_longer(cols = all_of(q5a_vars), names_to = "item", values_to = "val") %>%
+  filter(val == 1) %>%
+  group_by(item) %>%
+  summarise(n_w = sum(甈?, na.rm = TRUE), .groups = "drop") %>%
+  mutate(
+    label = q5a_labels[match(item, q5a_vars)],
+    pct   = n_w / total_w
+  ) %>%
+  filter(label %in% c("??鈭箸?踴?隞?, "撌乩???瘣餌憓瘜??, "隞脖???鞎餃云擃?)) %>%
+  arrange(desc(pct)) %>%
+  mutate(label = fct_reorder(label, pct))
+
+ggplot(q5a_df, aes(x = pct, y = label)) +
+  geom_col(aes(fill = pct), width = 0.7, show.legend = FALSE) +
+  geom_text(aes(label = percent(pct, 0.1)), hjust = -0.2, fontface = "bold", size = 4.5) +
+  scale_fill_gradient(low = reporter_yellow, high = reporter_orange) +
+  scale_x_continuous(labels = percent, expand = expansion(mult = c(0, 0.2))) +
+  labs(title = "????銝餉??箇宏撌亙仃?荔?憭??鈭箸?踴?,
+       subtitle = "??甇瑕仃?舐??蜓?暸銋蜓閬???(?航???",
+       x = "?蜓?暸瘥?", y = NULL,
+       caption = "鞈?靘?嚗??113撟渡宏撌亦恣???隤踵 (摰嗅滬??Q5a)") +
+  theme_news() +
+  theme(panel.grid.major.y = element_blank())
+```
+
+---
+
+## 5. ?箔?暻潔???頝???璇辣??瑽扯撌?
+?蜓???敺?臬??刻???憒?鈭箸?選?嚗?摰Ｚ??豢????舀??瑞??典?嚗振摨剔?霅瑕極?瘞湧?雿?Ｘ平蝘餃極嚗?撟曆?瘝?隡?嚗?亙??隞??孵仃?舐???撌桐???
+```{r chart5-conditions}
+# ??璇辣瘥? (113撟渲??? + 2025憭梯??conditions <- tibble(
+  ? = rep(c("蝬虜?扳??歿n(?砍?)", "瘥??曉?\n(憭拇)", "蝮質鞈n(?砍?)", "蝝航?憭梯?n(%)"), each = 2),
+  憿 = rep(c("?Ｘ平蝘餃極", "摰嗅滬?風撌?), 4),
+  ?詨?= c(
+    2.9, 2.1,   # 蝬虜?扳???    11, 1.5,    # 瘥??曉?
+    3.3, 2.4,   # 蝮質鞈?    10.5, 12.2  # 蝝航?憭梯??  )
+) %>%
+  mutate(
+    ? = factor(?, levels = c("蝬虜?扳??歿n(?砍?)", "蝮質鞈n(?砍?)", "瘥??曉?\n(憭拇)", "蝝航?憭梯?n(%)")),
+    憿 = factor(憿, levels = c("?Ｘ平蝘餃極", "摰嗅滬?風撌?))
+  )
+
+# 閮??詨??潛璆剔宏撌亦?瘥? (?Ｘ平蝘餃極 = 1)
+conditions_norm <- conditions %>%
+  group_by(?) %>%
+  mutate(
+    ?箸? = ?詨墩憿 == "?Ｘ平蝘餃極"],
+    ?詨?瘥? = ?詨?/ ?箸?,
+    璅惜 = case_when(
+      str_detect(?, "憭梯??) ~ paste0(?詨? "%"),
+      str_detect(?, "憭拇") ~ paste0(?詨? "憭?),
+      TRUE ~ paste0(?詨? "??)
+    )
+  ) %>%
+  ungroup()
+
+ggplot(conditions_norm, aes(x = ?, y = ?詨?瘥?, fill = 憿)) +
+  geom_col(position = position_dodge(width = 0.7), width = 0.6) +
+  geom_text(aes(label = 璅惜),
+            position = position_dodge(width = 0.7), vjust = -0.5,
+            fontface = "bold", size = 4.2) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "#999999") +
+  scale_fill_manual(values = c("?Ｘ平蝘餃極" = reporter_dark, "摰嗅滬?風撌? = reporter_orange)) +
+  scale_y_continuous(labels = percent_format(), limits = c(0, 1.3), expand = expansion(mult = c(0, 0.1))) +
+  labs(title = "??鈭??箇宏撌伐??賡?憭找???敺?頞榆????擃?,
+       subtitle = "隞亦璆剔宏撌亦?箸? (100%) 銋???隞嗉?憭梯??瘥?,
+       x = NULL, y = "?詨??潛璆剔宏撌乩?瘥?",
+       caption = "鞈?靘?嚗??113撟渡宏撌亥矽?乓宏瘞蔡蝯梯?") +
+  theme_news() +
+  theme(axis.text.x = element_text(face = "bold", size = 12))
+```
+
+> **撠?蝮賜?嚗?* 
+餈??銝餉??箇宏撌仿??臬??箝?隞犖?急???嗉????4% ??銝餉??箸?輔隞祥憭芷?????憿臭?撌典之???亥撌殷??蜓???敺?臬??刻????餅???蝘餃極????憿????嚗??扔雿??曉?憭拇嚗誑??雿?箸撌亥??鞈?*?仃?胯蒂?蝝??犖?噸?嚗?嗅漲?批???隞嗉撌桐?嚗宏撌乓?頝?銵?蝯??扳甇?*

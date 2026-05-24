@@ -1,0 +1,343 @@
+---
+title: "行蹤不明原因：移工自述（103年）vs 雇主認知（113年）"
+author: ""
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.width = 11, fig.height = 7, dpi = 150)
+```
+
+## 分析目的
+
+比較**同一現象**（家庭看護工行蹤不明）在兩個視角下的歸因差異：
+
+- **移工自述（103年）**：移工問卷 v13，「您知不知道造成您同鄉行蹤不明的原因？」（家庭類 N=1,958 知道原因者）
+- **雇主認知（113年）**：家庭面問卷 q5a，「您認為看護工失聯/逃跑的原因為何？」（N=146 曾有失聯者）
+
+若兩者對同一原因的比例差距愈大，代表雙方對失聯成因的認知存在明顯落差。
+
+---
+
+## 資料說明
+
+| 題目 | 資料集 | 受訪者 | 分母 |
+|------|--------|--------|------|
+| `v13_1`–`v13_12` | `data103_2.csv`（家庭類） | 移工本人 | 知道原因者（v13==1），N≈1,958 |
+| `q5a_1`–`q5a_9` | `data113.csv`（家庭面） | 雇主 | 曾發生失聯者（q5==2），N=146 |
+
+> **注意**：103 年編碼方式為「選項編號 / 0」（有選=選項號碼，未選=0），113 年為「1/0」二元碼。
+
+---
+
+```{r libraries}
+library(tidyverse)
+library(scales)
+library(showtext)
+library(Hmisc)
+library(ggtext)
+
+font_add_google("Noto Sans TC", "NotoSans")
+showtext_auto()
+```
+
+```{r load-103}
+base_dir <- if (basename(getwd()) == "reports") ".." else "."
+data_dir <- file.path(base_dir, "data")
+
+# ── 103年：家庭類移工問卷 ─────────────────────────────────
+d103 <- read_csv(
+  file.path(data_dir, "103年針對移工問卷/data103_2.csv"),
+  locale = locale(encoding = "big5"),
+  show_col_types = FALSE
+) %>%
+  filter(v13 == 1) %>%                       # 知道原因者
+  mutate(w = as.numeric(w))
+
+total_w103 <- sum(d103$w, na.rm = TRUE)
+
+# 各原因：value != 0 表示勾選
+reasons103 <- tribble(
+  ~col,      ~label,
+  "v13_1",   "聘僱期限\n即將屆滿",
+  "v13_2",   "工作環境\n無法適應",
+  "v13_3",   "與雇主/家人\n相處不融洽",
+  "v13_4",   "思鄉情緒",
+  "v13_5",   "仲介公司\n從中媒介",
+  "v13_6",   "生活環境\n無法適應",
+  "v13_7",   "希望獲得\n較高待遇",
+  "v13_8",   "受他人\n慫恿/轉介",
+  "v13_9",   "勞資爭議",
+  "v13_10",  "仲介服務費\n太高",
+  "v13_11",  "外籍配偶\n媒介"
+) %>%
+  mutate(
+    pct = map_dbl(col, function(c) {
+      vals <- as.numeric(d103[[c]])
+      wt   <- d103$w
+      weighted.mean(vals != 0, wt, na.rm = TRUE)
+    }),
+    perspective = "移工自述（103年）"
+  )
+```
+
+```{r load-113}
+# ── 113年：家庭面雇主問卷 ─────────────────────────────────
+d113 <- read_csv(
+  file.path(data_dir, "113年移工/家庭面/data113.csv"),
+  show_col_types = FALSE
+) %>%
+  filter(q5 == 2) %>%                        # 曾有失聯者
+  mutate(w = as.numeric(w))
+
+total_w113 <- sum(d113$w, na.rm = TRUE)
+
+reasons113 <- tribble(
+  ~col,      ~label,
+  "q5a_1",   "受他人\n慫恿/轉介",
+  "q5a_2",   "工作/生活環境\n無法適應",
+  "q5a_3",   "工作條件不佳\n（薪資偏低）",
+  "q5a_4",   "非法打工\n可賺更多",
+  "q5a_5",   "個人\n自由意志",
+  "q5a_6",   "工作時間\n無法負荷",
+  "q5a_7",   "仲介服務費\n太高",
+  "q5a_9",   "其他"
+) %>%
+  mutate(
+    pct = map_dbl(col, function(c) {
+      vals <- as.integer(d113[[c]] == 1)
+      wt   <- d113$w
+      weighted.mean(vals, wt, na.rm = TRUE)
+    }),
+    perspective = "雇主認知（113年）"
+  )
+```
+
+```{r build-dumbbell}
+# ── 對應分類（只保留兩份問卷都有的可比類別）─────────────
+# 以 113年雇主問卷的類別為主軸，對應 103年最相近的選項
+
+dumbbell <- tribble(
+  ~category,              ~col103,    ~col113,
+  "受他人慫恿/轉介",      "v13_8",    "q5a_1",
+  "工作/生活環境不適應",  "v13_2",    "q5a_2",   # 103年用工作環境
+  "希望較高待遇/薪資低",  "v13_7",    "q5a_3",
+  "仲介費太高",           "v13_10",   "q5a_7",
+  "工時無法負荷",         NA_character_, "q5a_6",
+  "與雇主/家人不融洽",    "v13_3",    NA_character_,
+  "勞資爭議",             "v13_9",    NA_character_
+)
+
+get_pct103 <- function(col) {
+  if (is.na(col)) return(NA_real_)
+  vals <- as.numeric(d103[[col]])
+  weighted.mean(vals != 0, d103$w, na.rm = TRUE)
+}
+
+get_pct113 <- function(col) {
+  if (is.na(col)) return(NA_real_)
+  vals <- as.integer(d113[[col]] == 1)
+  weighted.mean(vals, d113$w, na.rm = TRUE)
+}
+
+db <- dumbbell %>%
+  mutate(
+    pct103 = map_dbl(col103, get_pct103),
+    pct113 = map_dbl(col113, get_pct113),
+    # 排序：以兩者平均值排
+    avg = rowMeans(cbind(pct103, pct113), na.rm = TRUE),
+    category = fct_reorder(category, avg)
+  )
+```
+
+---
+
+## 圖1：啞鈴圖——同一原因，兩個視角的比例差距
+
+```{r dumbbell-plot, fig.width=11, fig.height=6.5}
+col_worker   <- "#1F3145"  # 深藍：移工
+col_employer <- "#DE4429"  # 橘紅：雇主
+
+# 僅保留兩者皆有數值的類別（有 NA 的另外標注）
+db_both <- db %>% filter(!is.na(pct103) & !is.na(pct113))
+db_only103 <- db %>% filter(!is.na(pct103) & is.na(pct113))
+db_only113 <- db %>% filter(is.na(pct103) & !is.na(pct113))
+
+p_db <- ggplot(db_both, aes(y = category)) +
+  # 連接線
+  geom_segment(aes(x = pct103, xend = pct113, yend = category),
+               color = "#cccccc", linewidth = 1.5) +
+  # 移工點（深藍）
+  geom_point(aes(x = pct103), color = col_worker,  size = 6) +
+  # 雇主點（橘紅）
+  geom_point(aes(x = pct113), color = col_employer, size = 6) +
+  # 移工數值標注
+  geom_text(aes(x = pct103,
+                label = percent(pct103, 0.1),
+                hjust = if_else(pct103 > pct113, -0.35, 1.35)),
+            color = col_worker, size = 5.5, fontface = "bold",
+            family = "NotoSans") +
+  # 雇主數值標注
+  geom_text(aes(x = pct113,
+                label = percent(pct113, 0.1),
+                hjust = if_else(pct113 > pct103, -0.35, 1.35)),
+            color = col_employer, size = 5.5, fontface = "bold",
+            family = "NotoSans") +
+  # 僅103年有的類別（灰色附注）
+  { if (nrow(db_only103) > 0)
+      list(
+        geom_point(data = db_only103, aes(x = pct103),
+                   color = col_worker, size = 6),
+        geom_text(data = db_only103,
+                  aes(x = pct103, label = percent(pct103, 0.1)),
+                  hjust = -0.35, color = col_worker, size = 5.5,
+                  fontface = "bold", family = "NotoSans"),
+        annotate("text", x = max(c(db_both$pct103, db_both$pct113), na.rm=TRUE)*0.6,
+                 y = db_only103$category,
+                 label = "（113年問卷無對應選項）",
+                 hjust = 0, size = 4.5, color = "#aaaaaa", family = "NotoSans")
+      ) } +
+  scale_x_continuous(
+    labels = percent_format(accuracy = 1),
+    limits = c(0, max(c(db_both$pct103, db_both$pct113), na.rm=TRUE) * 1.45),
+    expand = expansion(mult = c(0.02, 0))
+  ) +
+  labs(
+    title    = "「被人慫恿」：雇主最常歸因，移工自述卻非首位",
+    subtitle = paste0(
+      "<span style='color:", col_worker, "'>● 移工自述（103年，N≈1,958）</span>　",
+      "<span style='color:", col_employer, "'>● 雇主認知（113年，N=146）</span>　",
+      "（加權比例；分母為各自有效回答人數）"
+    ),
+    x        = "勾選比例",
+    y        = NULL,
+    caption  = "資料來源：勞動部移工關懷調查（103年家庭類）；移工管理及運用調查（113年家庭面）；以抽樣權重計算"
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 20) +
+  theme(
+    plot.title         = element_text(face = "bold", size = 22),
+    plot.subtitle      = element_markdown(size = 13, color = "#555555",
+                                          margin = margin(b = 12)),
+    plot.caption       = element_text(color = "#aaaaaa", size = 11),
+    axis.title.x       = element_text(angle = 0, size = 14),
+    axis.title.y       = element_text(angle = 0, vjust = 0.5, hjust = 1),
+    axis.line          = element_blank(),
+    axis.ticks         = element_blank(),
+    panel.grid.major.x = element_line(color = "#eeeeee", linewidth = 0.5)
+  )
+
+p_db
+```
+
+---
+
+## 圖2：各視角完整原因排名（橫向長條）
+
+```{r full-bar, fig.width=12, fig.height=7}
+d_full <- bind_rows(reasons103, reasons113) %>%
+  mutate(
+    perspective = factor(perspective,
+                         levels = c("移工自述（103年）", "雇主認知（113年）")),
+    label = str_replace_all(label, "\n", " ")
+  )
+
+# 按各視角內的比例排序（facet 內各自排序需用 tidytext::reorder_within）
+library(tidytext)
+d_full <- d_full %>%
+  mutate(label = reorder_within(label, pct, perspective))
+
+pal <- c("移工自述（103年）" = col_worker, "雇主認知（113年）" = col_employer)
+
+p_full <- ggplot(d_full, aes(x = pct, y = label, fill = perspective)) +
+  geom_col(width = 0.65, show.legend = FALSE) +
+  geom_text(aes(label = percent(pct, 0.1)),
+            hjust = -0.15, size = 5.5, fontface = "bold",
+            family = "NotoSans", color = "gray30") +
+  scale_y_reordered() +
+  scale_x_continuous(labels = percent_format(accuracy = 1),
+                     expand = expansion(mult = c(0, 0.18))) +
+  scale_fill_manual(values = pal) +
+  facet_wrap(~perspective, scales = "free_y", ncol = 2) +
+  labs(
+    title   = "移工與雇主對「失聯原因」的完整排名",
+    subtitle = "加權勾選比例；各自依比例由高至低排列",
+    x       = "勾選比例",
+    y       = NULL,
+    caption = "資料來源：同上"
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 18) +
+  theme(
+    plot.title         = element_text(face = "bold", size = 22),
+    plot.subtitle      = element_text(size = 13, color = "#555555",
+                                      margin = margin(b = 12)),
+    plot.caption       = element_text(color = "#aaaaaa", size = 11),
+    axis.title.x       = element_text(angle = 0, size = 14),
+    axis.title.y       = element_text(angle = 0, vjust = 0.5, hjust = 1),
+    axis.line          = element_blank(),
+    axis.ticks         = element_blank(),
+    panel.grid.major.x = element_line(color = "#eeeeee", linewidth = 0.5),
+    strip.text         = element_text(face = "bold", size = 16),
+    strip.background   = element_blank()
+  )
+
+p_full
+```
+
+---
+
+## 數字摘要
+
+```{r table}
+db %>%
+  mutate(
+    pct103 = percent(pct103, 0.1),
+    pct113 = percent(pct113, 0.1)
+  ) %>%
+  select(category, pct103, pct113) %>%
+  rename(原因類別 = category,
+         `移工自述（103年）` = pct103,
+         `雇主認知（113年）` = pct113) %>%
+  knitr::kable(caption = "可對應類別的加權勾選比例比較")
+```
+
+---
+
+## 存檔
+
+```{r save}
+plots_dir <- file.path(base_dir, "plots")
+dir.create(plots_dir, showWarnings = FALSE)
+
+ggsave(file.path(plots_dir, "runaway_reasons_dumbbell.png"),
+       plot = p_db,   width = 11, height = 6.5, dpi = 150)
+ggsave(file.path(plots_dir, "runaway_reasons_full_bar.png"),
+       plot = p_full, width = 12, height = 7,   dpi = 150)
+```
+
+---
+
+## 結論
+
+```{r conclusion, results="asis"}
+pct_enc103 <- db %>% filter(str_detect(category, "慫恿")) %>% pull(pct103)
+pct_enc113 <- db %>% filter(str_detect(category, "慫恿")) %>% pull(pct113)
+pct_emp103 <- db %>% filter(str_detect(category, "雇主")) %>% pull(pct103)
+pct_fee103 <- db %>% filter(str_detect(category, "仲介費")) %>% pull(pct103)
+pct_fee113 <- db %>% filter(str_detect(category, "仲介費")) %>% pull(pct113)
+
+cat(glue::glue(
+  "- **受他人慫恿/轉介**：雇主勾選比例 **{percent(pct_enc113, 0.1)}**，移工僅 **{percent(pct_enc103, 0.1)}**，",
+  "雇主對「被誘導」成因的歸因明顯高於移工自述，暗示雇主傾向將責任外化。\n",
+  "- **與雇主/家人相處不融洽**：移工勾選比例高達 **{percent(pct_emp103, 0.1)}**，是移工自述最高原因；",
+  "113年雇主問卷無對應選項，顯示此層面在雇主問卷設計上已被省略。\n",
+  "- **仲介服務費太高**：移工 **{percent(pct_fee103, 0.1)}**，雇主 **{percent(pct_fee113, 0.1)}**，",
+  "兩者皆低但存在——結合 103年仲介費負擔數據，費用壓力在長期中仍是結構性驅力。\n"
+))
+```

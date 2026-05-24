@@ -1,0 +1,536 @@
+---
+title: "剝削的制度性網絡：103年移工母國與國內仲介費用實證分析"
+subtitle: "勞動部103年外籍勞工工作及生活關懷調查（事業面與家庭面）"
+author: "政策分析報告"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+    toc_depth: 3
+    theme: flatly
+    highlight: tango
+    code_folding: hide
+    fig_width: 10
+    fig_height: 6
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE, message = FALSE, warning = FALSE,
+  fig.width = 10, fig.height = 6, dpi = 150,
+  fig.showtext = TRUE
+)
+```
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+body {
+  font-family: 'Noto Sans TC', 'Inter', sans-serif;
+  color: #2c3e50;
+  line-height: 1.8;
+}
+h1, h2, h3, h4 {
+  font-weight: 700;
+  color: #2c3e50;
+}
+h1 {
+  border-bottom: 2px solid #34495e;
+  padding-bottom: 8px;
+  margin-top: 40px;
+}
+h2 {
+  border-left: 5px solid #3498db;
+  padding-left: 10px;
+  margin-top: 30px;
+}
+.nav-tabs {
+  border-bottom: 2px solid #ddd;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border-bottom-color: #3498db;
+  border-bottom-width: 3px;
+  font-weight: bold;
+}
+blockquote {
+  background: #f8f9fa;
+  border-left: 8px solid #e74c3c;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+  font-size: 1.05em;
+  color: #555;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.premium-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  padding: 25px;
+  margin-bottom: 25px;
+  border: 1px solid #eaeaea;
+}
+.highlight-text {
+  color: #e74c3c;
+  font-weight: bold;
+}
+</style>
+
+# 前言與政策背景 {-}
+
+<blockquote>
+**「債務枷鎖」（Debt Bondage）是跨國勞動剝削的起點。**
+
+在跨國人力遷徙的漫長鏈條中，移工在抵達台灣前，便已在母國背負了沉重的債務。根據中華民國《就業服務法》第 40 條第 1 項第 5 款規定，國內人力仲介公司**不得收受規定標準以外之費用，亦不得代為收取外國人來台工作有關之借款**。
+
+然而，本報告透過實證分析勞動部 103 年（2014年）「外籍勞工工作及生活關懷調查」的**事業面（N = 4,451，代表 287,841 人）**與**家庭面（N = 3,390，代表 198,750 人）**原始微觀數據，揭示了一個結構性的制度缺陷：高達 **94.4% 的事業類移工**與 **85.8% 的家庭看護工**在來台前必須負擔高昂費用；而國內仲介違法由薪資扣除還款（薪資支配）與法外代扣其他費用的現象極為普遍。這張隱形的剥削網絡，不僅削弱了移工的勞動所得，亦是推高移工「失聯（逃跑）」風險的核心結構性因子。
+</blockquote>
+
+```{r packages, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(scales)
+library(patchwork)
+library(knitr)
+library(ggplot2)
+library(showtext)
+
+# 載入 Noto Sans TC 字型
+font_add_google("Noto Sans TC", "NotoSans")
+showtext_auto()
+
+# 設定全局 ggplot2 樣式
+theme_set(
+  theme_classic(base_family = "NotoSans", base_size = 20) +
+    theme(
+      plot.title      = element_text(face = "bold", size = 25, color = "#2c3e50"),
+      plot.subtitle   = element_text(color = "grey40", size = 20),
+      plot.caption    = element_text(color = "#aaaaaa", size = 20),
+      legend.position = "right",
+      axis.line       = element_blank(),
+      axis.ticks      = element_blank(),
+      axis.title.x    = element_text(margin = margin(t = 20)),
+      axis.title.y    = element_text(margin = margin(r = 20))
+    )
+)
+
+# 定義和諧且一致的色彩板
+pal_nation <- c("印尼" = "#E74C3C", "菲律賓" = "#3498DB", "泰國" = "#F39C12", "越南" = "#27AE60")
+pal_repay  <- c("自行辦理" = "#2ECC71", "雇主協助辦理" = "#3498DB", "臺灣仲介公司由薪資中扣除" = "#E74C3C", "其他" = "#95A5A6")
+pal_2      <- c("#3498DB", "#E74C3C")
+```
+
+```{r data-loading}
+# 動態判定工作路徑，確保不論是在根目錄或 reports 目錄下皆能順利編譯
+root_dir <- getwd()
+if (basename(root_dir) == "reports") {
+  data_dir <- file.path(dirname(root_dir), "data/103年針對移工問卷")
+} else {
+  data_dir <- file.path(root_dir, "data/103年針對移工問卷")
+}
+
+d1 <- read_csv(file.path(data_dir, "data103_1.csv"), show_col_types = FALSE)
+d2 <- read_csv(file.path(data_dir, "data103_2.csv"), show_col_types = FALSE)
+```
+
+---
+
+# 第一部分：事業類（產業）移工母國費用與借貸實證 {.tabset}
+
+事業類移工主要分布於製造業與營造業，其性別以男性為主。這一次來台工作，移工在母國所承擔的費用與債務，對其後續的勞動權益有著決定性的影響。
+
+## 1.1 母國負擔總費用（對齊表2）
+
+數據分析顯示，高達 **94.4%** 的事業類移工在來台前背負了母國費用（排除不知道/拒答者後，比例近乎 **100%**）。
+其中，越南籍移工面臨最為嚴苛的剝削，高達 **80.5%** 的越南移工必須支付 **90,000 元台幣以上** 的巨額規費與仲介費，甚至在原始數據中不乏高達 15 萬至 20 萬元之極端值。相較之下，印尼籍與泰國籍移工的費用則多集中於「50,000～89,999元」之間。
+
+```{r d1-fee-cleaning}
+# 資料整理
+d1_fee <- d1 %>%
+  mutate(
+    國籍 = factor(nation, levels = 1:4, labels = c("印尼", "泰國", "菲律賓", "越南")),
+    費用區間 = case_when(
+      `q7_1$` >= 999998 ~ "不知道/拒答",
+      `q7_1$` == 0 ~ "沒有負擔費用",
+      `q7_1$` < 30000 ~ "未滿30,000元",
+      `q7_1$` >= 30000 & `q7_1$` < 50000 ~ "30,000～49,999元",
+      `q7_1$` >= 50000 & `q7_1$` < 70000 ~ "50,000～69,999元",
+      `q7_1$` >= 70000 & `q7_1$` < 90000 ~ "70,000～89,999元",
+      `q7_1$` >= 90000 ~ "90,000元以上"
+    ),
+    費用區間 = factor(費用區間, levels = c("沒有負擔費用", "未滿30,000元", "30,000～49,999元", 
+                                           "50,000～69,999元", "70,000～89,999元", "90,000元以上", "不知道/拒答"))
+  )
+
+# 計算整體與國籍別加權比例
+tab_d1_fee <- d1_fee %>%
+  group_by(國籍, 費用區間) %>%
+  summarise(w_sum = sum(w), .groups = "drop") %>%
+  group_by(國籍) %>%
+  mutate(比例 = w_sum / sum(w_sum) * 100)
+
+# 整體合計
+total_d1_fee <- d1_fee %>%
+  group_by(費用區間) %>%
+  summarise(w_sum = sum(w), .groups = "drop") %>%
+  mutate(
+    國籍 = "總計",
+    比例 = w_sum / sum(w_sum) * 100
+  )
+
+bind_rows(total_d1_fee, tab_d1_fee) %>%
+  select(國籍, 費用區間, 比例) %>%
+  mutate(比例 = round(比例, 1)) %>%
+  pivot_wider(names_from = 費用區間, values_from = 比例, values_fill = 0) %>%
+  kable(caption = "表1. 103年事業類移工來臺工作在母國負擔費用比例表 (單位：%)")
+```
+
+```{r d1-fee-plot, fig.height=5}
+# 1. 資料處理：過濾掉極小值，並動態設定黑白字
+d2_fee_valid <- d2_fee_valid %>%
+  mutate(
+    # 小於 3% 的字不顯示
+    label_text = if_else(pct < 0.07, "", percent(pct, 0.1)),
+    # 淺黃色與橘黃色區塊用黑字，其餘用白字
+    text_color = if_else(費用區間 %in% c("未滿30,000元", "30,000~49,999元"), "black", "white")
+  )
+
+# 2. 繪圖
+ggplot(d2_fee_valid, aes(x = 國籍, y = pct, fill = 費用區間)) +
+  geom_col(position = "fill", width = 0.6) +
+  geom_text(aes(label = label_text, color = text_color), 
+            position = position_stack(vjust = 0.5), 
+            size = 6.5, fontface = "bold", family = "NotoSans") +
+  scale_color_identity() + # 這行非常重要，用來讀取資料內的顏色字串
+  scale_fill_brewer(palette = "YlOrRd") +
+  scale_y_continuous(labels = percent) +
+  labs(
+    title = "家庭看護工母國負擔總費用結構（排除未知/無費用者）",
+    x = NULL, y = "結構占比 (%)", fill = "母國負擔費用區間",
+    caption = "數據來源：勞動部103年移工管理及運用調查（家庭面）"
+  ) +
+  theme(legend.position = "right")
+```
+
+## 1.2 母國仲介費透明度與借貸狀況
+
+<blockquote>
+**資訊的控制是權力不對稱的溫床。**
+
+調查顯示，事業類移工中，僅有 **23.7%** 的移工「清楚知道」這一次來台在母國所收取的「仲介費」明細，其餘高達 **76.3% 的人處於資訊盲區（不知道/拒答）**。而在清楚知道的群體中，有 **87.2%** 的人確實繳納了仲介費。
+
+此外，為了支付來台費用，近 6 成（**59.8%**）的事業類移工在來台前必須在母國進行借貸（以越南籍與印尼籍最為普遍）。
+</blockquote>
+
+```{r d1-loan}
+d1_loan <- d1_fee %>%
+  filter(q7_3 == 1) %>% # 有借貸者
+  mutate(
+    還款方式 = factor(q7_3_1b, levels = 1:4, labels = c("自行辦理", "雇主協助辦理", "臺灣仲介公司由薪資中扣除", "其他"))
+  )
+
+tab_d1_repay <- d1_loan %>%
+  filter(!is.na(還款方式)) %>%
+  group_by(國籍, 還款方式) %>%
+  summarise(w_sum = sum(w), .groups = "drop") %>%
+  group_by(國籍) %>%
+  mutate(比例 = round(w_sum / sum(w_sum) * 100, 1))
+
+tab_d1_repay %>%
+  select(國籍, 還款方式, 比例) %>%
+  pivot_wider(names_from = 還款方式, values_from = 比例, values_fill = 0) %>%
+  kable(caption = "表2. 103年事業類移工借貸還款方式比例表 (單位：%)")
+```
+
+```{r d1-repay-plot, fig.height=4.5}
+d1_repay_tot <- d1_loan %>%
+  filter(!is.na(還款方式)) %>%
+  group_by(還款方式) %>%
+  summarise(w_sum = sum(w), .groups = "drop") %>%
+  mutate(pct = w_sum / sum(w_sum))
+
+ggplot(d1_repay_tot, aes(x = pct, y = reorder(還款方式, pct), fill = 還款方式)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  geom_text(aes(label = percent(pct, 0.1)), hjust = -0.2, fontface = "bold", family = "NotoSans", size = 6) +
+  scale_fill_manual(values = pal_repay) +
+  scale_x_continuous(labels = percent, expand = expansion(mult = c(0, 0.2))) +
+  labs(
+    title = "事業類移工借貸還款管道分布",
+    subtitle = "「自行辦理」占 86.7% 最多；「臺灣仲介公司由薪資扣除」占 8.4% 居次，存在違法疑慮",
+    x = "加權占比 (%)", y = NULL
+  )
+```
+
+---
+
+# 第二部分：家庭類（看護）移工母國費用與借貸實證 {.tabset}
+
+相較於適用勞基法的產業移工，家庭看護工的薪資偏低（103年契約工資僅為 **15,840 元**），工作性質為 24 小時全日居家照護，使其在結構上更為弱勢，對其母國債務與還款管道的分析更顯關鍵。
+
+## 2.1 母國負擔總費用（對齊表25）
+
+家庭看護工來台在母國有負擔費用的比率為 **85.8%**。
+與事業類不同，看護工（特別是高達總數 84% 的印尼籍看護工）的母國負擔費用高度集中於「**70,000 至 89,999 元**」（加權占比達 **72.3%**）。這筆費用對於月薪僅 15,840 元的看護工而言，相當於**不吃不喝 5 個月以上**的薪資所得。
+
+```{r d2-fee-cleaning}
+# 家庭面國籍別對應修正：s1 為 1:印尼, 2:菲律賓, 3:泰國, 4:越南
+d2_fee <- d2 %>%
+  mutate(
+    國籍 = factor(s1, levels = 1:4, labels = c("印尼", "菲律賓", "泰國", "越南")),
+    # 重新調整因子順序與事業類一致
+    國籍 = factor(國籍, levels = c("印尼", "泰國", "菲律賓", "越南")),
+    費用區間 = case_when(
+      v7_1 >= 999998 ~ "不知道/拒答",
+      v7_1 == 0 ~ "沒有負擔費用",
+      v7_1 < 30000 ~ "未滿30,000元",
+      v7_1 >= 30000 & v7_1 < 50000 ~ "30,000～49,999元",
+      v7_1 >= 50000 & v7_1 < 70000 ~ "50,000～69,999元",
+      v7_1 >= 70000 & v7_1 < 90000 ~ "70,000～89,999元",
+      v7_1 >= 90000 ~ "90,000元以上"
+    ),
+    費用區間 = factor(費用區間, levels = c("沒有負擔費用", "未滿30,000元", "30,000～49,999元", 
+                                           "50,000～69,999元", "70,000～89,999元", "90,000元以上", "不知道/拒答"))
+  )
+
+# 計算整體與國籍別加權比例
+tab_d2_fee <- d2_fee %>%
+  group_by(國籍, 費用區間) %>%
+  summarise(w_sum = sum(w), .groups = "drop") %>%
+  group_by(國籍) %>%
+  mutate(比例 = w_sum / sum(w_sum) * 100)
+
+# 整體合計
+total_d2_fee <- d2_fee %>%
+  group_by(費用區間) %>%
+  summarise(w_sum = sum(w), .groups = "drop") %>%
+  mutate(
+    國籍 = "總計",
+    比例 = w_sum / sum(w_sum) * 100
+  )
+
+bind_rows(total_d2_fee, tab_d2_fee) %>%
+  select(國籍, 費用區間, 比例) %>%
+  mutate(比例 = round(比例, 1)) %>%
+  pivot_wider(names_from = 費用區間, values_from = 比例, values_fill = 0) %>%
+  kable(caption = "表3. 103年家庭類看護工來臺工作在母國負擔費用比例表 (單位：%)")
+```
+
+```{r d2-fee-plot, fig.height=5}
+# 1. 資料處理：過濾掉極小值，並動態設定黑白字
+d2_fee_valid <- d2_fee_valid %>%
+  mutate(
+    # 小於 3% 的字不顯示
+    label_text = if_else(pct < 0.06, "", percent(pct, 0.1)),
+    # 淺黃色與橘黃色區塊用黑字，其餘用白字
+    text_color = if_else(費用區間 %in% c("未滿30,000元", "30,000~49,999元"), "black", "white")
+  )
+
+# 2. 繪圖
+ggplot(d2_fee_valid, aes(x = 國籍, y = pct, fill = 費用區間)) +
+  geom_col(position = "fill", width = 0.6) +
+  geom_text(aes(label = label_text, color = text_color), 
+            position = position_stack(vjust = 0.5), 
+            size = 6.5, fontface = "bold", family = "NotoSans") +
+  scale_color_identity() + # 這行非常重要，用來讀取資料內的顏色字串
+  scale_fill_brewer(palette = "YlOrRd") +
+  scale_y_continuous(labels = percent) +
+  labs(
+    title = "家庭看護工母國負擔總費用結構（排除未知/無費用者）",
+    x = NULL, y = "結構占比 (%)", fill = "母國負擔費用區間",
+    caption = "數據來源：勞動部103年移工管理及運用調查（家庭面）"
+  ) +
+  theme(legend.position = "right")
+```
+
+## 2.2 債務束縛與「臺灣仲介薪資代扣還款」的極端現象
+
+<blockquote>
+**金融管道的控制，構成了微觀的支配網絡。**
+
+在有母國借貸的家庭看護工中（占比高達 **65.8%**），其借貸金額高度集中於印尼看護工的 7-9 萬台幣。
+
+而在還款方式上，存在嚴重的違法合規風險：高達 **32.7% 的看護工係透過「臺灣仲介公司由薪資中扣除」進行還款**。這項比例在印尼籍移工中更是高達 **33.7%**！相較於事業類移工僅 8.4% 被代扣薪資，家庭看護工在薪資支配權上受到高度剝奪。
+</blockquote>
+
+```{r d2-loan}
+d2_loan <- d2_fee %>%
+  filter(v7_3 == 1) %>% # 有借貸者
+  mutate(
+    還款方式 = factor(v7_3_1b, levels = 1:4, labels = c("自行辦理", "雇主協助辦理", "臺灣仲介公司由薪資中扣除", "其他"))
+  )
+
+tab_d2_repay <- d2_loan %>%
+  filter(!is.na(還款方式)) %>%
+  group_by(國籍, 還款方式) %>%
+  summarise(w_sum = sum(w), .groups = "drop") %>%
+  group_by(國籍) %>%
+  mutate(比例 = round(w_sum / sum(w_sum) * 100, 1))
+
+tab_d2_repay %>%
+  select(國籍, 還款方式, 比例) %>%
+  pivot_wider(names_from = 還款方式, values_from = 比例, values_fill = 0) %>%
+  kable(caption = "表4. 103年家庭類看護工借貸還款方式比例表 (單位：%)")
+```
+
+```{r compare-repay-plot, fig.height=5.5}
+# 對比事業類與家庭看護工的還款方式
+d1_repay_compare <- d1_loan %>%
+  filter(!is.na(還款方式)) %>%
+  group_by(還款方式) %>%
+  summarise(w_sum = sum(w), .groups = "drop") %>%
+  mutate(
+    類別 = "事業類移工",
+    pct = w_sum / sum(w_sum)
+  )
+
+d2_repay_compare <- d2_loan %>%
+  filter(!is.na(還款方式)) %>%
+  group_by(還款方式) %>%
+  summarise(w_sum = sum(w), .groups = "drop") %>%
+  mutate(
+    類別 = "家庭看護工",
+    pct = w_sum / sum(w_sum)
+  )
+
+repay_compare <- bind_rows(d1_repay_compare, d2_repay_compare)
+
+ggplot(repay_compare, aes(x = 還款方式, y = pct, fill = 類別)) +
+  geom_col(position = "dodge", width = 0.6) +
+  geom_text(aes(label = percent(pct, 0.1)), position = position_dodge(0.6), vjust = -0.5, fontface = "bold", size = 6.5, family = "NotoSans") +
+  scale_fill_manual(values = pal_2) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.15))) +
+  labs(
+    title = "移工借貸還款管道對照：事業類 vs 家庭類",
+    subtitle = "家庭看護工透過「臺灣仲介代扣薪資」還款比例高達 32.7%，為事業類移工（8.4%）的近 4 倍",
+    x = NULL, y = "加權比例 (%)", fill = "移工類別"
+  ) +
+  theme(legend.position = "right")
+```
+
+---
+
+# 第三部分：國內仲介公司法外費用代扣項目分析 {.tabset}
+
+根據《就業服務法》，國內仲介公司每月僅得依規定向移工收取「服務費」（首年每月上限 1,800 元、次年 1,700 元、三年以上 1,500 元），**不得另行扣取其他任何名目的法外費用**。
+然而實證結果顯示，高達 **33.3% 的事業類移工** 與 **25.9% 的家庭看護工** 表示，國內仲介每月除服務費外，仍強行代扣其他費用。
+
+## 3.1 產業與家庭類代扣比例對照
+
+```{r agency-deduction-compare, fig.height=4}
+# 計算代扣比率
+deduct_summary <- tibble(
+  類別 = c("事業類移工", "家庭看護工"),
+  有代扣比例 = c(33.3, 25.9)
+)
+
+ggplot(deduct_summary, aes(x = reorder(類別, -有代扣比例), y = 有代扣比例 / 100, fill = 類別)) +
+  geom_col(width = 0.4, show.legend = FALSE) +
+  geom_text(aes(label = percent(有代扣比例 / 100, 0.1)), vjust = -0.5, fontface = "bold", size = 7.5, family = "NotoSans") +
+  scale_fill_manual(values = pal_2) +
+  scale_y_continuous(labels = percent, limits = c(0, 0.4)) +
+  labs(
+    title = "國內仲介公司在服務費外「額外代扣其他費用」之移工比例",
+    subtitle = "無論是產業或家庭移工，皆有四分之一至三分之一面臨法外扣款的剝削",
+    x = NULL, y = "有扣取其他費用之移工占比 (%)"
+  )
+```
+
+## 3.2 代扣細項對照（所得稅 vs 國外貸款）
+
+當我們深入剖析「代扣費用」的細項結構時，發現了兩類移工面臨截然不同的支配項目：
+
+1. **事業類移工**：以「**代扣所得稅**」占比最高（**64.4%**），其次為「**代存儲蓄金**」（**49.4%**）。這顯示廠工的薪資流向往往受制於仲介與雇主的聯合行政支配。
+2. **家庭看護工**：高達 **82.6%** 係被代扣「**國外貸款費用**」。這反映出看護工來台的沉重債務，直接透過臺灣仲介以金融扣款的方式進行微觀控制與強制執行，嚴重違反了外國人入國費用及工資切結書之法規。
+
+```{r d1-deduct-items}
+# 事業類代扣細項 (q8 == 2)
+# q8_11: 儲蓄金, q8_12: 保證金, q8_13: 返國費用, q8_14: 所得稅, q8_15: 國外貸款, q8_16: 其他
+d1_deduct <- d1 %>%
+  filter(q8 == 2) %>%
+  summarise(
+    代存儲蓄金 = sum(w[q8_11 == 1]) / sum(w) * 100,
+    代扣保證金 = sum(w[q8_12 == 2]) / sum(w) * 100,
+    代存返國費用 = sum(w[q8_13 == 3]) / sum(w) * 100,
+    代扣所得稅 = sum(w[q8_14 == 4]) / sum(w) * 100,
+    代扣國外貸款 = sum(w[q8_15 == 5]) / sum(w) * 100,
+    其他 = sum(w[q8_16 == 6]) / sum(w) * 100
+  ) %>%
+  pivot_longer(cols = everything(), names_to = "項目", values_to = "事業類比例")
+
+# 家庭類代扣細項 (v8 == 2)
+# v8_1: 儲蓄金, v8_2: 保證金, v8_3: 返國費用, v8_4: 國外貸款, v8_5: 稅金, v8_6: 健檢費, v8_7: 其他
+d2_deduct <- d2 %>%
+  filter(v8 == 2) %>%
+  summarise(
+    代存儲蓄金 = sum(w[v8_1 == 1]) / sum(w) * 100,
+    代扣保證金 = sum(w[v8_2 == 2]) / sum(w) * 100,
+    代存返國費用 = sum(w[v8_3 == 3]) / sum(w) * 100,
+    代扣國外貸款 = sum(w[v8_4 == 4]) / sum(w) * 100,
+    代扣所得稅 = sum(w[v8_5 == 5]) / sum(w) * 100,
+    代扣健檢費用 = sum(w[v8_6 == 6]) / sum(w) * 100,
+    其他 = sum(w[v8_7 == 7]) / sum(w) * 100
+  ) %>%
+  pivot_longer(cols = everything(), names_to = "項目", values_to = "家庭類比例")
+
+deduct_compare <- full_join(d1_deduct, d2_deduct, by = "項目") %>%
+  mutate(across(where(is.numeric), ~ round(., 1)))
+
+deduct_compare %>%
+  kable(caption = "表5. 事業類與家庭類移工在有代扣費用下的代扣項目分布表 (複選，單位：%)", col.names = c("代扣項目", "事業類比率 (%)", "家庭類比率 (%)"))
+```
+
+```{r deduct-items-plot, fig.height=5.5}
+# 視覺化對比
+deduct_plot_data <- deduct_compare %>%
+  pivot_longer(cols = c(事業類比例, 家庭類比例), names_to = "類別", values_to = "比例") %>%
+  filter(!is.na(比例) & 比例 > 0) %>%
+  mutate(
+    類別 = recode(類別, "事業類比例" = "事業類移工", "家庭類比例" = "家庭看護工"),
+    項目 = fct_reorder(項目, 比例)
+  )
+
+ggplot(deduct_plot_data, aes(x = 比例 / 100, y = 項目, fill = 類別)) +
+  geom_col(position = "dodge", width = 0.7) +
+  geom_text(aes(label = percent(比例 / 100, 0.1)), position = position_dodge(0.7), hjust = -0.1, fontface = "bold", size = 5.5, family = "NotoSans") +
+  scale_fill_manual(values = pal_2) +
+  scale_x_continuous(labels = percent, expand = expansion(mult = c(0, 0.15))) +
+  labs(
+    title = "額外代扣費用細項對照：事業類 vs 家庭類",
+    subtitle = "廠工代扣以「所得稅」與「儲蓄金」為主；看護工高達 82.6% 被代扣「國外貸款」",
+    x = "占有代扣費用移工之比例 (複選 %)", y = NULL, fill = "移工類別"
+  ) +
+  theme(legend.position = "right")
+```
+
+---
+
+# 第四部分：結論與政策建議
+
+## 4.1 主要實證發現
+
+本報告利用 103 年勞動部管理及運用調查的微觀數據，獲得以下關鍵政策發現：
+
+1. **沉重的債務束縛與國籍別壓迫不均**：  
+   高達 94.4% 的事業類移工與 85.8% 的家庭看護工，在進入台灣勞動市場前便已被迫背負了沉重的債務。
+   其中，<span class="highlight-text">越南籍事業類移工有高達 80.5% 支付了超過 90,000 元台幣</span>的費用，面臨極端剝削。而<span class="highlight-text">印尼籍家庭看護工則有 72.3% 支付了 70,000 至 89,999 元</span>的母國費用。這筆費用在移工薪資偏低的時空背景下（特別是看護工月薪僅 15,840 元），構成了極具壓迫性的微觀束縛。
+   
+2. **臺灣仲介違法介入薪資扣款還款**：  
+   在有母國借貸的看護工中，<span class="highlight-text">有高達 32.7% 是透過「臺灣仲介公司由薪資扣除」還款</span>，印尼籍更是高達 33.7%。
+   此種直接代扣薪資還款的行為，不僅嚴重剝奪了勞工的微觀金融支配權，更涉嫌違反我國《就業服務法》第 40 條及外國人入國切結書之合規標準。
+
+3. **普遍存在的法外代扣項目**：  
+   高達 **33.3% 的廠工**與 **25.9% 的看護工**面臨國內仲介收取規定服務費以外之法外扣款。廠工的扣款流向以所得稅（64.4%）與代存儲蓄金（49.4%）為主；而看護工的扣款則高度集中於代扣「國外貸款費用」（82.6%），再次實證了國內仲介公司在看護工的金融支配上扮演了高度強制性的角色。
+
+## 4.2 政策建議
+
+基於上述實證發現，我們提出以下改革建議，以期打破此一剥削性的制度網絡：
+
+* **強力推動「直接聘僱」制度，打破仲介壟斷**：  
+  從根源上看，沉重的母國負擔費用來自於跨國私立仲介的層層抽成與資訊不透明。政府應積極強化「直接聘僱聯合服務中心」的功能，簡化直聘手續並提供雇主實質激勵措施，以減免移工之國外與國內仲介服務費，打破私立仲介的結構性壟斷。
+
+* **加強金融與薪資查察，嚴禁違法薪資代扣**：  
+  勞動部與地方勞工局應針對家事移工的薪資支付開展專案查察，強制落實「銀行轉帳」並確實核對「雙語薪資明細單」。一旦發現國內仲介或雇主涉嫌「代扣國外貸款」或「薪資還款扣除」，應依《就業服務法》第 67 條重罰，並限期改善。
+
+* **啟動跨國政府間雙邊談判，降低來源國規費**：  
+  高額母國費用源於移工來源國本地私立仲介的違法超收。中華民國政府應以實證數據為依據，啟動與越南、印尼等移工來源國政府的跨國雙邊談判，推動「零仲介費（Zero Fee）」或「費用透明化」計畫，並由來源國政府建立移工專屬的低利還款貸款管道，以杜絕地下高利貸與非法薪資支配。

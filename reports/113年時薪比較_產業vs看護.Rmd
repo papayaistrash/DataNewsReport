@@ -1,0 +1,288 @@
+---
+title: "產業移工與家庭看護工時薪比較（113年）"
+author: ""
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.width = 10, fig.height = 6, dpi = 150)
+```
+
+## 分析目的
+
+比較 113 年**產業移工**（事業面）與**家庭看護工**（家庭面）的實際時薪，
+檢驗在名目月薪差距之外，當計入實際工時後，看護工的時薪是否顯著偏低。
+
+---
+
+## 資料說明
+
+| 資料集 | 問卷類型 | 權重 | 薪資欄位 | 工時欄位 |
+|--------|---------|------|---------|---------|
+| `data113.csv`（事業面） | 產業移工（製造業／營造業） | `w2` | `q7ca`+`q7cb` | `q7b`+`q7bb` |
+| `data113.csv`（家庭面） | 家庭看護工 | `w` | `nq10a`+`nq10ab` | 依作息時間計算 |
+
+**家庭面工時計算**：每日工時 = 下班時間（`nq9a_2`+12）− 上班時間（`nq9a_1`）− 休息時數（`nq9b_1` + `nq9b_2`/60），
+每月工作天數 = 30 − 每月放假天數（依 `q13a` 對應）。
+
+> `q13a` 放假頻率對應：1=每月4–5次（≈4.5天）；2=每月1次（1天）；3=每月2–3次（≈2.5天）；5=都不放假（0天）。
+
+---
+
+```{r libraries}
+library(tidyverse)
+library(scales)
+library(showtext)
+library(Hmisc)
+library(patchwork)
+
+font_add_google("Noto Sans TC", "NotoSans")
+showtext_auto()
+```
+
+```{r load-data}
+base_dir <- if (basename(getwd()) == "reports") ".." else "."
+data_dir <- file.path(base_dir, "data")
+
+# ── 事業面（產業移工）──────────────────────────────────────
+d_biz <- read_csv(
+  file.path(data_dir, "113年移工/事業面/data113.csv"),
+  show_col_types = FALSE
+) %>%
+  transmute(
+    group      = "產業移工\n（製造業／營造業）",
+    w          = as.numeric(w2),
+    salary     = as.numeric(q7ca) + suppressWarnings(as.numeric(q7cb)),
+    hours      = as.numeric(q7b)  + suppressWarnings(as.numeric(q7bb))
+  ) %>%
+  filter(!is.na(salary), !is.na(hours), salary > 0, hours > 0, w > 0) %>%
+  mutate(hourly = salary / hours)
+
+# ── 家庭面（看護工）──────────────────────────────────────
+leave_days <- c("1" = 4.5, "2" = 1.0, "3" = 2.5, "4" = NA_real_, "5" = 0.0)
+
+d_home <- read_csv(
+  file.path(data_dir, "113年移工/家庭面/data113.csv"),
+  show_col_types = FALSE
+) %>%
+  transmute(
+    group    = "家庭看護工",
+    w        = as.numeric(w),
+    salary   = as.numeric(nq10a) + suppressWarnings(as.numeric(nq10ab)),
+    start_h  = as.numeric(nq9a_1),
+    end_h    = as.numeric(nq9a_2) + 12,   # PM → 24h
+    break_h  = suppressWarnings(as.numeric(nq9b_1)) +
+               suppressWarnings(as.numeric(nq9b_2)) / 60,
+    leave_code = as.character(q13a)
+  ) %>%
+  mutate(
+    leave    = leave_days[leave_code],
+    daily_h  = end_h - start_h - replace_na(break_h, 0),
+    monthly_h = daily_h * (30 - replace_na(leave, NA_real_)),
+    hourly   = salary / monthly_h
+  ) %>%
+  filter(!is.na(hourly), !is.na(w), hourly > 0, hourly < 500,
+         salary > 0, monthly_h > 0, w > 0)
+
+d_all <- bind_rows(d_biz, d_home) %>%
+  mutate(group = factor(group, levels = c("家庭看護工",
+                                          "產業移工\n（製造業／營造業）")))
+```
+
+```{r summary}
+hourly_summary <- d_all %>%
+  group_by(group) %>%
+  summarise(
+    n          = n(),
+    wtd_median = wtd.quantile(hourly, weights = w, probs = 0.5, na.rm = TRUE),
+    wtd_mean   = weighted.mean(hourly, w, na.rm = TRUE),
+    .groups    = "drop"
+  )
+```
+
+```{r compute-missing-rate}
+# ── 失聯率：來自問卷自答（107–113年間曾發生失聯）──────────
+# 事業面 q4==2 → 曾有移工失聯；家庭面 q5==2 → 曾有移工失聯
+
+biz_raw <- read_csv(
+  file.path(data_dir, "113年移工/事業面/data113.csv"),
+  show_col_types = FALSE
+) %>%
+  transmute(w = as.numeric(w2), had_missing = as.integer(q4 == 2))
+
+home_raw <- read_csv(
+  file.path(data_dir, "113年移工/家庭面/data113.csv"),
+  show_col_types = FALSE
+) %>%
+  transmute(w = as.numeric(w), had_missing = as.integer(q5 == 2))
+
+missing_rate <- bind_rows(
+  biz_raw  %>% mutate(group = "產業移工\n（製造業／營造業）"),
+  home_raw %>% mutate(group = "家庭看護工")
+) %>%
+  filter(!is.na(w), w > 0, !is.na(had_missing)) %>%
+  group_by(group) %>%
+  summarise(miss_rate = weighted.mean(had_missing, w, na.rm = TRUE),
+            .groups = "drop") %>%
+  mutate(group = factor(group, levels = c("家庭看護工",
+                                          "產業移工\n（製造業／營造業）")))
+
+# ── 合併至 hourly_summary ──────────────────────────────────
+d_plot <- left_join(hourly_summary, missing_rate, by = "group")
+```
+
+---
+
+## 核心圖表：時薪 × 失聯率（同一張圖）
+
+```{r combined-plot, fig.width=11, fig.height=5.5}
+col_caregiver <- "#DE4429"
+col_industry  <- "#1F3145"
+group_colors  <- c("家庭看護工"                    = col_caregiver,
+                   "產業移工\n（製造業／營造業）"   = col_industry)
+
+# X 軸上限留出空間給失聯率標注
+x_max <- max(d_plot$wtd_median) * 1.7
+
+p_hourly <- ggplot(d_plot,
+                   aes(x = wtd_median, y = group, fill = group)) +
+  geom_col(width = 0.55, show.legend = FALSE) +
+  # ① 時薪數值（緊貼長條右端）
+  geom_text(
+    aes(label = paste0(round(wtd_median, 0), " 元／時"),
+        color = group),
+    hjust = -0.12, size = 6, fontface = "bold", family = "NotoSans",
+    show.legend = FALSE
+  ) +
+  # ② 失聯率標注（固定在 x_max * 0.78 處，框線突顯）
+  geom_label(
+    aes(x     = x_max * 0.78,
+        label = paste0("失聯率\n", percent(miss_rate, 0.1)),
+        color = group),
+    fill        = "white",
+    label.size  = 0.5,
+    size        = 5.5,
+    fontface    = "bold",
+    family      = "NotoSans",
+    show.legend = FALSE
+  ) +
+  scale_fill_manual(values  = group_colors) +
+  scale_color_manual(values = group_colors) +
+  scale_x_continuous(
+    labels = function(x) paste0(x, " 元"),
+    limits = c(0, x_max),
+    expand = expansion(mult = c(0, 0))
+  ) +
+  labs(
+    title    = "家庭看護工時薪低、失聯率卻高",
+    subtitle = "加權時薪中位數（左，新台幣）；失聯率（右，雇主自答曾於107–113年間發生失聯）",
+    x        = "時薪（元／時）",
+    y        = NULL,
+    caption  = "資料來源：勞動部移工管理及運用調查，113 年；事業面 q4、家庭面 q5；以抽樣權重計算"
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 20) +
+  theme(
+    plot.title         = element_text(face = "bold", size = 25),
+    plot.subtitle      = element_text(size = 13, color = "#555555",
+                                      margin = margin(b = 12)),
+    plot.caption       = element_text(color = "#aaaaaa", size = 11),
+    axis.title.x       = element_text(angle = 0, size = 14),
+    axis.title.y       = element_text(angle = 0, vjust = 0.5, hjust = 1),
+    axis.line          = element_blank(),
+    axis.ticks         = element_blank(),
+    panel.grid.major.x = element_line(color = "#eeeeee", linewidth = 0.5)
+  )
+
+p_hourly
+```
+
+---
+
+## 輔助：時薪分布（箱形圖）
+
+```{r boxplot, fig.width=10, fig.height=5.5}
+p_box <- ggplot(d_all, aes(x = hourly, y = group, fill = group)) +
+  geom_boxplot(width = 0.45, outlier.shape = NA, show.legend = FALSE,
+               coef = 1.5) +
+  coord_cartesian(xlim = c(0, quantile(d_all$hourly, 0.98, na.rm = TRUE))) +
+  scale_fill_manual(values = group_colors) +
+  labs(
+    title    = "時薪分布比較（98th 百分位截斷）",
+    subtitle = "個體資料分布；未加權",
+    x        = "時薪（元／時）",
+    y        = NULL,
+    caption  = "資料來源：同上"
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 20) +
+  theme(
+    plot.title         = element_text(face = "bold", size = 25),
+    plot.subtitle      = element_text(size = 13, color = "#555555",
+                                      margin = margin(b = 12)),
+    plot.caption       = element_text(color = "#aaaaaa", size = 11),
+    axis.title.x       = element_text(angle = 0, size = 14),
+    axis.title.y       = element_text(angle = 0, vjust = 0.5, hjust = 1),
+    axis.line          = element_blank(),
+    axis.ticks         = element_blank(),
+    panel.grid.major.x = element_line(color = "#eeeeee", linewidth = 0.5)
+  )
+
+p_box
+```
+
+---
+
+## 數字摘要
+
+```{r summary-table}
+hourly_summary %>%
+  mutate(
+    wtd_median = round(wtd_median, 1),
+    wtd_mean   = round(wtd_mean, 1)
+  ) %>%
+  rename(
+    職業類別         = group,
+    樣本數           = n,
+    時薪加權中位數   = wtd_median,
+    時薪加權平均數   = wtd_mean
+  ) %>%
+  knitr::kable(caption = "各職業別時薪統計摘要（元／時）")
+```
+
+---
+
+## 存檔
+
+```{r save}
+plots_dir <- file.path(base_dir, "plots")
+dir.create(plots_dir, showWarnings = FALSE)
+
+ggsave(file.path(plots_dir, "113_hourly_wage_comparison.png"),
+       plot = p_hourly, width = 11, height = 5.5, dpi = 150)
+
+ggsave(file.path(plots_dir, "113_hourly_wage_boxplot.png"),
+       plot = p_box, width = 10, height = 5.5, dpi = 150)
+```
+
+---
+
+## 結論
+
+```{r conclusion, results="asis"}
+med_care <- hourly_summary %>% filter(str_detect(group, "看護")) %>% pull(wtd_median)
+med_ind  <- hourly_summary %>% filter(str_detect(group, "產業")) %>% pull(wtd_median)
+
+cat(glue::glue(
+  "- **家庭看護工**加權時薪中位數為 **{round(med_care, 0)} 元／時**，",
+  "**產業移工**為 **{round(med_ind, 0)} 元／時**；",
+  "看護工時薪僅為產業移工的 **{round(med_care/med_ind*100, 0)}%**。\n",
+  "- 家庭看護工名目月薪雖接近產業移工，但在實際工時顯著偏長（無強制休假、24 小時待命）下，",
+  "換算時薪後差距明顯拉大，凸顯現行勞動條件的結構性不平等。\n"
+))
+```

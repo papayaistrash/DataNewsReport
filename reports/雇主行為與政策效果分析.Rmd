@@ -1,0 +1,767 @@
+﻿---
+title: "隤啣??敺宏撌伐???銝餉??箝??蝑??唳????"
+subtitle: "???函宏撌亦恣???隤踵嚚?13撟???
+author: "???勗?"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+    toc_depth: 3
+    theme: flatly
+    highlight: tango
+    code_folding: hide
+    fig_width: 10
+    fig_height: 6
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE, message = FALSE, warning = FALSE,
+  fig.width = 10, fig.height = 6, dpi = 150
+)
+```
+
+# ?? {-}
+
+> ?砍?閮??敹?憿?
+>
+> 1. **銝????銝餃?雿?敺宏撌伐?** 皛踵?摨艾??暹?血??蜓璇辣?嚗?> 2. **?隡?鋆?輻??臬??嚗?*嚗17嚗?銝餌????祕???箔????賢榆
+> 3. **蝘餃極?臬?Ｙ?頨急???**嚗18 ?批撟喟?撌乩?瘜??伐?
+> 4. **隞暻潭見????銝??Ｙ??唳嚗?* ?∪?暸?銝餌??孵噩??
+>
+> 鞈?靘?嚗???宏撌亦恣???隤踵??13 撟游振摨剝?嚗 = 4,016嚗?
+```{r packages}
+library(tidyverse)
+library(scales)
+library(patchwork)
+library(broom)
+library(knitr)
+library(ggplot2)
+
+theme_set(
+  theme_minimal(base_family = "Microsoft JhengHei", base_size = 13) +
+    theme(
+      plot.title    = element_text(face = "bold", size = 16),
+      plot.subtitle = element_text(color = "grey40", size = 12),
+      plot.caption  = element_text(color = "grey60", size = 9),
+      legend.position = "bottom",
+      panel.grid.minor = element_blank()
+    )
+)
+
+pal2  <- c("#3498DB", "#E74C3C")
+pal3  <- c("#27AE60", "#E74C3C", "#95A5A6")
+pal3b <- c("#3498DB", "#E74C3C", "#F39C12")
+```
+
+```{r load-recode}
+raw <- read_csv("../data/113撟渡宏撌?摰嗅滬??data113.csv", locale = locale(encoding = "UTF-8"),
+                show_col_types = FALSE)
+
+city_map <- c(
+  "1"="?啣?撣?,"2"="?箏?撣?,"3"="獢?撣?,"4"="?箔葉撣?,"5"="?箏?撣?,"6"="擃?撣?,
+  "7"="摰蝮?,"8"="?啁姘蝮?,"9"="??蝮?,"10"="敶啣?蝮?,"11"="??蝮?,"12"="?脫?蝮?,
+  "13"="?儔蝮?,"14"="撅蝮?,"15"="?箸蝮?,"16"="?梯蝮?,"17"="瞉?蝮?,
+  "18"="?粹?撣?,"19"="?啁姘撣?,"20"="?儔撣?,"21"="?????"
+)
+
+six_cities <- c("?啣?撣?,"?箏?撣?,"獢?撣?,"?箔葉撣?,"?箏?撣?,"擃?撣?)
+
+df <- raw %>%
+  mutate(
+    蝮?? = recode(as.character(j1), !!!city_map),
+    ?賣?憿? = factor(ifelse(蝮?? %in% six_cities, "?剝", "???),
+                    levels = c("?剝", "???)),
+
+    # === ?蜓? ===
+    摰嗅滬蝬? = factor(q7, levels = 1:3,
+                    labels = c("銝?祆", "銝凋??嗅??, "雿?交")),
+    ?曉?砍? = factor(q4, levels = 1:2, labels = c("?芣", "?曉??)),
+
+    # === 蝘餃極? ===
+    ?批     = factor(q8a, levels = 1:2, labels = c("??, "憟?)),
+    撟湧翩蝯?  = factor(q8b, levels = 1:4,
+                    labels = c("<25甇?, "25-34甇?, "35-44甇?, "45甇脖誑銝?)),
+    ?蝔漲 = factor(q8c, levels = 1:3,
+                    labels = c("?葉?誑銝?, "擃葉(??", "撠??誑銝?)),
+    霅瑞?閮毀 = factor(q8e, levels = 1:2, labels = c("??蝺?, "?∟?蝺?)),
+
+    # === ??璇辣 ===
+    ?     = as.numeric(nq10a),
+    甈?     = as.numeric(w),
+    瘥撌交? = (as.numeric(nq9a_2) + 12) - as.numeric(nq9a_1) -
+              (as.numeric(nq9b_1) + as.numeric(nq9b_2) / 60),
+
+    ?曉??耦 = factor(q13a, levels = c(1, 2, 3, 5),
+                    labels = c("?賣??曉?(4-5甈?", "瘥?1甈?,
+                               "瘥?2-3甈?, "摰銝??)),
+    銝??    = ifelse(q13a == 5, 1, 0),
+    ????    = factor(q19, levels = 1:2, labels = c("??, "??)),
+    ?憚??    = factor(q15, levels = 1:2, labels = c("??, "??)),
+    ?芾??敦   = factor(q12, levels = 1:3,
+                      labels = c("????嚗?, "???葉??", "瘝?")),
+
+    # === ?輻?霈? ===
+    憿?隡? = factor(q17, levels = 1:3,
+                    labels = c("憿?", "銝???, "銝Ⅱ摰?)),
+    憿?_01  = ifelse(q17 == 1, 1, 0),
+
+    ?隞?獢?= factor(q16, levels = 1:2, labels = c("??, "瘝?")),
+    ?蹂誨?寞?憿? = case_when(
+      q16a == 1 ~ "?勗振鈭箇憿?,
+      q16a == 2 ~ "?唾??踹??折“??",
+      q16a %in% 3:6 ~ "?嗡?嚗?霅?閬芸?/璈?嚗?,
+      TRUE ~ NA_character_
+    ),
+
+    ?曄隢批像??= factor(q18, levels = 1:2, labels = c("?芣???, "????)),
+
+    # === 蝯?霈? ===
+    ???  = factor(q6, levels = 1:2, labels = c("??, "??)),
+    ?唳_01  = ifelse(q6 == 2, 1, 0),
+    ?湧?皛踵? = as.numeric(q20_7),
+
+    # === ?梁?? ===
+    撟怠_?折“ = as.numeric(q1_1),
+    撟怠_蝎曄? = as.numeric(q1_2),
+    撟怠_撌乩? = as.numeric(q1_3),
+    撟怠_摰嗡? = as.numeric(q1_4),
+    撟怠_蝬? = as.numeric(q1_5)
+  )
+```
+
+---
+
+# 1. 銝??蜓?憒?撠?蝘餃極嚗?{.tabset}
+
+## 1.1 摰嗅滬蝬? ? ?曉?嚗??嗅?嗥??啣?
+
+> **?**嚗??嗅?嗉??勗?蝐振摨剔?霅瑕極嚗摨?????2,000 ??> 雿??嗅??+ 銝凋??嗅?嗅?閮? 28 ?塚?N = 28嚗?璅?璆萄?嚗圾霈?雓寞???
+```{r econ-leave, fig.height=5}
+# ???嗅?嗆見?砍云撠??蔥?箝摹?Ｘ??df <- df %>%
+  mutate(
+    蝬??? = case_when(
+      摰嗅滬蝬? == "銝?祆" ~ "銝?祆 (N=3,988)",
+      TRUE ~ "銝凋?/雿?交 (N=28)"
+    ),
+    蝬??? = factor(蝬???, levels = c("銝?祆 (N=3,988)",
+                                          "銝凋?/雿?交 (N=28)"))
+  )
+
+df %>%
+  filter(!is.na(?曉??耦)) %>%
+  mutate(???= ifelse(?曉??耦 == "摰銝??, "摰銝??, "???)) %>%
+  count(蝬???, ??? wt = 甈?) %>%
+  group_by(蝬???) %>%
+  mutate(pct = n / sum(n)) %>%
+  ggplot(aes(x = 蝬???, y = pct, fill = ???) +
+  geom_col(width = 0.5) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            position = position_stack(vjust = 0.5),
+            size = 5, fontface = "bold") +
+  scale_fill_manual(values = c("??? = "#3498DB", "摰銝?? = "#E74C3C")) +
+  scale_y_continuous(labels = percent) +
+  labs(title = "撘勗摰嗅滬?宏撌交??敺???,
+       subtitle = "銝凋?/雿?交???其??曉???靘???50%嚗??祆 41%嚗?,
+       caption = "??撘勗?嗆見?砍? 28 ?塚?閫???雓寞?????2,000 ???拚隞亥圾瘙箸隞?憿批?憿?,
+       x = NULL, y = "瘥?") +
+  theme(legend.title = element_blank())
+```
+
+> **閫暺?*嚗??嗅?嗆?????2,000 ??雿隞??憭拍??折“??鞎餌???詨???> ??鋆撠霈宏撌交?嗾銋神?∪鼠?抽摹?Ｗ振摨剔?蝘餃極?湔?????璈???
+## 1.2 ?曉?砍??風??銝領??擃?暹憭?
+```{r q4-trouble, fig.height=5}
+df %>%
+  filter(!is.na(?曉?砍?), !is.na(???) %>%
+  count(?曉?砍?, ??? wt = 甈?) %>%
+  group_by(?曉?砍?) %>%
+  mutate(pct = n / sum(n)) %>%
+  filter(???== "??) %>%
+  ggplot(aes(x = ?曉?砍?, y = pct, fill = ?曉?砍?)) +
+  geom_col(width = 0.4, show.legend = FALSE) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            vjust = -0.5, fontface = "bold", size = 5) +
+  scale_fill_manual(values = pal2) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.15))) +
+  labs(title = "?曉?冽??霅瑞??蜓嚗?憭?蝘餃極??曄??湧?",
+       subtitle = "?臬????砍??風???扳?皞?撠撠宏撌交??擃?",
+       caption = "?芣?梁?砍??風 33.1% vs. ?曉??43.1%嚗榆頝?10 ???嚗?,
+       x = "?臬?曉?冽??霅瘀?Q4嚗?, y = "?唳??)
+```
+
+## 1.3 ?曉?砍??風??銝領?暸?????
+```{r q4-trouble-type, fig.height=6}
+trouble_labels <- c(
+  q6a_1 = "隤?銝?, q6a_2 = "皞??, q6a_3 = "????",
+  q6a_4 = "?漲/蝝敺?雿?, q6a_5 = "?折“?銵?雿?,
+  q6a_6 = "銵?蝧銝蔔", q6a_7 = "?暑銝??,
+  q6a_8 = "?蝡???, q6a_9 = "閬?隤輯",
+  q6a_10 = "閬?頧??蜓", q6a_11 = "?嗡?"
+)
+
+df %>%
+  filter(???== "??, !is.na(?曉?砍?)) %>%
+  select(?曉?砍?, 甈?, q6a_1:q6a_11) %>%
+  pivot_longer(cols = q6a_1:q6a_11, names_to = "?", values_to = "?暸") %>%
+  mutate(? = recode(?, !!!trouble_labels), ?暸 = as.numeric(?暸)) %>%
+  filter(?暸 == 1) %>%
+  count(?曉?砍?, ?, wt = 甈?) %>%
+  group_by(?曉?砍?) %>%
+  mutate(pct = n / sum(n)) %>%
+  # ?芸?撌株?頛之??撟暸?
+  ggplot(aes(x = reorder(?, pct), y = pct, fill = ?曉?砍?)) +
+  geom_col(position = "dodge", width = 0.7) +
+  scale_fill_manual(values = pal2) +
+  scale_y_continuous(labels = percent) +
+  coord_flip() +
+  labs(title = "?唳憿?瘥?嚗?望??霅?vs. ?芣",
+       subtitle = "?曉?砍??風???瘙矽?芥?瘣颱??拇???Ｗ?暹憭?,
+       x = NULL, y = "雿府蝢日??唳??瘥?") +
+  theme(legend.title = element_blank())
+```
+
+## 1.4 銝匱蝥?冽??霅瑞?????瞈?詨?
+
+```{r q4a-reasons, fig.height=5}
+q4a_labels <- c(
+  q4a_1 = "蝬?鞎?嚗?折?瘙之嚗?,
+  q4a_2 = "?砍??風???⊥???",
+  q4a_3 = "?曆??圈???砍??風",
+  q4a_4 = "?嗡?"
+)
+
+df %>%
+  filter(?曉?砍? == "?曉??) %>%
+  select(甈?, q4a_1:q4a_4) %>%
+  pivot_longer(cols = q4a_1:q4a_4, names_to = "??", values_to = "?暸") %>%
+  mutate(?? = recode(??, !!!q4a_labels), ?暸 = as.numeric(?暸)) %>%
+  filter(?暸 == 1) %>%
+  count(??, wt = 甈?, sort = TRUE) %>%
+  mutate(pct = n / sum(n)) %>%
+  ggplot(aes(x = reorder(??, n), y = pct)) +
+  geom_col(fill = "#E74C3C", width = 0.6) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            hjust = -0.2, fontface = "bold", size = 4) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.2))) +
+  coord_flip() +
+  labs(title = "?箔?銝匱蝥?冽??霅瘀?",
+       subtitle = "77.2% ?蝬?鞎???蝐?霅瑕極?胯?敺歇???蹂誨",
+       x = NULL, y = "瘥?嚗銴嚗?)
+```
+
+---
+
+# 2. ?隡?鋆?輻?嚗17嚗?行??? {.tabset}
+
+> **?輻??**嚗摨銵??蜓?典??亥?憭??風撌乩???
+> 銝行?靘?隞?憿找犖???典?鞎餌鋆?17 閰Ｗ??蜓?臬憿?????
+## 2.1 ?湧???
+
+```{r q17-overview, fig.height=4}
+df %>%
+  filter(!is.na(憿?隡?)) %>%
+  count(憿?隡?, wt = 甈?) %>%
+  mutate(pct = n / sum(n)) %>%
+  ggplot(aes(x = 憿?隡?, y = pct, fill = 憿?隡?)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            vjust = -0.5, fontface = "bold", size = 5) +
+  scale_fill_manual(values = pal3) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.15))) +
+  labs(title = "??43.5% ??銝駁??????乩??蝑?,
+       subtitle = "35.7% ?Ⅱ銝???20.7% 銝Ⅱ摰?Q17嚗?,
+       x = NULL, y = "瘥?")
+```
+
+## 2.2 ?虜嚗歇蝬?憭???銝餃???銝????蝑?
+```{r q17-by-leave, fig.height=6}
+df %>%
+  filter(!is.na(憿?隡?), !is.na(?曉??耦)) %>%
+  count(?曉??耦, 憿?隡?, wt = 甈?) %>%
+  group_by(?曉??耦) %>%
+  mutate(pct = n / sum(n)) %>%
+  ggplot(aes(x = ?曉??耦, y = pct, fill = 憿?隡?)) +
+  geom_col(width = 0.7) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            position = position_stack(vjust = 0.5),
+            size = 3.5, fontface = "bold") +
+  scale_fill_manual(values = pal3) +
+  scale_y_continuous(labels = percent) +
+  labs(title = "?虜嚗????蜓嚗???銝????蝑?,
+       subtitle = "?賣??曉?????憿?????46.4%???歇?芾?摰?嚗??唾◤?輻?蝝?嚗?,
+       caption = "摰銝???蜓銝哨?44.1% 憿????蝑?閮梯閫詨???閬?蝢日?",
+       x = NULL, y = "瘥?") +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 15, hjust = 1))
+```
+
+> **?虜閫??**嚗???4-5甈??????蜓銝????擃?46.4%嚗?> ???蜓?航隤?芸楛撌脩策鈭?????銝?閬?銝迭餈摨??乓?> ????其??曉????蜓??44.1% 銵函內憿???> ?輻??亥?迤?唬?嚗Ⅱ撖行?璈??孵???閬?蝢日???
+## 2.3 Q17 ? ?唳??憿???銝餃???唳
+
+```{r q17-trouble, fig.height=5}
+df %>%
+  filter(!is.na(憿?隡?), !is.na(???) %>%
+  count(憿?隡?, ??? wt = 甈?) %>%
+  group_by(憿?隡?) %>%
+  mutate(pct = n / sum(n)) %>%
+  filter(???== "??) %>%
+  ggplot(aes(x = 憿?隡?, y = pct, fill = 憿?隡?)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            vjust = -0.5, fontface = "bold", size = 5) +
+  scale_fill_manual(values = pal3) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.15))) +
+  labs(title = "憿?霈宏撌乩????蜓嚗?曄??擃?,
+       subtitle = "憿? 36.1% > 銝Ⅱ摰?34.8% > 銝???30.8%",
+       caption = "?航閫??嚗??唳??銝餅撣?蝘餃極隡?靘??胯????桃??箸??",
+       x = "Q17 憿?霈宏撌乩???, y = "?唳??)
+```
+
+## 2.4 Q17 ? Q16 ?蹂誨?寞?嚗??蹂誨鞈??隤芷???
+```{r q17-q16, fig.height=5}
+df %>%
+  filter(!is.na(憿?隡?), !is.na(?隞?獢?) %>%
+  count(憿?隡?, ?隞?獢? wt = 甈?) %>%
+  group_by(憿?隡?) %>%
+  mutate(pct = n / sum(n)) %>%
+  filter(?隞?獢?== "??) %>%
+  ggplot(aes(x = 憿?隡?, y = pct, fill = 憿?隡?)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            vjust = -0.5, fontface = "bold", size = 5) +
+  scale_fill_manual(values = pal3) +
+  scale_y_continuous(labels = percent, limits = c(0, 1),
+                     expand = expansion(mult = c(0, 0.05))) +
+  labs(title = "?隞?憿扳獢????湧???蝘餃極隡?",
+       subtitle = "Q16 ?隞?獢?瘥?嚗???92.7% > 銝???89.1% > 銝Ⅱ摰?84.3%",
+       caption = "?蹂誨鞈???扳敶梢?蜓隡??????萄?蝝?,
+       x = "Q17 憿?霈宏撌乩???, y = "?隞?獢?瘥?")
+```
+
+## 2.5 Q17 ?啣?撌桃?鈭腦撣?銝???
+
+```{r q17-map, fig.height=9, fig.width=10}
+# ?腦撣?Q17 憿???q17_city <- df %>%
+  filter(!is.na(憿?隡?)) %>%
+  group_by(蝮??) %>%
+  summarise(
+    憿???= weighted.mean(憿?_01, 甈?, na.rm = TRUE),
+    n = n(),
+    .groups = "drop"
+  )
+
+# ===== ?箇蝪⊥??啣?嚗摨扳??鼓餈撮嚗?====
+# 瘥腦撣策鈭??之?渡? (x, y) 摨扳??冽瘜⊥部??city_coords <- tribble(
+  ~蝮??,       ~lon,    ~lat,
+  "?粹?撣?,    121.74,  25.13,
+  "?箏?撣?,    121.56,  25.05,
+  "?啣?撣?,    121.46,  24.99,
+  "獢?撣?,    121.30,  24.99,
+  "?啁姘蝮?,    121.00,  24.80,
+  "?啁姘撣?,    120.97,  24.80,
+  "??蝮?,    120.82,  24.56,
+  "?箔葉撣?,    120.68,  24.15,
+  "敶啣?蝮?,    120.54,  24.08,
+  "??蝮?,    120.68,  23.75,
+  "?脫?蝮?,    120.43,  23.70,
+  "?儔蝮?,    120.43,  23.48,
+  "?儔撣?,    120.45,  23.48,
+  "?箏?撣?,    120.23,  23.00,
+  "擃?撣?,    120.30,  22.63,
+  "撅蝮?,    120.49,  22.55,
+  "摰蝮?,    121.74,  24.75,
+  "?梯蝮?,    121.60,  23.99,
+  "?箸蝮?,    121.15,  22.76,
+  "瞉?蝮?,    119.56,  23.57,
+  "?????",  118.32,  24.44
+)
+
+q17_map <- q17_city %>% left_join(city_coords, by = "蝮??")
+
+q17_map %>%
+  ggplot(aes(x = lon, y = lat)) +
+  geom_point(aes(size = n, fill = 憿???,
+             shape = 21, color = "white", stroke = 1.5, alpha = 0.85) +
+  geom_text(aes(label = paste0(蝮??, "\n", percent(憿??? 0.1))),
+            size = 2.8, vjust = -1.5, check_overlap = FALSE) +
+  scale_fill_gradient2(low = "#E74C3C", mid = "#F39C12", high = "#27AE60",
+                       midpoint = 0.43,
+                       name = "憿???,
+                       labels = percent) +
+  scale_size_continuous(name = "璅???, range = c(3, 15)) +
+  coord_fixed(ratio = 1.3) +
+  labs(title = "?腦撣?銝颯???蝘餃極隡???靘??撣?,
+       subtitle = "蝬 = 憿???嚗???= 憿???嚗部瘜∪之撠?= 璅???,
+       caption = "?????嚗?8.6%嚗??粹?嚗?9.7%嚗????雿?撅嚗?1.8%嚗??箸嚗?1.1%嚗?擃?) +
+  theme(axis.title = element_blank(),
+        axis.text = element_blank(),
+        panel.grid = element_blank())
+```
+
+> **?啣?閫撖?*嚗?>
+> - **憿???雿?*嚗?????嚗?8.6%嚗??29.7%嚗?皝?33.3%嚗?> - **憿???擃?*嚗??梧?51.8%嚗?梧?51.1%嚗銝哨?49.4%嚗?> - ?Ｗ雀嚗????皝??隞??皞扔摨血銋??蜓?喃蝙??憿???誑?瑁?
+> - 雿?頞???荔??箸?銋???憿??敺?
+
+## 2.6 銝????蜓???靘陷蝘餃極??
+
+```{r q17-dependence, fig.height=6}
+help_labels <- c(
+  "撟怠_?折“" = "鋡怎?霅瑁憒亙??折“",
+  "撟怠_蝎曄?" = "皜?蝎曄?憯?",
+  "撟怠_撌乩?" = "摰嗡犖?臬??箏極雿?,
+  "撟怠_摰嗡?" = "皜?摰嗡?鞎?",
+  "撟怠_蝬?" = "皜?蝬?鞎?"
+)
+
+df %>%
+  filter(!is.na(憿?隡?)) %>%
+  select(憿?隡?, 甈?, 撟怠_?折“:撟怠_蝬?) %>%
+  pivot_longer(cols = 撟怠_?折“:撟怠_蝬?,
+               names_to = "?Ｗ?", values_to = "?暸") %>%
+  mutate(?Ｗ? = recode(?Ｗ?, !!!help_labels)) %>%
+  group_by(憿?隡?, ?Ｗ?) %>%
+  summarise(瘥? = weighted.mean(?暸, 甈?, na.rm = TRUE), .groups = "drop") %>%
+  ggplot(aes(x = reorder(?Ｗ?, -瘥?), y = 瘥?, fill = 憿?隡?)) +
+  geom_col(position = "dodge", width = 0.7) +
+  geom_text(aes(label = percent(瘥?, accuracy = 0.1)),
+            position = position_dodge(0.7), vjust = -0.5, size = 3) +
+  scale_fill_manual(values = pal3) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.15))) +
+  labs(title = "??憿????蜓嚗?蝘餃極??鞈渡?摨行擃?,
+       subtitle = "?梁蝘餃極撣嗡??鼠?抬?Q1嚗銴嚗? Q17 ??",
+       caption = "銝????頛移蟡???91.6%)?振鈭箏憭撌乩???82.9%) 銝?鞈游漲?＊?湧?",
+       x = NULL, y = "?暸瘥?") +
+  theme(legend.title = element_blank(),
+        axis.text.x = element_text(angle = 20, hjust = 1))
+```
+
+> **?潛**嚗?憿?霈宏撌乩????蜓嚗??頛移蟡???91.6%嚗?
+> ?振鈭箏憭撌乩???82.9%嚗?Ｙ??暸??憿舫??潮???> 隞?*?港?鞈渡宏撌亦??典予?憿?*嚗?隞交??隞颱?銝剜??
+---
+
+# 3. ?批撟喟???Q18嚗嗾銋鈭箸? {.tabset}
+
+## 3.1 ?唾??暹?嚗? 1.2% ?暹???
+```{r q18-overview, fig.height=4}
+df %>%
+  filter(!is.na(?曄隢批像??) %>%
+  count(?曄隢批像?? wt = 甈?) %>%
+  mutate(pct = n / sum(n)) %>%
+  ggplot(aes(x = ?曄隢批像?? y = pct, fill = ?曄隢批像??) +
+  geom_col(width = 0.4, show.legend = FALSE) +
+  geom_text(aes(label = paste0(percent(pct, accuracy = 0.1), "\n(N=",
+                                ifelse(?曄隢批像??== "????, "47", "3,969"), ")")),
+            vjust = -0.3, fontface = "bold", size = 4.5) +
+  scale_fill_manual(values = c("?芣??? = "#BDC3C7", "???? = "#E74C3C")) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.2))) +
+  labs(title = "?批撟喟?撌乩?瘜??伐???1.2% ?宏撌交??瘙?,
+       subtitle = "????銋單?????敺???甈撟曆??∩犖銵蝙",
+       x = NULL, y = "瘥?")
+```
+
+## 3.2 ?唾??摰對?95.7% ?舐???
+
+```{r q18-types, fig.height=5}
+q18b_labels <- c(
+  q18b_1 = "????, q18b_2 = "?芰瑼Ｗ??芰??,
+  q18b_3 = "?Ｗ?嚗瘚嚗?, q18b_4 = "摰?隡?",
+  q18b_5 = "?Ｘ炎??, q18b_6 = "????銋單???,
+  q18b_7 = "?脣為??", q18b_8 = "?嗡?"
+)
+
+df %>%
+  filter(?曄隢批像??== "????) %>%
+  # q18a=1 means ?策??(A)
+  select(甈?, q18b_1:q18b_8) %>%
+  pivot_longer(cols = q18b_1:q18b_8, names_to = "?", values_to = "?暸") %>%
+  mutate(? = recode(?, !!!q18b_labels),
+         ?暸 = as.numeric(?暸)) %>%
+  filter(?暸 == 1) %>%
+  count(?, wt = 甈?, sort = TRUE) %>%
+  mutate(pct = n / sum(n)) %>%
+  ggplot(aes(x = reorder(?, n), y = pct)) +
+  geom_col(fill = "#E74C3C", width = 0.6) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            hjust = -0.2, fontface = "bold", size = 4) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.2))) +
+  coord_flip() +
+  labs(title = "??批像??瘙????",
+       subtitle = "撟曆??冽????95.7%嚗?銝?貊敺策??,
+       caption = "憟賣??荔????100% ?脣?蝯血???瘨嚗嗾銋?鈭箸???,
+       x = NULL, y = "瘥?")
+```
+
+## 3.3 Q18 ? ?蜓隡???嚗17嚗?
+```{r q18-q17, fig.height=5}
+df %>%
+  filter(!is.na(?曄隢批像??, !is.na(憿?隡?)) %>%
+  count(?曄隢批像?? 憿?隡?, wt = 甈?) %>%
+  group_by(?曄隢批像?? %>%
+  mutate(pct = n / sum(n)) %>%
+  ggplot(aes(x = ?曄隢批像?? y = pct, fill = 憿?隡?)) +
+  geom_col(width = 0.5) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            position = position_stack(vjust = 0.5),
+            size = 4, fontface = "bold") +
+  scale_fill_manual(values = pal3) +
+  scale_y_continuous(labels = percent) +
+  labs(title = "???箸批像??瘙?摰嗅滬嚗?銝餅憿?霈宏撌乩???,
+       subtitle = "????蜓憿???53.2% vs. ?芣??箄?43.4%",
+       caption = "?航?舫?????????銝餅摰寞?霈宏撌交??瘙?,
+       x = NULL, y = "瘥?") +
+  theme(legend.title = element_blank())
+```
+
+## 3.4 Q18 ? ?唳????瘙??????
+```{r q18-trouble, fig.height=4}
+df %>%
+  filter(!is.na(?曄隢批像??, !is.na(???) %>%
+  count(?曄隢批像?? ??? wt = 甈?) %>%
+  group_by(?曄隢批像?? %>%
+  mutate(pct = n / sum(n)) %>%
+  filter(???== "??) %>%
+  ggplot(aes(x = ?曄隢批像?? y = pct, fill = ?曄隢批像??) +
+  geom_col(width = 0.4, show.legend = FALSE) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            vjust = -0.5, fontface = "bold", size = 5) +
+  scale_fill_manual(values = c("?芣??? = "#BDC3C7", "???? = "#3498DB")) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.15))) +
+  labs(title = "??批像??瘙???憓??蜓?唳",
+       subtitle = "????31.9% vs. ?芣???34.0%??曄?撟曆??∪榆??,
+       caption = "?蜓銝???霈宏撌亥?雿踵?摰??交???暻餌",
+       x = NULL, y = "?唳??)
+```
+
+---
+
+# 4. 隞暻潭見????銝??Ｙ??唳嚗?{.tabset}
+
+> ???鈭蝑??蝭???箸??憿?
+> **?芯?蝘餃極?寡釭??銝餉??箇?蝯?嚗霈?剝?靽??嚗?唳嚗?**
+
+## 4.1 ?唳??蝘餃極????
+
+```{r trouble-factors, fig.height=7}
+# 閮???憿??唳??factors <- bind_rows(
+  df %>% filter(!is.na(霅瑞?閮毀)) %>%
+    group_by(?? = 霅瑞?閮毀) %>%
+    summarise(?唳??= weighted.mean(?唳_01, 甈?, na.rm = TRUE),
+              n = n(), .groups = "drop") %>%
+    mutate(?Ｗ? = "霅瑞?閮毀"),
+
+  df %>% filter(!is.na(?批)) %>%
+    group_by(?? = ?批) %>%
+    summarise(?唳??= weighted.mean(?唳_01, 甈?, na.rm = TRUE),
+              n = n(), .groups = "drop") %>%
+    mutate(?Ｗ? = "?批"),
+
+  df %>% filter(!is.na(撟湧翩蝯?) %>%
+    group_by(?? = 撟湧翩蝯? %>%
+    summarise(?唳??= weighted.mean(?唳_01, 甈?, na.rm = TRUE),
+              n = n(), .groups = "drop") %>%
+    mutate(?Ｗ? = "撟湧翩"),
+
+  df %>% filter(!is.na(?蝔漲)) %>%
+    group_by(?? = ?蝔漲) %>%
+    summarise(?唳??= weighted.mean(?唳_01, 甈?, na.rm = TRUE),
+              n = n(), .groups = "drop") %>%
+    mutate(?Ｗ? = "?蝔漲"),
+
+  df %>% filter(!is.na(?曉?砍?)) %>%
+    group_by(?? = ?曉?砍?) %>%
+    summarise(?唳??= weighted.mean(?唳_01, 甈?, na.rm = TRUE),
+              n = n(), .groups = "drop") %>%
+    mutate(?Ｗ? = "?曉?砍??風"),
+
+  df %>% filter(!is.na(?憚??) %>%
+    group_by(?? = ?憚?? %>%
+    summarise(?唳??= weighted.mean(?唳_01, 甈?, na.rm = TRUE),
+              n = n(), .groups = "drop") %>%
+    mutate(?Ｗ? = "摰嗡犖頛芣?折“"),
+
+  df %>% filter(!is.na(?曉??耦)) %>%
+    mutate(???= ifelse(?曉??耦 == "摰銝??, "銝??, "???)) %>%
+    group_by(?? = ??? %>%
+    summarise(?唳??= weighted.mean(?唳_01, 甈?, na.rm = TRUE),
+              n = n(), .groups = "drop") %>%
+    mutate(?Ｗ? = "?曉?")
+)
+
+factors %>%
+  ggplot(aes(x = reorder(paste0(?Ｗ?, "嚗?, ??), ?唳??,
+             y = ?唳??
+             fill = ifelse(?唳??< 0.30, "雿??, "銝??))) +
+  geom_col(width = 0.7, show.legend = FALSE) +
+  geom_text(aes(label = paste0(percent(?唳?? 0.1), " (n=", n, ")")),
+            hjust = -0.05, size = 3.2) +
+  scale_fill_manual(values = c("雿?? = "#27AE60", "銝?? = "#BDC3C7")) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.25))) +
+  coord_flip() +
+  labs(title = "??蝝??唳??銵?蝬 = 雿 30% ???唳????,
+       subtitle = "?瑟抒宏撌伐?24.1%嚗?霅瑞?閮毀嚗?9.1%嚗?蝘誑銝?28.2%嚗?曄??雿?,
+       x = NULL, y = "?唳??)
+```
+
+## 4.2 ?雿?曄???????
+```{r golden-combo, fig.height=5}
+df %>%
+  filter(!is.na(霅瑞?閮毀), !is.na(?批), !is.na(???) %>%
+  mutate(蝯? = paste0(霅瑞?閮毀, " ? ", ?批)) %>%
+  count(蝯?, ??? wt = 甈?) %>%
+  group_by(蝯?) %>%
+  mutate(pct = n / sum(n)) %>%
+  filter(???== "??) %>%
+  ggplot(aes(x = reorder(蝯?, pct), y = pct,
+             fill = ifelse(pct == min(pct), "best", "other"))) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            hjust = -0.3, fontface = "bold", size = 4.5) +
+  scale_fill_manual(values = c("best" = "#27AE60", "other" = "#BDC3C7")) +
+  scale_y_continuous(labels = percent, expand = expansion(mult = c(0, 0.2))) +
+  coord_flip() +
+  labs(title = "霅瑞?閮毀 ? ?批??曄?蝯?",
+       subtitle = "??蝺渡??瑟抒宏撌亙?曄??雿?,
+       x = NULL, y = "?唳??)
+```
+
+## 4.3 撟湧翩??皜???頞?瘛梯??
+
+```{r age-trouble, fig.height=5}
+df %>%
+  filter(!is.na(撟湧翩蝯?, !is.na(???) %>%
+  count(撟湧翩蝯? ??? wt = 甈?) %>%
+  group_by(撟湧翩蝯? %>%
+  mutate(pct = n / sum(n)) %>%
+  filter(???== "??) %>%
+  ggplot(aes(x = 撟湧翩蝯? y = pct, group = 1)) +
+  geom_line(linewidth = 1.5, color = "#E74C3C") +
+  geom_point(size = 4, color = "#E74C3C") +
+  geom_text(aes(label = percent(pct, accuracy = 0.1)),
+            vjust = -1.2, fontface = "bold", size = 4) +
+  scale_y_continuous(labels = percent, limits = c(0.25, 0.5)) +
+  labs(title = "?唳?蝘餃極撟湧翩??",
+       subtitle = "?芣遛 25 甇莎?42.5%嚗? 45 甇脖誑銝?30.5%嚗?撟湧翩頞之頞帘摰?,
+       caption = "撟湧蝘餃極?航蝬??渲?撖極雿?摨行蝛拙?嚗??蜓蝤典?銋雿?,
+       x = "蝘餃極撟湧翩", y = "?唳??)
+```
+
+## 4.4 ?唳?葫??Logistic 餈湔飛?狐????憭改?
+
+```{r trouble-logistic, fig.height=7}
+model <- glm(
+  ?唳_01 ~ 霅瑞?閮毀 + ?批 + 撟湧翩蝯?+ ?蝔漲 +
+             ?曉?砍? + ?憚??+ 銝??+ ? + ?賣?憿?,
+  data = df, family = binomial, weights = 甈?
+)
+
+or_plot <- tidy(model, conf.int = TRUE, exponentiate = TRUE) %>%
+  filter(term != "(Intercept)") %>%
+  mutate(
+    term = str_replace_all(term, c(
+      "霅瑞?閮毀?∟?蝺? = "蝘餃極嚗霅瑞?閮毀",
+      "?批憟? = "蝘餃極嚗戊??,
+      "撟湧翩蝯?5-34甇? = "蝘餃極嚗?5-34甇?,
+      "撟湧翩蝯?5-44甇? = "蝘餃極嚗?5-44甇?,
+      "撟湧翩蝯?5甇脖誑銝? = "蝘餃極嚗?5甇脖誑銝?,
+      "?蝔漲擃葉\\(?愧\)" = "蝘餃極嚗?銝???",
+      "?蝔漲撠??誑銝? = "蝘餃極嚗?蝘誑銝?,
+      "?曉?砍??曉?? = "?蜓嚗?望??霅?,
+      "?憚?輻" = "?蜓嚗摰嗡犖頛芣",
+      "銝?? = "璇辣嚗??其??曉?",
+      "?" = "璇辣嚗???瘥?1??",
+      "?賣?憿???? = "?啣?嚗??剝"
+    )),
+    sig = ifelse(p.value < 0.05, "憿航?", "銝＊??)
+  )
+
+or_plot %>%
+  ggplot(aes(x = estimate, y = reorder(term, estimate), color = sig)) +
+  geom_vline(xintercept = 1, linetype = "dashed", color = "grey50") +
+  geom_pointrange(aes(xmin = conf.low, xmax = conf.high), size = 0.7) +
+  scale_color_manual(values = c("憿航?" = "#E74C3C", "銝＊?? = "#BDC3C7")) +
+  labs(title = "?唳?葫????蝞?嚗R嚗?,
+       subtitle = "OR > 1 = 憓??唳憸券嚗R < 1 = ???唳憸券\n蝝 = p < 0.05 憿航?",
+       x = "??瘥?Odds Ratio嚗?, y = NULL) +
+  theme(legend.title = element_blank())
+```
+
+```{r trouble-logistic-table}
+tidy(model, conf.int = TRUE, exponentiate = TRUE) %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
+  kable(caption = "?唳 Logistic 餈湔飛摰蝯?嚗R ??95% CI嚗?)
+```
+
+---
+
+# 5. ??潛?? {-}
+
+```{r summary}
+tibble(
+  銝駁? = c(
+    rep("?蜓?", 3),
+    rep("Q17 隡??輻?", 4),
+    rep("Q18 ?批像??, 3),
+    rep("?∪?曉?蝝?, 3)
+  ),
+  ?潛 = c(
+    "撘勗摰嗅滬蝘餃極?游??曉?",
+    "?曉?砍??風??曄?擃?10%",
+    "銝?砍??風 77% ??瞈???,
+    "??43.5% ?蜓憿???",
+    "?賣??曉???銝餃???銝?????,
+    "?隞?獢????湧?",
+    "銝???蝘餃極靘陷摨行擃?,
+    "??47 鈭綽?1.2%嚗??瘙?,
+    "?券?脣?蝯血?嚗?5.7% ?舐???",
+    "????蜓?湧???暹憓?",
+    "霅瑞?閮毀???唳??憭?,
+    "撟湧翩頞之?唳??雿?,
+    "?瑟抒宏撌亙?曄????澆戊??
+  ),
+  ?豢? = c(
+    "銝?? 50% vs 銝?祆 41%",
+    "43.1% vs 33.1%",
+    "77.2% 蝬?鞎???2.7% ??銝?",
+    "35.7% 銝???0.7% 銝Ⅱ摰?,
+    "?賣??曉???憿???46.4%",
+    "?隞?獢?92.7% 憿?",
+    "??頛移蟡???1.6% vs 86.7%",
+    "3,969 鈭箸?",
+    "100% 蝯血???,
+    "憿?隡???53.2% vs 43.4%",
+    "??蝺?29.1% vs ?∟?蝺?47.5%",
+    "<25甇?42.5% ??45+ 30.5%",
+    "??24.1% vs 憟?34.5%"
+  )
+) %>%
+  kable(caption = "?蜓憿??萇??, align = c("l", "l", "l"))
+```
+
+---
+
+# 6. 敺???撱箄降 {-}
+
+```{r next, results='asis'}
+cat("
+### 撱箄降撱嗡撓
+
+**1. 雿?交?楛摨血???**
+?祈矽?乩葉雿?雿?交??28 ?塚????????遣霅唳?釭?扯赤隢?
+瘛勗?圾鋆 2,000 ?雿瘜?雿輸?銝餉?蝘餃極?曉???
+**2. Q18 ?摨阡?蝷?蝛?*
+??1.2% ?宏撌亥?雿踵?摰??交??抽?憿?賭??券?銝鳴?100% ?賜策??嚗??蝘餃極?祈澈??閮?敺輔隞??誑???“?柴遣霅啣?蝘餃極蝡航矽?乓?
+**3. ?蹂誨?折“鞈??蝑?隡?*
+Q16 ? Q17 ???＊蝷箝??蹂誨?寞??隡??????萸??舫脖?甇亥?隡啣?蝮???瑞 2.0 ????項??嚗???Q17 憿???頝典惜甈∪??乓?
+**4. 霅瑞?閮毀???祆?????*
+霅瑞?閮毀憭批????唳??-18.4 ???嚗?雿?敶梢?芾????臭摯蝞?蝺游葆靘???扳???憒?雿???撠輔隞??亦?嚗?
+雿?典?閮毀鋆?輻?????")
+```
+
+---
+
+<center>
+*?砍? R Markdown ?芸???嚚???皞????具宏撌亦恣???隤踵??13 撟游振摨剝?*
+</center>

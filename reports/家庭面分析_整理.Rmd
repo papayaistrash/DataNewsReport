@@ -1,0 +1,221 @@
+﻿---
+title: "摰嗅滬?風蝘餃極隤踵?? (109-113撟?"
+author: "???勗?"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+    highlight: tango
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.width = 10, fig.height = 6, dpi = 150)
+```
+
+# 鞈?霈???蔭雿平
+
+```{r load-data}
+library(tidyverse)
+library(ggplot2)
+library(showtext)
+library(scales)
+
+# 閮剖?銝剜?摮?
+font_add("TC", "msjh.ttc") # 雿輻敺株?甇??擃??交Mac?舀??"STHeiti Light.ttc" ? "PingFang TC"
+showtext_auto()
+
+# 摰儔???ggplot 銝剜?銝駁?
+theme_tc <- function() {
+  theme_minimal(base_family = "TC") +
+    theme(
+      text = element_text(family = "TC"),
+      plot.title = element_text(size = 18, face = "bold"),
+      plot.subtitle = element_text(size = 12, color = "grey40"),
+      axis.title = element_text(size = 12),
+      axis.text = element_text(size = 11),
+      legend.position = "bottom",
+      panel.grid.minor = element_blank()
+    )
+}
+
+# 霈??撟游漲鞈? (雿輻?詨?頝臬?)
+data109 <- read.csv("109撟渡宏撌?摰嗅滬??data109.csv")
+data110 <- read.csv("110撟渡宏撌?摰嗅滬??data110.csv")
+data111 <- read.csv("111撟渡宏撌?摰嗅滬??data111.csv")
+data112 <- read.csv("112撟渡宏撌?摰嗅滬??data112.csv")
+data113 <- read.csv("113撟渡宏撌?摰嗅滬??data113.csv")
+```
+
+# 1. ?梁憭?摰嗅滬?風撌亙?嚗蜓閬憿扳撘?頛?
+```{r care-before-hiring}
+# ?蔥鞈?
+care_long <- bind_rows(
+  data109 %>% transmute(year = "109", option = q4),
+  data110 %>% transmute(year = "110", option = q4),
+  data111 %>% transmute(year = "111", option = q4),
+  data112 %>% transmute(year = "112", option = q2),
+  data113 %>% transmute(year = "113", option = q2)
+) %>%
+  mutate(
+    option = as.numeric(option),
+    year = factor(year, levels = c("109", "110", "111", "112", "113")),
+    option_label = case_when(
+      option == 1 ~ "?勗振鈭箇憿?,
+      option == 2 ~ "?暹??霅?,
+      option == 3 ~ "??扳?瑽?,
+      option == 4 ~ "隢扛?憿?,
+      option == 5 ~ "?暹?鼠??,
+      option == 6 ~ "?嗡?",
+      TRUE ~ NA_character_
+    ),
+    option_label = factor(
+      option_label,
+      levels = c("?勗振鈭箇憿?, "?暹??霅?, "??扳?瑽?,
+                 "隢扛?憿?, "?暹?鼠??, "?嗡?")
+    )
+  ) %>%
+  filter(!is.na(option_label))
+
+# 閮?瘥?
+care_summary <- care_long %>%
+  count(year, option_label, name = "n") %>%
+  group_by(year) %>%
+  mutate(
+    percent = n / sum(n),
+    percent_label = paste0(round(percent * 100, 1), "%")
+  ) %>%
+  ungroup()
+
+# 蝜芾ˊ?瑟???ggplot(care_summary, aes(x = option_label, y = percent, fill = year)) +
+  geom_col(position = position_dodge(width = 0.75), width = 0.65) +
+  geom_text(aes(label = percent_label),
+            position = position_dodge(width = 0.75),
+            vjust = -0.3, size = 3, family = "TC") +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  scale_fill_manual(values = c("#1f3e79", "#5c7cfa", "#52b788", "#f59f00", "#d9480f")) +
+  labs(
+    title = "109??13 撟游?典?蝐振摨剔?霅瑕極?蜓閬憿扳撘?靘?,
+    x = "?折“?孵?", y = "瘥?", fill = "撟港遢"
+  ) +
+  theme_tc()
+```
+
+# 2. ?桀?瘝??梁憭?摰嗅滬?風撌交?嚗蜓閬隞?獢?
+```{r alternative-options}
+alt_long <- bind_rows(
+  data109 %>% transmute(year = "109", option = q5),
+  data110 %>% transmute(year = "110", option = q5),
+  data111 %>% transmute(year = "111", option = q5),
+  data112 %>% transmute(year = "112", option = q3),
+  data113 %>% transmute(year = "113", option = q3)
+) %>%
+  mutate(
+    option = as.numeric(option),
+    year = factor(year, levels = c("109", "110", "111", "112", "113")),
+    option_label = case_when(
+      option == 1 ~ "?勗振鈭箇憿?,
+      option == 2 ~ "隢扛?憿?,
+      option == 3 ~ "?暹??霅?,
+      option == 4 ~ "??扳?瑽?,
+      option == 5 ~ "?砍?撟怠",
+      option == 6 ~ "?嗡?",
+      TRUE ~ NA_character_
+    ),
+    option_label = factor(
+      option_label,
+      levels = c("?勗振鈭箇憿?, "隢扛?憿?, "?暹??霅?,
+                 "??扳?瑽?, "?砍?撟怠", "?嗡?")
+    )
+  ) %>%
+  filter(!is.na(option_label))
+
+alt_summary <- alt_long %>%
+  count(year, option_label, name = "n") %>%
+  group_by(year) %>%
+  mutate(
+    percent = n / sum(n),
+    percent_label = paste0(round(percent * 100, 1), "%")
+  ) %>%
+  ungroup()
+
+ggplot(alt_summary, aes(x = option_label, y = percent, fill = year)) +
+  geom_col(position = position_dodge(width = 0.75), width = 0.65) +
+  geom_text(aes(label = percent_label),
+            position = position_dodge(width = 0.75),
+            vjust = -0.3, size = 3, family = "TC") +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  scale_fill_manual(values = c("#1f3e79", "#5c7cfa", "#52b788", "#f59f00", "#d9480f")) +
+  labs(
+    title = "109??13 撟港蜓閬隞?獢?靘?,
+    x = "?蹂誨?寞?", y = "瘥?", fill = "撟港遢"
+  ) +
+  theme_tc()
+```
+
+# 3. ?啣???嚗振摨剔宏撌亥鞈???(隞?13撟渡靘?
+
+> ?祆挾?質??行**113撟游漲摰嗅滬憭??風撌亦??芾??瘜?*嚗??瘞湛?蝬虜?扯鞈??風??蝺氬?蝐?霈???胯?
+```{r salary-analysis}
+# ?? 113撟渲??脰??芾?皜?????df113_salary <- data113 %>%
+  mutate(
+    # 霈蝺函Ⅳ
+    ?? = factor(q8d, levels = 1:4, labels = c("?啣側", "?脣?鞈?, "瘜啣?", "頞?")),
+    霅瑞?閮毀 = factor(q8e, levels = 1:2, labels = c("??閮?, "?芸?閮?)),
+    ?蝔漲 = factor(q8c, levels = 1:3, labels = c("?葉?誑銝?, "擃葉(??", "撠??誑銝?)),
+    ? = as.numeric(nq10a),
+    ?鞎?= as.numeric(nq10ab),
+    蝮質鞈?= ? + ?鞎?  ) %>%
+  # ?蕪?⊥??扔蝡臬?  filter(!is.na(?), ? > 0, ? < 60000)
+
+# (1) ??蝐宏撌亦????蝞勗???p_salary_nation <- ggplot(df113_salary, aes(x = ??, y = ?, fill = ??)) +
+  geom_boxplot(width = 0.6, outlier.alpha = 0.3, show.legend = FALSE) +
+  scale_fill_brewer(palette = "Set2") +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "113撟游???蝘餃極???",
+    subtitle = "蝬虜?扯鞈?銝?鞎鳴?",
+    x = "??", y = "? (??"
+  ) +
+  theme_tc()
+
+p_salary_nation
+
+# (2) 霅瑞?閮毀?臬撣嗡??芾?皞Ｗ嚗?p_salary_training <- ggplot(df113_salary %>% filter(!is.na(霅瑞?閮毀)), 
+                            aes(x = 霅瑞?閮毀, y = ?, fill = 霅瑞?閮毀)) +
+  geom_violin(alpha = 0.7, show.legend = FALSE) +
+  geom_boxplot(width = 0.15, fill = "white", outlier.shape = NA) +
+  scale_fill_manual(values = c("??閮? = "#52b788", "?芸?閮? = "#d9480f")) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "霅瑞?閮毀???芯?? (113撟?",
+    subtitle = "?風??蝺渡?蝘餃極嚗?芾?銝凋??訾蒂?芷＊???潭????,
+    x = "霅瑞?閮毀", y = "? (??"
+  ) +
+  theme_tc()
+
+p_salary_training
+
+# (3) 蝮質鞈??怠??剛祥嚗????瑟???p_total_salary <- ggplot(df113_salary %>% filter(!is.na(蝮質鞈?), aes(x = 蝮質鞈?) +
+  geom_histogram(binwidth = 1000, fill = "#1f3e79", color = "white", alpha = 0.85) +
+  geom_vline(aes(xintercept = median(蝮質鞈? na.rm = TRUE)), 
+             color = "#d9480f", linetype = "dashed", linewidth = 1) +
+  annotate("text", x = median(df113_salary$蝮質鞈? na.rm = TRUE) + 1500, y = 500, 
+           label = paste0("銝凋???= ", comma(median(df113_salary$蝮質鞈? na.rm = TRUE)), " ??), 
+           color = "#d9480f", family = "TC", fontface = "bold", hjust = 0) +
+  scale_x_continuous(labels = comma) +
+  labs(
+    title = "摰嗅滬?風撌亦蜇?芾?(?+?鞎???",
+    x = "蝮質鞈?(??", y = "鈭箸"
+  ) +
+  theme_tc()
+
+p_total_salary
+```
+
+# 蝯?
+
+?砍?? `final摰嗅滬??R` 頧??箏?瑁???Rmd 瑼?嚗蒂靽桀儔鈭楝敺?憿誑靘踹銵????憓?????隞嗉??芾??????? 113 撟游漲隤踵???芥??剛祥?蔣?輯瘞渡?霈嚗????風??蝺湛??脰?鈭?閬箏??Ｚ???

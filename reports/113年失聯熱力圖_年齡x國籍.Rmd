@@ -1,0 +1,195 @@
+---
+title: "家庭看護工失聯率熱力圖：年齡 × 國籍（109–113年合併）"
+author: ""
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.width = 10, fig.height = 7, dpi = 150)
+```
+
+## 分析目的
+
+合併 **109–113 年**家庭面問卷，擴大樣本基礎後，
+以 **年齡組（X 軸）× 國籍（Y 軸）** 交叉繪製加權失聯率熱力圖。
+每格數值為「**該年齡 × 國籍組合的加權失聯率**」（分母：三年全樣本同格雇主，分子：其中曾失聯者）。
+
+> 三年各調查的 q5（「過去六年內是否曾發生失聯」）題目結構與選項編碼一致，可直接合併。
+
+---
+
+## 資料說明
+
+| 欄位 | 說明 | 編碼 |
+|------|------|------|
+| `q5` | 過去六年有無失聯 | 1=沒有，2=有（各年問卷相同） |
+| `q8b` | 看護工年齡 | 1=未滿25歲，2=25–34歲，3=35–44歲，4=45歲以上 |
+| `q8d` | 看護工國籍 | 1=印尼，2=越南，3=泰國，4=菲律賓 |
+| `w` | 推估權數 | — |
+
+---
+
+```{r libraries}
+library(tidyverse)
+library(scales)
+library(showtext)
+
+font_add_google("Noto Sans TC", "NotoSans")
+showtext_auto()
+```
+
+```{r load-data}
+base_dir <- if (basename(getwd()) == "reports") ".." else "."
+data_dir <- file.path(base_dir, "data")
+
+# ── 合併 109–113 年家庭面資料 ─────────────────────────────
+load_year <- function(year) {
+  read_csv(
+    file.path(data_dir, paste0(year, "年移工/家庭面/data", year, ".csv")),
+    show_col_types = FALSE
+  ) %>%
+    transmute(
+      survey_year = as.integer(year),
+      w           = as.numeric(w),
+      had_missing = as.integer(q5 == 2),
+      age_code    = as.integer(q8b),
+      nat_code    = as.integer(q8d)
+    )
+}
+
+d <- bind_rows(
+  load_year("109"),
+  load_year("110"),
+  load_year("111"),
+  load_year("112"),
+  load_year("113")
+) %>%
+  filter(!is.na(age_code), !is.na(nat_code),
+         !is.na(w), w > 0,
+         age_code %in% 1:4, nat_code %in% 1:4)
+
+age_labels <- c("1" = "未滿 25 歲",
+                "2" = "25–34 歲",
+                "3" = "35–44 歲",
+                "4" = "45 歲以上")
+
+nat_labels  <- c("1" = "印尼",
+                 "2" = "越南",
+                 "3" = "泰國",
+                 "4" = "菲律賓")
+
+d <- d %>%
+  mutate(
+    age = factor(age_labels[as.character(age_code)],
+                 levels = age_labels),
+    nationality = factor(nat_labels[as.character(nat_code)],
+                         levels = rev(nat_labels))  # Y 軸由上到下
+  )
+```
+
+```{r compute-heatmap}
+heat <- d %>%
+  group_by(nationality, age) %>%
+  summarise(
+    n_total    = n(),
+    n_missing  = sum(had_missing),
+    wtd_miss_rate = weighted.mean(had_missing, w, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    # 標注文字：顯示失聯率與樣本數
+    label = if_else(
+      n_total >= 10,
+      paste0(percent(wtd_miss_rate, 0.1), "\n(n=", n_total, ")"),
+      paste0("—\n(n=", n_total, ")")   # 樣本過少，不顯示比率
+    ),
+    # 樣本過少格位以 NA 處理，避免誤導
+    rate_display = if_else(n_total >= 10, wtd_miss_rate, NA_real_)
+  )
+```
+
+---
+
+## 熱力圖：加權失聯率
+
+```{r heatmap, fig.width=10, fig.height=6.5}
+p_heat <- ggplot(heat, aes(x = age, y = nationality, fill = rate_display)) +
+  geom_tile(color = "white", linewidth = 1.2) +
+  geom_text(
+    aes(label = label,
+        color = if_else(!is.na(rate_display) & rate_display > 0.06,
+                        "white", "#333333")),
+    size = 5.5, fontface = "bold", family = "NotoSans", lineheight = 1.2
+  ) +
+  scale_color_identity() +
+  scale_fill_gradient(
+    low      = "#FFF3E0",
+    high     = "#DE4429",
+    na.value = "#f0f0f0",          # 樣本不足格：淡灰
+    name     = "加權失聯率",
+    labels   = percent_format(accuracy = 1)
+  ) +
+  scale_x_discrete(position = "bottom") +
+  labs(
+    title    = "年輕移工、越南籍看護工的失聯率明顯偏高",
+    subtitle = "109–113 年家庭面問卷合併（總 N≈20,110）；各格數值為加權失聯率（分母：全樣本同格雇主）\n灰色格位表示該組樣本不足 10 人，不呈現比率",
+    x        = "看護工年齡",
+    y        = NULL,
+    caption  = "資料來源：勞動部移工管理及運用調查，109–113 年家庭面；以抽樣權重 w 計算"
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 20) +
+  theme(
+    plot.title         = element_text(face = "bold", size = 24),
+    plot.subtitle      = element_text(size = 13, color = "#555555",
+                                      margin = margin(b = 12)),
+    plot.caption       = element_text(color = "#aaaaaa", size = 11),
+    axis.title.x       = element_text(angle = 0, size = 14,
+                                      margin = margin(t = 8)),
+    axis.title.y       = element_text(angle = 0, vjust = 0.5, hjust = 1),
+    axis.line          = element_blank(),
+    axis.ticks         = element_blank(),
+    legend.position    = "right",
+    legend.title       = element_text(size = 13),
+    panel.background   = element_blank()
+  )
+
+p_heat
+```
+
+---
+
+## 輔助：各格樣本數
+
+```{r sample-table}
+heat %>%
+  select(nationality, age, n_total, n_missing, wtd_miss_rate) %>%
+  mutate(wtd_miss_rate = percent(wtd_miss_rate, 0.1)) %>%
+  rename(
+    國籍     = nationality,
+    年齡組   = age,
+    總樣本數 = n_total,
+    失聯案例 = n_missing,
+    加權失聯率 = wtd_miss_rate
+  ) %>%
+  arrange(國籍, 年齡組) %>%
+  knitr::kable(caption = "各格樣本數與失聯率明細")
+```
+
+---
+
+## 存檔
+
+```{r save}
+plots_dir <- file.path(base_dir, "plots")
+dir.create(plots_dir, showWarnings = FALSE)
+
+ggsave(file.path(plots_dir, "109_113_missing_heatmap_age_nationality.png"),
+       plot = p_heat, width = 10, height = 6.5, dpi = 150)
+```

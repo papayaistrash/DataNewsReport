@@ -1,0 +1,317 @@
+---
+title: "雇主對家庭看護工整體表現滿意度趨勢分析（110–113年）"
+author: ""
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.width = 10, fig.height = 6, dpi = 150)
+```
+
+## 分析目的
+
+勞動部曾提出「歷年引進移工品質下降」是失聯率上升的可能因素之一。本分析透過比較 **110–113 年**雇主對家庭看護工**整體表現**的滿意度，並與同期失聯人數趨勢疊合，檢驗此一說法是否有數據支撐。
+
+---
+
+## 資料說明
+
+- **滿意度**：勞動部移工管理及運用調查（家庭面）；110–112 年 `q19g`、113 年 `q20_7`（整體表現，5 點量尺：1=很滿意 ～ 5=很不滿意）；以抽樣權重 `w` 計算加權統計量
+- **失聯人數**：移民署失聯移工統計（`失聯率總資料.csv`）；取各年 6 月底「合計」欄（與家庭面問卷調查時間點一致）
+
+---
+
+```{r libraries}
+library(tidyverse)
+library(scales)
+library(showtext)
+
+font_add_google("Noto Sans TC", "NotoSans")
+showtext_auto()
+```
+
+```{r load-and-compute}
+base_dir <- if (basename(getwd()) == "reports") ".." else "."
+data_dir <- file.path(base_dir, "data")
+
+# ── 滿意度資料 ──────────────────────────────────────────────
+read_overall <- function(year, col) {
+  path <- file.path(data_dir, paste0(year, "年移工/家庭面/data", year, ".csv"))
+  read_csv(path, show_col_types = FALSE) %>%
+    transmute(
+      year  = as.integer(year),
+      w     = as.numeric(w),
+      score = as.numeric(.data[[col]])
+    )
+}
+
+d_all <- bind_rows(
+  read_overall("110", "q19g"),
+  read_overall("111", "q19g"),
+  read_overall("112", "q19g"),
+  read_overall("113", "q20_7")
+) %>%
+  filter(!is.na(score), !is.na(w))
+
+sat_summary <- d_all %>%
+  group_by(year) %>%
+  summarise(
+    pct_satisfied  = weighted.mean(score <= 2, w, na.rm = TRUE),
+    # 6 - score：翻正，使 5=很滿意、1=很不滿意，供不滿率圖使用
+    mean_score_pos = weighted.mean(6 - score, w, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# ── 失聯人數資料（6 月底，合計）────────────────────────────
+missing_raw <- read_csv(
+  file.path(data_dir, "失聯率總資料.csv"),
+  show_col_types = FALSE,
+  locale = locale(encoding = "UTF-8")
+)
+
+# 欄位名稱含 HTML tag，動態取第三欄（總計）
+total_col <- names(missing_raw)[3]
+
+missing_june <- missing_raw %>%
+  filter(str_detect(.data[["統計期"]], "^(110|111|112|113)年 6月底"),
+         性別 == "合計") %>%
+  mutate(
+    year        = as.integer(str_extract(.data[["統計期"]], "\\d+")),
+    missing_n   = as.numeric(str_remove_all(.data[[total_col]], "[^0-9]"))
+  ) %>%
+  select(year, missing_n)
+
+# ── 合併 ─────────────────────────────────────────────────────
+d_combined <- left_join(sat_summary, missing_june, by = "year") %>%
+  mutate(year_label = paste0(year, "年\n(", year + 1911, ")"))
+```
+
+---
+
+## 圖1：滿意度 × 失聯人數雙軸圖
+
+```{r dual-axis-plot, fig.width=11, fig.height=6.5}
+# 雙軸：左軸 = 滿意比例，右軸 = 失聯人數（萬人）
+# 需設定線性轉換常數 a, b，使兩條線在同一圖上比例合理
+# 右軸原始單位：人；轉換為「萬人」顯示
+# 轉換公式：right_val = (left_val - b) / a  → left_val = a * right_val + b
+a <- (max(d_combined$pct_satisfied) - min(d_combined$pct_satisfied)) /
+     (max(d_combined$missing_n)     - min(d_combined$missing_n))
+b <- min(d_combined$pct_satisfied) - a * min(d_combined$missing_n)
+
+p_dual <- ggplot(d_combined, aes(x = year)) +
+  # 左軸：滿意比例（深藍線）
+  geom_line(aes(y = pct_satisfied), color = "#1F3145", linewidth = 1.6) +
+  geom_point(aes(y = pct_satisfied), color = "#1F3145", size = 5) +
+  geom_text(
+    aes(y = pct_satisfied, label = percent(pct_satisfied, 0.1)),
+    vjust = -1.3, size = 5.5, fontface = "bold", family = "NotoSans",
+    color = "#1F3145"
+  ) +
+  # 右軸：失聯人數（橘紅線，轉換至左軸尺度）
+  geom_line(aes(y = a * missing_n + b), color = "#DE4429",
+            linewidth = 1.6, linetype = "dashed") +
+  geom_point(aes(y = a * missing_n + b), color = "#DE4429", size = 5) +
+  geom_text(
+    aes(y = a * missing_n + b,
+        label = paste0(round(missing_n / 10000, 1), "萬")),
+    vjust = 2.0, size = 5.5, fontface = "bold", family = "NotoSans",
+    color = "#DE4429"
+  ) +
+  # 左軸
+  scale_y_continuous(
+    name   = "加權滿意比例",
+    labels = percent_format(accuracy = 1),
+    limits = c(b + a * min(d_combined$missing_n) * 0.95,
+               max(d_combined$pct_satisfied) * 1.05),
+    sec.axis = sec_axis(
+      transform = ~ (. - b) / a / 10000,
+      name      = "失聯移工累計人數（萬人）",
+      labels    = function(x) paste0(x, "萬")
+    )
+  ) +
+  scale_x_continuous(
+    breaks = c(110, 111, 112, 113),
+    labels = c("110年\n(2021)", "111年\n(2022)", "112年\n(2023)", "113年\n(2024)")
+  ) +
+  labs(
+    title    = "雇主滿意度穩定，但失聯人數持續攀升",
+    subtitle = "深藍：加權滿意比例（左軸）／橘紅虛線：失聯移工累計人數（右軸，6月底）",
+    x        = NULL,
+    caption  = "資料來源：勞動部移工管理及運用調查（家庭面）110–113 年；移民署失聯移工統計"
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 20) +
+  theme(
+    plot.title         = element_text(face = "bold", size = 25),
+    plot.subtitle      = element_text(size = 14, color = "#555555", margin = margin(b = 12)),
+    plot.caption       = element_text(color = "#aaaaaa"),
+    axis.title.y.left  = element_text(angle = 0, vjust = 0.5, hjust = 1,
+                                      color = "#1F3145", size = 15),
+    axis.title.y.right = element_text(angle = 0, vjust = 0.5, hjust = 0,
+                                      color = "#DE4429", size = 15),
+    axis.text.y.right  = element_text(color = "#DE4429"),
+    axis.text.y.left   = element_text(color = "#1F3145"),
+    axis.line          = element_blank(),
+    axis.ticks         = element_blank(),
+    panel.grid.major.y = element_line(color = "#eeeeee", linewidth = 0.5)
+  )
+
+p_dual
+```
+
+
+---
+```{r dual-axis-plot, fig.width=9, fig.height=4.5}
+# 篩選 111–113
+d_sub <- d_combined %>% filter(year >= 111)
+
+# ── 手動指定兩軸顯示範圍，拉開兩條線 ──
+left_min  <- 0.78;  left_max  <- 0.85
+right_min <- 0;     right_max <- 12    # 萬人
+
+a <- (left_max - left_min) / (right_max * 10000 - right_min * 10000)
+b <- left_min - a * right_min * 10000
+
+p_dual <- ggplot(d_sub, aes(x = year)) +
+  geom_line(aes(y = pct_satisfied), color = "#1F3145", linewidth = 1.6) +
+  geom_point(aes(y = pct_satisfied), color = "#1F3145", size = 5) +
+  geom_text(
+    aes(y = pct_satisfied, label = percent(pct_satisfied, 0.1)),
+    vjust = 2.3, size = 5.5, fontface = "bold", family = "NotoSans",
+    color = "#1F3145"
+  ) +
+  geom_line(aes(y = a * missing_n + b), color = "#DE4429",
+            linewidth = 1.6, linetype = "dashed") +
+  geom_point(aes(y = a * missing_n + b), color = "#DE4429", size = 5) +
+  geom_text(
+    aes(y = a * missing_n + b,
+        label = paste0(round(missing_n / 10000, 1), "萬")),
+    vjust = -1.3, size = 5.5, fontface = "bold", family = "NotoSans",
+    color = "#DE4429"
+  ) +
+  scale_y_continuous(
+    name   = "雇主平均滿意度",
+    labels = percent_format(accuracy = 1),
+    limits = c(left_min, left_max),
+    sec.axis = sec_axis(
+      transform = ~ (. - b) / a / 10000,
+      name      = "失聯移工累計人數（萬人）",
+      labels    = function(x) paste0(x, "萬")
+    )
+  ) +
+  scale_x_continuous(
+    breaks = c(111, 112, 113),
+    labels = c("111年\n(2022)", "112年\n(2023)", "113年\n(2024)")
+  ) +
+  labs(
+    title    = "雇主滿意度與失聯人數比較表",
+    subtitle = "深藍：雇主平均滿意度（左軸）／橘紅虛線：失聯移工累計人數（右軸，6月底）",
+    x        = NULL,
+    caption  = "資料來源：勞動部移工管理及運用調查（家庭面）111–113 年；移民署失聯移工統計"
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 22) +
+  theme(
+    plot.title         = element_text(face = "bold", size = 27),
+    plot.subtitle      = element_text(size = 16, color = "#555555", margin = margin(b = 12)),
+    plot.caption       = element_text(color = "#aaaaaa"),
+    axis.title.y.left  = element_text(color = "#1F3145", size = 18, lineheight = 0.9),
+    axis.title.y.right = element_text(color = "#DE4429", size = 18, lineheight = 0.9),
+    axis.text.y.right  = element_text(color = "#DE4429"),
+    axis.text.y.left   = element_text(color = "#1F3145"),
+    axis.line          = element_blank(),
+    axis.ticks         = element_blank(),
+    panel.grid.major.y = element_line(color = "#eeeeee", linewidth = 0.5)
+  )
+p_dual
+```
+
+
+
+
+---
+
+## 圖2：雇主不滿意程度趨勢（翻正後滿意分數）
+
+```{r dissatisfaction-plot, fig.width=10, fig.height=6}
+# 6 - score 翻正：5 = 很滿意，1 = 很不滿意
+# 此處繪製加權平均翻正分數，數值愈高代表雇主愈滿意
+p_score <- ggplot(d_combined, aes(x = year, y = mean_score_pos)) +
+  geom_line(color = "#1F3145", linewidth = 1.6) +
+  geom_point(color = "#DE4429", size = 5) +
+  geom_text(
+    aes(label = round(mean_score_pos, 2)),
+    vjust = -1.3, size = 6.5, fontface = "bold", family = "NotoSans",
+    color = "#DE4429"
+  ) +
+  scale_x_continuous(
+    breaks = c(110, 111, 112, 113),
+    labels = c("110年\n(2021)", "111年\n(2022)", "112年\n(2023)", "113年\n(2024)")
+  ) +
+  scale_y_continuous(
+    limits = c(3.0, 4.2),
+    breaks = seq(3.0, 4.2, 0.2),
+    name   = "翻正滿意分數"
+  ) +
+  annotate("text", x = 110.15, y = 4.18,
+           label = "← 5分 = 很滿意", hjust = 0, size = 5,
+           color = "#888888", family = "NotoSans") +
+  annotate("text", x = 110.15, y = 3.05,
+           label = "← 1分 = 很不滿意", hjust = 0, size = 5,
+           color = "#888888", family = "NotoSans") +
+  labs(
+    title    = "雇主對家庭看護工整體表現滿意分數（110–113 年）",
+    subtitle = "原始 5 點量尺（1=很滿意）以「6 − 分數」翻正；分數愈高代表愈滿意",
+    x        = NULL,
+    caption  = "資料來源：勞動部移工管理及運用調查（家庭面），110–113 年；以抽樣權重 w 計算加權平均"
+  ) +
+  theme_classic(base_family = "NotoSans", base_size = 20) +
+  theme(
+    plot.title         = element_text(face = "bold", size = 25),
+    plot.subtitle      = element_text(size = 14, color = "#555555", margin = margin(b = 12)),
+    plot.caption       = element_text(color = "#aaaaaa"),
+    #axis.title.y       = element_text(angle = 0, vjust = 0.5, hjust = 1),
+    axis.line          = element_blank(),
+    axis.ticks         = element_blank(),
+    panel.grid.major.y = element_line(color = "#eeeeee", linewidth = 0.5)
+  )
+
+p_score
+```
+
+---
+
+## 存檔
+
+```{r save}
+plots_dir <- file.path(base_dir, "plots")
+dir.create(plots_dir, showWarnings = FALSE)
+
+ggsave(file.path(plots_dir, "satisfaction_trend_dual_axis.png"),
+       plot = p_dual,  width = 11, height = 6.5, dpi = 150)
+
+ggsave(file.path(plots_dir, "satisfaction_score_flipped_110_113.png"),
+       plot = p_score, width = 10, height = 6,   dpi = 150)
+```
+
+---
+
+## 結論
+
+```{r conclusion, results="asis"}
+min_sat  <- min(d_combined$pct_satisfied)
+max_sat  <- max(d_combined$pct_satisfied)
+min_miss <- min(d_combined$missing_n)
+max_miss <- max(d_combined$missing_n)
+cat(glue::glue(
+  "- 雇主加權滿意比例在四年間介於 **{percent(min_sat, 0.1)}** 至 **{percent(max_sat, 0.1)}**，波動幅度僅 {round((max_sat - min_sat)*100, 1)} 個百分點，呈現穩定格局。\n",
+  "- 同期失聯移工累計人數卻從 **{format(min_miss, big.mark=',')}** 人增至 **{format(max_miss, big.mark=',')}** 人，增幅達 {round((max_miss/min_miss - 1)*100, 0)}%。\n",
+  "- 雙軸圖直觀展示兩條趨勢線的背離：**滿意度橫盤、失聯人數上升**，數據不支持「移工品質下降導致失聯」的論述，失聯成因應從其他結構性因素探討。"
+))
+```
