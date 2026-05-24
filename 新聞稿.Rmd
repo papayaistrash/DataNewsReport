@@ -1,0 +1,827 @@
+---
+title: "台灣家庭看護移工：失聯背後的結構性困境"
+author: ""
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+# ── 套件 ─────────────────────────────────────────────────────
+library(tidyverse)
+library(scales)
+library(haven)
+library(plotly)
+
+# ── 路徑設定（從任何子目錄執行皆可）─────────────────────────
+base_dir <- if (basename(getwd()) %in% c("reports", "scripts")) ".." else "."
+data_dir <- file.path(base_dir, "data")
+
+# ── 共用配色 ─────────────────────────────────────────────────
+col_biz      <- "#2D6A8F"  # 產業移工：藍
+col_care     <- "#C0392B"  # 家庭看護工：紅
+col_worker   <- "#1F3145"  # 移工視角：深藍
+col_employer <- "#DE4429"  # 雇主視角：橘紅
+
+pal_nation <- c("印尼" = "#E74C3C", "菲律賓" = "#3498DB",
+                "泰國" = "#F39C12", "越南" = "#27AE60")
+```
+
+---
+
+## 前言
+
+根據衛福部長照 3.0 計畫推估，2035 年長照需求人數將達 130 萬人。當家中出現重度失能照顧需求時，更多家庭會選擇聘僱家庭看護移工。然而，我們現有的長照政策對於家庭看護工的保障是否足夠？
+
+---
+
+## 一、誰是失聯的移工？
+
+```{r chart-combined-trend}
+# ── 資料：scratch/trend_109_113.csv ─────────────────────────
+# 欄位：year, missing_total, missing_vietnam, mean_salary, no_holiday_pct
+df_trend <- read_csv(
+  file.path(base_dir, "scratch/trend_109_113.csv"),
+  show_col_types = FALSE
+) %>%
+  mutate(year_label = paste0(year, "年"))
+
+# ── 圖1a：失聯總人數（長條） ─────────────────────────────────
+p1a <- plot_ly(df_trend,
+  x = ~year_label, y = ~missing_total,
+  type = "bar",
+  marker = list(color = "#E69F00", opacity = 0.85),
+  text = ~comma(missing_total),
+  textposition = "outside",
+  hovertemplate = "%{x}：%{y:,} 人<extra></extra>",
+  name = "失聯總人數"
+) %>%
+  layout(
+    title = list(text = "總失聯人數趨勢（109–113年）", font = list(size = 16, color = "#1a1a1a")),
+    xaxis = list(title = ""),
+    yaxis = list(title = "失聯人數（人）", tickformat = ","),
+    bargap = 0.4,
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white"
+  )
+
+# ── 圖1b：家庭看護平均月薪（折線） ──────────────────────────
+p1b <- plot_ly(df_trend,
+  x = ~year_label, y = ~mean_salary,
+  type = "scatter", mode = "lines+markers+text",
+  line = list(color = "#0072B2", width = 3),
+  marker = list(color = "#0072B2", size = 10),
+  text = ~paste0(comma(round(mean_salary)), "元"),
+  textposition = "top center",
+  hovertemplate = "%{x}：%{y:,.0f} 元<extra></extra>",
+  name = "平均月薪"
+) %>%
+  layout(
+    title = list(text = "家庭看護工平均月薪資", font = list(size = 16, color = "#0072B2")),
+    xaxis = list(title = ""),
+    yaxis = list(title = "新台幣（元）", range = list(18000, 26000), tickformat = ","),
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white"
+  )
+
+# ── 圖1c：完全不放假比例（折線） ─────────────────────────────
+p1c <- plot_ly(df_trend,
+  x = ~year_label, y = ~no_holiday_pct,
+  type = "scatter", mode = "lines+markers+text",
+  line = list(color = "#D55E00", width = 3),
+  marker = list(color = "#D55E00", size = 10),
+  text = ~paste0(round(no_holiday_pct, 1), "%"),
+  textposition = "top center",
+  hovertemplate = "%{x}：%{y:.1f}%<extra></extra>",
+  name = "不放假比例"
+) %>%
+  layout(
+    title = list(text = "完全不放假比例", font = list(size = 16, color = "#D55E00")),
+    xaxis = list(title = "年度"),
+    yaxis = list(title = "不放假比例（%）", range = list(0, 100)),
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white"
+  )
+
+# ── 三圖合一（subplot 垂直排列） ────────────────────────────
+subplot(p1a, p1b, p1c, nrows = 3, shareX = TRUE,
+        titleY = TRUE, titleX = TRUE) %>%
+  layout(
+    title = list(
+      text = "109–113年：移工失聯、薪資與休假壓力的綜合趨勢<br><sub>三者連動：110年高壓達頂點失聯增，112年後調薪及解封令失聯趨緩</sub>",
+      font = list(size = 18)
+    ),
+    showlegend = FALSE,
+    margin = list(t = 100)
+  )
+```
+
+---
+
+## 二、為何家庭看護工選擇失聯？
+
+### 2-1 勞動部的看法：移工品質下降？
+
+勞動部認為失聯的因素可能為歷年引進的移工品質下降。以下比較歷年雇主對於家庭看護工整體表現的滿意度，並與同期失聯人數疊合檢驗此說法。
+
+```{r chart-satisfaction-dual-axis}
+# ── 滿意度資料：110–113年 ─────────────────────────────────
+read_overall <- function(year, col) {
+  path <- file.path(data_dir, paste0(year, "年移工/家庭面/data", year, ".csv"))
+  read_csv(path, show_col_types = FALSE) %>%
+    transmute(
+      year  = as.integer(year),
+      w     = as.numeric(w),
+      score = as.numeric(.data[[col]])
+    )
+}
+
+d_all <- bind_rows(
+  read_overall("110", "q19g"),
+  read_overall("111", "q19g"),
+  read_overall("112", "q19g"),
+  read_overall("113", "q20_7")
+) %>%
+  filter(!is.na(score), !is.na(w))
+
+sat_summary <- d_all %>%
+  group_by(year) %>%
+  summarise(
+    pct_satisfied = weighted.mean(score <= 2, w, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# ── 失聯人數資料（6月底） ────────────────────────────────────
+missing_raw <- read_csv(
+  file.path(data_dir, "失聯率總資料.csv"),
+  show_col_types = FALSE,
+  locale = locale(encoding = "UTF-8")
+)
+total_col <- names(missing_raw)[3]
+
+missing_june <- missing_raw %>%
+  filter(str_detect(.data[["統計期"]], "^(110|111|112|113)年 6月底"),
+         性別 == "合計") %>%
+  mutate(
+    year      = as.integer(str_extract(.data[["統計期"]], "\\d+")),
+    missing_n = as.numeric(str_remove_all(.data[[total_col]], "[^0-9]"))
+  ) %>%
+  select(year, missing_n)
+
+d_combined <- left_join(sat_summary, missing_june, by = "year") %>%
+  mutate(year_label = paste0(year, "年\n(", year + 1911, ")"))
+
+# ── 雙軸 plotly ───────────────────────────────────────────────
+plot_ly(d_combined) %>%
+  add_trace(
+    x = ~year, y = ~pct_satisfied,
+    type = "scatter", mode = "lines+markers+text",
+    name = "雇主加權滿意比例（左軸）",
+    yaxis = "y1",
+    line = list(color = col_worker, width = 3),
+    marker = list(color = col_worker, size = 10),
+    text = ~percent(pct_satisfied, 0.1),
+    textposition = "top center",
+    hovertemplate = "%{x}年：滿意度 %{y:.1%}<extra></extra>"
+  ) %>%
+  add_trace(
+    x = ~year, y = ~missing_n,
+    type = "scatter", mode = "lines+markers+text",
+    name = "失聯移工累計人數（右軸）",
+    yaxis = "y2",
+    line = list(color = col_employer, width = 3, dash = "dash"),
+    marker = list(color = col_employer, size = 10),
+    text = ~paste0(round(missing_n / 10000, 1), "萬"),
+    textposition = "bottom center",
+    hovertemplate = "%{x}年：失聯 %{y:,} 人<extra></extra>"
+  ) %>%
+  layout(
+    title = list(
+      text = "雇主滿意度穩定，但失聯人數持續攀升<br><sub>深藍：雇主加權滿意比例（左軸）／橘紅：失聯移工累計人數（右軸）</sub>",
+      font = list(size = 18)
+    ),
+    xaxis = list(
+      title = "",
+      tickvals = list(110, 111, 112, 113),
+      ticktext = list("110年\n(2021)", "111年\n(2022)", "112年\n(2023)", "113年\n(2024)")
+    ),
+    yaxis = list(
+      title = "加權滿意比例",
+      tickformat = ".0%",
+      range = list(0.75, 0.90),
+      color = col_worker
+    ),
+    yaxis2 = list(
+      title = "失聯累計人數（人）",
+      overlaying = "y",
+      side = "right",
+      tickformat = ",",
+      color = col_employer
+    ),
+    legend = list(orientation = "h", y = -0.15),
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white",
+    annotations = list(list(
+      x = 0.5, y = -0.12, xref = "paper", yref = "paper",
+      text = "資料來源：勞動部移工管理及運用調查（家庭面）110–113年；移民署失聯移工統計",
+      showarrow = FALSE, font = list(size = 10, color = "#aaaaaa"), xanchor = "center"
+    ))
+  )
+```
+
+> 由上圖可知，雇主並沒有對移工品質有下降之評價，無法印證移工品質對失聯率有所影響。
+
+---
+
+### 2-2 仲介的說法：與仲介費無關？
+
+仲介以「泰國移工仲介費同樣高卻失聯率低」來反駁。以下圖表說明泰國移工幾乎全數集中在受《勞基法》保障的製造業，無法與家庭看護工比較。
+
+```{r chart-thai-industry-structure}
+# ── 各國籍移工產業結構（泰國 99.6% 在產業）─────────────────
+# 家庭看護人數：問卷加權；產業移工人數：勞動部統計月報（2024年底概估）
+industry_nat <- tibble(
+  國籍 = c("印尼", "菲律賓", "泰國", "越南"),
+  產業移工 = c(78000, 150000, 68000, 225000),
+  家庭看護 = c(154952, 21594, 243, 9347)
+)
+
+dist_long <- industry_nat %>%
+  pivot_longer(cols = c(產業移工, 家庭看護),
+               names_to = "工作類型", values_to = "人數") %>%
+  group_by(國籍) %>%
+  mutate(占比 = 人數 / sum(人數)) %>%
+  ungroup() %>%
+  mutate(
+    國籍 = factor(國籍, levels = c("泰國", "菲律賓", "越南", "印尼")),
+    hover_text = paste0(國籍, "　", 工作類型, "<br>",
+                        round(占比 * 100, 1), "% （", comma(人數), " 人）")
+  )
+
+pal_type <- c("產業移工" = "#3498DB", "家庭看護" = "#E74C3C")
+
+# 堆疊長條：水平（coord_flip 效果 → x/y 互換）
+fig_thai <- plot_ly()
+for (wtype in c("產業移工", "家庭看護")) {
+  d_sub <- dist_long %>% filter(工作類型 == wtype)
+  fig_thai <- fig_thai %>%
+    add_trace(
+      data = d_sub,
+      x = ~占比, y = ~國籍,
+      type = "bar",
+      orientation = "h",
+      name = wtype,
+      marker = list(color = pal_type[[wtype]]),
+      text = ~ifelse(占比 > 0.03, paste0(round(占比 * 100, 1), "%\n(", comma(人數), "人)"), ""),
+      textposition = "inside",
+      insidetextanchor = "middle",
+      hovertext = ~hover_text,
+      hoverinfo = "text"
+    )
+}
+
+fig_thai %>%
+  layout(
+    barmode = "stack",
+    title = list(
+      text = "各國籍移工的產業結構差異<br><sub>泰國移工幾乎100%在產業部門，僅243人從事家庭看護（占0.4%）</sub>",
+      font = list(size = 18)
+    ),
+    xaxis = list(title = "占比", tickformat = ".0%"),
+    yaxis = list(title = ""),
+    legend = list(orientation = "h", y = -0.15),
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white",
+    annotations = list(list(
+      x = 0.5, y = -0.18, xref = "paper", yref = "paper",
+      text = "資料來源：勞動部113年移工管理及運用調查（家庭面加權）＋勞動部統計月報（2024年底）",
+      showarrow = FALSE, font = list(size = 10, color = "#aaaaaa"), xanchor = "center"
+    ))
+  )
+```
+
+---
+
+### 2-3 時薪的結構性不對等
+
+家庭看護工整體換算時薪相較於產業移工嚴重不對等。以下根據問卷資料計算時薪差異。
+
+```{r chart-hourly-wage}
+# ── 讀取 113 年家庭面與事業面資料 ───────────────────────────
+home <- read_csv(
+  file.path(data_dir, "113年移工/家庭面/data113.csv"),
+  locale = locale(encoding = "UTF-8"), show_col_types = FALSE
+)
+biz <- read_csv(
+  file.path(data_dir, "113年移工/事業面/data113.csv"),
+  locale = locale(encoding = "UTF-8"), show_col_types = FALSE
+)
+
+# ── 產業移工時薪 ─────────────────────────────────────────────
+biz_w            <- biz$w3
+biz_salary_base  <- weighted.mean(biz$q7ca,  biz_w, na.rm = TRUE)
+biz_overtime_pay <- weighted.mean(biz$q7cb,  biz_w, na.rm = TRUE)
+biz_bonus        <- weighted.mean(biz$nq7d,  biz_w, na.rm = TRUE)
+biz_total_salary <- biz_salary_base + biz_overtime_pay + biz_bonus
+biz_monthly_hours <- weighted.mean(biz$q7b,  biz_w, na.rm = TRUE)
+biz_ot_hours      <- weighted.mean(biz$q7bb, biz_w, na.rm = TRUE)
+biz_total_hours   <- biz_monthly_hours + biz_ot_hours
+biz_hourly        <- biz_total_salary / biz_total_hours
+
+# ── 家庭看護工時薪 ───────────────────────────────────────────
+home_w            <- home$w
+home_salary_base  <- weighted.mean(as.numeric(home$nq10a),  home_w, na.rm = TRUE)
+home_overtime_pay <- weighted.mean(as.numeric(home$nq10ab), home_w, na.rm = TRUE)
+home_total_salary <- home_salary_base + home_overtime_pay
+
+home_calc <- home %>%
+  mutate(
+    start    = as.numeric(nq9a_1),
+    end      = as.numeric(nq9a_2) + 12,
+    rest_h   = as.numeric(nq9b_1),
+    rest_m   = as.numeric(nq9b_2),
+    daily_work = (end - start) - (rest_h + rest_m / 60)
+  ) %>%
+  filter(daily_work > 0 & daily_work < 24)
+home_daily_hours <- weighted.mean(home_calc$daily_work, home_calc$w, na.rm = TRUE)
+
+home_leave <- home %>%
+  mutate(leave_days = case_when(
+    q13a == 1 ~ 4.5, q13a == 2 ~ 1, q13a == 3 ~ 2.5,
+    q13a == 5 ~ 0,   TRUE ~ NA_real_
+  )) %>%
+  filter(!is.na(leave_days))
+home_leave_days <- weighted.mean(home_leave$leave_days, home_leave$w, na.rm = TRUE)
+home_work_days  <- 30 - home_leave_days
+home_total_hours <- home_daily_hours * home_work_days
+home_hourly      <- home_total_salary / home_total_hours
+
+min_hourly <- 183
+
+plot_df <- tibble(
+  類別   = c("產業移工", "家庭看護工"),
+  時薪   = c(biz_hourly, home_hourly),
+  失聯率 = c(10.5, 12.2),
+  法規   = c("受《勞基法》保障", "不適用《勞基法》"),
+  顏色   = c(col_biz, col_care)
+)
+
+plot_ly(plot_df,
+  x = ~類別, y = ~時薪,
+  type = "bar",
+  marker = list(color = ~顏色),
+  text = ~paste0(round(時薪, 1), " 元/時<br>失聯率 ", 失聯率, "%<br>", 法規),
+  textposition = "inside",
+  insidetextanchor = "start",
+  hovertemplate = "<b>%{x}</b><br>估算時薪：%{y:.1f} 元<extra></extra>",
+  name = ""
+) %>%
+  add_segments(
+    x = -0.5, xend = 1.5,
+    y = min_hourly, yend = min_hourly,
+    line = list(color = "#aaaaaa", dash = "dash", width = 2),
+    name = paste0("基本時薪 ", min_hourly, " 元"),
+    hoverinfo = "none"
+  ) %>%
+  add_annotations(
+    x = 1.45, y = min_hourly,
+    text = paste0("基本時薪 ", min_hourly, " 元"),
+    showarrow = FALSE,
+    font = list(color = "#999999", size = 12),
+    xanchor = "right", yanchor = "bottom"
+  ) %>%
+  layout(
+    title = list(
+      text = paste0(
+        "家庭看護工的實質時薪，不到產業移工的一半<br>",
+        "<sub>家庭看護工平均時薪僅 ", round(home_hourly, 1),
+        " 元，遠低於法定基本時薪 ", min_hourly, " 元</sub>"
+      ),
+      font = list(size = 18)
+    ),
+    xaxis = list(title = ""),
+    yaxis = list(title = "估算時薪（元/小時）", range = list(0, 275)),
+    showlegend = TRUE,
+    legend = list(orientation = "h", y = -0.15),
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white",
+    annotations = list(list(
+      x = 0, y = -0.18, xref = "paper", yref = "paper",
+      text = "時薪＝月總薪資÷月總工時　資料來源：勞動部113年移工管理及運用調查（加權）",
+      showarrow = FALSE, font = list(size = 10, color = "#aaaaaa"), xanchor = "left"
+    ))
+  )
+```
+
+---
+
+### 2-4 高額仲介費是逃跑的重要因素
+
+#### 103年各國籍家庭看護工：出國前仲介費分佈
+
+```{r chart-broker-fee}
+# ── 讀取 103 年移工問卷（家庭類）──────────────────────────────
+d103 <- read_dta(
+  file.path(data_dir, "103年針對移工問卷/data103_2.dta")
+) %>%
+  mutate(
+    broker_fee  = as.numeric(v7_1),
+    w           = as.numeric(w),
+    nationality = case_when(
+      v2 == 1 ~ "印尼", v2 == 2 ~ "泰國",
+      v2 == 3 ~ "菲律賓", v2 == 4 ~ "越南",
+      TRUE ~ "其他"
+    )
+  ) %>%
+  filter(broker_fee >= 0, broker_fee < 500000,
+         !is.na(w), nationality != "其他", !is.na(nationality))
+
+# 僅保留樣本數 > 100 的國籍
+nation_counts <- d103 %>%
+  group_by(nationality) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  filter(count > 100)
+
+d103_fee <- d103 %>%
+  filter(nationality %in% nation_counts$nationality)
+
+# ── Plotly box ────────────────────────────────────────────────
+# 按中位數排序
+med_order <- d103_fee %>%
+  group_by(nationality) %>%
+  summarise(med = median(broker_fee, na.rm = TRUE), .groups = "drop") %>%
+  arrange(desc(med)) %>%
+  pull(nationality)
+
+pal_box <- c("印尼" = "#4393C3", "泰國" = "#F4A582",
+             "菲律賓" = "#74ADD1", "越南" = "#D6604D")
+
+fig_fee <- plot_ly()
+for (nat in med_order) {
+  d_sub <- d103_fee %>% filter(nationality == nat)
+  fig_fee <- fig_fee %>%
+    add_trace(
+      data = d_sub,
+      y = ~broker_fee,
+      type = "box",
+      name = nat,
+      marker = list(color = pal_box[[nat]], opacity = 0.5),
+      line   = list(color = pal_box[[nat]]),
+      fillcolor = paste0(pal_box[[nat]], "55"),
+      boxpoints = "outliers",
+      hovertemplate = paste0(
+        "<b>", nat, "</b><br>",
+        "出國前仲介費：%{y:,} 元<extra></extra>"
+      )
+    )
+}
+
+fig_fee %>%
+  layout(
+    title = list(
+      text = "103年各國籍家庭看護工出國前仲介費分佈<br><sub>箱體呈現中位數、四分位距，點為離群值</sub>",
+      font = list(size = 18)
+    ),
+    xaxis = list(title = "國籍"),
+    yaxis = list(title = "出國前仲介費（新台幣）", tickformat = ","),
+    showlegend = FALSE,
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white",
+    annotations = list(list(
+      x = 0.5, y = -0.12, xref = "paper", yref = "paper",
+      text = "資料來源：外籍移工工作及生活關懷調查表（家庭類）103年",
+      showarrow = FALSE, font = list(size = 10, color = "#aaaaaa"), xanchor = "center"
+    ))
+  )
+```
+
+#### 103年各國籍家庭看護工：來台前借貸金額分佈
+
+```{r chart-loan-amount}
+# ── 讀取 103 年移工問卷（家庭類）──────────────────────────────
+d103_loan <- read_dta(
+  file.path(data_dir, "103年針對移工問卷/data103_2.dta")
+) %>%
+  mutate(
+    loan_amount = as.numeric(v7_3_1a),
+    w           = as.numeric(w),
+    nationality = case_when(
+      v2 == 1 ~ "印尼", v2 == 2 ~ "泰國",
+      v2 == 3 ~ "菲律賓", v2 == 4 ~ "越南",
+      TRUE ~ "其他"
+    )
+  ) %>%
+  filter(loan_amount >= 0, loan_amount < 500000,
+         !is.na(w), nationality != "其他", !is.na(nationality))
+
+nation_counts_loan <- d103_loan %>%
+  group_by(nationality) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  filter(count > 100)
+
+d103_loan <- d103_loan %>%
+  filter(nationality %in% nation_counts_loan$nationality)
+
+med_order_loan <- d103_loan %>%
+  group_by(nationality) %>%
+  summarise(med = median(loan_amount, na.rm = TRUE), .groups = "drop") %>%
+  arrange(desc(med)) %>%
+  pull(nationality)
+
+fig_loan <- plot_ly()
+for (nat in med_order_loan) {
+  d_sub <- d103_loan %>% filter(nationality == nat)
+  fig_loan <- fig_loan %>%
+    add_trace(
+      data = d_sub,
+      y = ~loan_amount,
+      type = "box",
+      name = nat,
+      marker = list(color = pal_box[[nat]], opacity = 0.5),
+      line   = list(color = pal_box[[nat]]),
+      fillcolor = paste0(pal_box[[nat]], "55"),
+      boxpoints = "outliers",
+      hovertemplate = paste0(
+        "<b>", nat, "</b><br>",
+        "借貸金額：%{y:,} 元<extra></extra>"
+      )
+    )
+}
+
+fig_loan %>%
+  layout(
+    title = list(
+      text = "103年各國籍家庭看護工來台前借貸金額分佈<br><sub>箱體呈現中位數、四分位距，點為離群值（僅包含有借貸之樣本）</sub>",
+      font = list(size = 18)
+    ),
+    xaxis = list(title = "國籍"),
+    yaxis = list(title = "借貸金額（新台幣）", tickformat = ","),
+    showlegend = FALSE,
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white",
+    annotations = list(list(
+      x = 0.5, y = -0.12, xref = "paper", yref = "paper",
+      text = "資料來源：外籍移工工作及生活關懷調查表（家庭類）103年",
+      showarrow = FALSE, font = list(size = 10, color = "#aaaaaa"), xanchor = "center"
+    ))
+  )
+```
+
+---
+
+## 三、人口學分析
+
+家庭看護工以 25–34 歲為主，其次為 35–44 歲，兩年齡層占總數約八成。下方熱力圖顯示不同**年齡 × 國籍**組合的加權失聯率。
+
+```{r chart-heatmap-age-nationality}
+# ── 合併 109–113 年家庭面資料 ─────────────────────────────
+load_year <- function(year) {
+  read_csv(
+    file.path(data_dir, paste0(year, "年移工/家庭面/data", year, ".csv")),
+    show_col_types = FALSE
+  ) %>%
+    transmute(
+      survey_year = as.integer(year),
+      w           = as.numeric(w),
+      had_missing = as.integer(q5 == 2),
+      age_code    = as.integer(q8b),
+      nat_code    = as.integer(q8d)
+    )
+}
+
+d_heat <- bind_rows(lapply(c("109","110","111","112","113"), load_year)) %>%
+  filter(!is.na(age_code), !is.na(nat_code),
+         !is.na(w), w > 0,
+         age_code %in% 1:4, nat_code %in% 1:4)
+
+age_labels <- c("1" = "未滿25歲", "2" = "25–34歲",
+                "3" = "35–44歲",  "4" = "45歲以上")
+nat_labels  <- c("1" = "印尼", "2" = "越南", "3" = "泰國", "4" = "菲律賓")
+
+heat <- d_heat %>%
+  mutate(
+    age         = age_labels[as.character(age_code)],
+    nationality = nat_labels[as.character(nat_code)]
+  ) %>%
+  group_by(nationality, age) %>%
+  summarise(
+    n_total      = n(),
+    wtd_miss_rate = weighted.mean(had_missing, w, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    rate_display = if_else(n_total >= 10, wtd_miss_rate, NA_real_),
+    label        = if_else(
+      n_total >= 10,
+      paste0(percent(wtd_miss_rate, 0.1), "<br>(n=", n_total, ")"),
+      paste0("—<br>(n=", n_total, ")")
+    ),
+    age = factor(age, levels = age_labels),
+    nationality = factor(nationality, levels = rev(nat_labels))
+  )
+
+# 轉為 wide matrix for heatmap
+heat_wide <- heat %>%
+  select(nationality, age, rate_display) %>%
+  pivot_wider(names_from = age, values_from = rate_display)
+
+mat <- as.matrix(heat_wide[, -1])
+rownames(mat) <- as.character(heat_wide$nationality)
+
+# 製作 text matrix
+heat_text <- heat %>%
+  select(nationality, age, label) %>%
+  pivot_wider(names_from = age, values_from = label)
+text_mat <- as.matrix(heat_text[, -1])
+
+plot_ly(
+  x = colnames(mat),
+  y = rownames(mat),
+  z = mat,
+  text = text_mat,
+  hovertemplate = "<b>%{y}　%{x}</b><br>加權失聯率：%{z:.1%}<extra></extra>",
+  type = "heatmap",
+  colorscale = list(
+    list(0, "#FFF3E0"),
+    list(1, "#DE4429")
+  ),
+  colorbar = list(title = "加權失聯率", tickformat = ".0%"),
+  texttemplate = "%{text}",
+  showscale = TRUE
+) %>%
+  layout(
+    title = list(
+      text = "年輕移工、越南籍看護工的失聯率明顯偏高<br><sub>109–113年家庭面問卷合併；各格數值為加權失聯率（分母：全樣本同格雇主）</sub>",
+      font = list(size = 18)
+    ),
+    xaxis = list(title = "看護工年齡"),
+    yaxis = list(title = ""),
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white",
+    annotations = list(list(
+      x = 0.5, y = -0.12, xref = "paper", yref = "paper",
+      text = "資料來源：勞動部移工管理及運用調查，109–113年家庭面；以抽樣權重 w 計算",
+      showarrow = FALSE, font = list(size = 10, color = "#aaaaaa"), xanchor = "center"
+    ))
+  )
+```
+
+---
+
+## 四、結語：移工與雇主的認知落差
+
+以下圖表比較同一現象（家庭看護工失聯）在兩個視角下的歸因差異：**移工自述（103年）** vs **雇主認知（113年）**。
+
+```{r chart-dumbbell-runaway-reasons}
+# ── 103年移工問卷 ─────────────────────────────────────────────
+d103_r <- read_csv(
+  file.path(data_dir, "103年針對移工問卷/data103_2.csv"),
+  locale = locale(encoding = "big5"),
+  show_col_types = FALSE
+) %>%
+  filter(v13 == 1) %>%
+  mutate(w = as.numeric(w))
+
+# ── 113年雇主問卷 ─────────────────────────────────────────────
+d113_r <- read_csv(
+  file.path(data_dir, "113年移工/家庭面/data113.csv"),
+  show_col_types = FALSE
+) %>%
+  filter(q5 == 2) %>%
+  mutate(w = as.numeric(w))
+
+# ── 可對應的共同類別 ─────────────────────────────────────────
+dumbbell <- tribble(
+  ~category,             ~col103,     ~col113,
+  "受他人慫恿/轉介",     "v13_8",     "q5a_1",
+  "工作/生活環境不適應", "v13_2",     "q5a_2",
+  "希望較高待遇/薪資低", "v13_7",     "q5a_3",
+  "仲介費太高",          "v13_10",    "q5a_7",
+  "工時無法負荷",        NA_character_, "q5a_6",
+  "與雇主/家人不融洽",   "v13_3",     NA_character_,
+  "勞資爭議",            "v13_9",     NA_character_
+)
+
+get_pct103 <- function(col) {
+  if (is.na(col)) return(NA_real_)
+  vals <- as.numeric(d103_r[[col]])
+  weighted.mean(vals != 0, d103_r$w, na.rm = TRUE)
+}
+get_pct113 <- function(col) {
+  if (is.na(col)) return(NA_real_)
+  vals <- as.integer(d113_r[[col]] == 1)
+  weighted.mean(vals, d113_r$w, na.rm = TRUE)
+}
+
+db <- dumbbell %>%
+  mutate(
+    pct103 = map_dbl(col103, get_pct103),
+    pct113 = map_dbl(col113, get_pct113),
+    avg    = rowMeans(cbind(pct103, pct113), na.rm = TRUE)
+  ) %>%
+  arrange(avg) %>%
+  mutate(category = factor(category, levels = category))
+
+db_both    <- db %>% filter(!is.na(pct103) & !is.na(pct113))
+db_only103 <- db %>% filter(!is.na(pct103) &  is.na(pct113))
+db_only113 <- db %>% filter( is.na(pct103) & !is.na(pct113))
+
+# ── Plotly 啞鈴圖 ────────────────────────────────────────────
+fig_db <- plot_ly()
+
+# 連接線
+for (i in seq_len(nrow(db_both))) {
+  fig_db <- fig_db %>%
+    add_segments(
+      x    = db_both$pct103[i], xend = db_both$pct113[i],
+      y    = as.character(db_both$category[i]),
+      yend = as.character(db_both$category[i]),
+      line = list(color = "#cccccc", width = 3),
+      showlegend = FALSE,
+      hoverinfo  = "none"
+    )
+}
+
+# 移工點（深藍）
+fig_db <- fig_db %>%
+  add_trace(
+    data = db_both,
+    x = ~pct103, y = ~as.character(category),
+    type = "scatter", mode = "markers",
+    name = "移工自述（103年）",
+    marker = list(color = col_worker, size = 14),
+    hovertemplate = "<b>%{y}</b><br>移工自述：%{x:.1%}<extra></extra>"
+  ) %>%
+  add_trace(
+    data = db_both,
+    x = ~pct113, y = ~as.character(category),
+    type = "scatter", mode = "markers",
+    name = "雇主認知（113年）",
+    marker = list(color = col_employer, size = 14),
+    hovertemplate = "<b>%{y}</b><br>雇主認知：%{x:.1%}<extra></extra>"
+  )
+
+# 僅103年有的類別
+if (nrow(db_only103) > 0) {
+  fig_db <- fig_db %>%
+    add_trace(
+      data = db_only103,
+      x = ~pct103, y = ~as.character(category),
+      type = "scatter", mode = "markers",
+      name = "移工自述（無對應113年選項）",
+      marker = list(color = col_worker, size = 14, symbol = "circle-open"),
+      hovertemplate = "<b>%{y}</b><br>移工自述：%{x:.1%}（113年問卷無對應選項）<extra></extra>"
+    )
+}
+
+# 僅113年有的類別
+if (nrow(db_only113) > 0) {
+  fig_db <- fig_db %>%
+    add_trace(
+      data = db_only113,
+      x = ~pct113, y = ~as.character(category),
+      type = "scatter", mode = "markers",
+      name = "雇主認知（無對應103年選項）",
+      marker = list(color = col_employer, size = 14, symbol = "circle-open"),
+      hovertemplate = "<b>%{y}</b><br>雇主認知：%{x:.1%}（103年問卷無對應選項）<extra></extra>"
+    )
+}
+
+fig_db %>%
+  layout(
+    title = list(
+      text = "「被人慫恿」：雇主最常歸因，移工自述卻非首位<br><sub>加權勾選比例；移工自述（103年）vs 雇主認知（113年）</sub>",
+      font = list(size = 18)
+    ),
+    xaxis = list(title = "勾選比例", tickformat = ".0%"),
+    yaxis = list(title = "", categoryorder = "array",
+                 categoryarray = levels(db$category)),
+    legend = list(orientation = "h", y = -0.18),
+    plot_bgcolor  = "white",
+    paper_bgcolor = "white",
+    annotations = list(list(
+      x = 0.5, y = -0.22, xref = "paper", yref = "paper",
+      text = "資料來源：勞動部移工關懷調查（103年家庭類）；移工管理及運用調查（113年家庭面）；以抽樣權重計算",
+      showarrow = FALSE, font = list(size = 10, color = "#aaaaaa"), xanchor = "center"
+    ))
+  )
+```
+
+---
+
+## 政策建議
+
+1. **重啟對於移工群體之問卷資料**：十年間仲介費已大幅增加，需要新的直接證據。
+2. **推動薪資銀行轉帳透明化**：確保看護工實際收到的薪資符合法定標準。
+3. **擴大喘息服務**：減少雇主因缺乏替代照顧人力而無法給予看護工休假的困境。
+4. **研議將家庭看護工納入勞基法保障**：縮小與產業移工的制度落差。
+
+---
+
+*資料來源：勞動部 113年移工管理及運用調查；內政部移民署失聯移工統計；勞動部 103年外籍移工工作及生活關懷調查；監察院（2023）影響移工失聯之結構性問題調查報告。*
